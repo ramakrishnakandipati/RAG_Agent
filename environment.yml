@@ -1,0 +1,10 @@
+name: rag-agent-gpu
+# Windows-native (win-64). Conda only provides Python + pip; everything else is pip
+# to avoid solver deadlocks and ABI mismatches. conda-forge only (no Anaconda defaults).
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -r requirements.txt

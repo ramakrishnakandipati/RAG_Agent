@@ -1,0 +1,46 @@
+# Windows-native (win-64) GPU RAG / Agent stack. Python 3.11.
+# PyTorch CUDA wheels come from the official index; setup.ps1 installs torch first.
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+# --- Binary-compat guard (avoid NumPy 2.x ABI crashes with compiled extensions)
+numpy<2.0
+
+# --- Core compute (GPU)
+torch
+torchvision
+torchaudio
+transformers
+accelerate
+sentence-transformers
+bitsandbytes>=0.43.0
+
+# --- Vector stores & retrieval (faiss-gpu is unsupported on native Windows)
+faiss-cpu
+chromadb
+qdrant-client
+rank-bm25
+
+# --- Agent & RAG orchestration
+langchain
+langchain-community
+langchain-huggingface
+langgraph
+llama-index
+llama-index-embeddings-huggingface
+llama-index-llms-ollama
+pydantic>=2.0
+instructor
+
+# --- Local LLM client & ingestion
+ollama
+pypdf
+pymupdf
+beautifulsoup4
+tiktoken
+
+# --- Developer tooling
+ipykernel
+jupyter
+pytest
+python-dotenv
+rich
