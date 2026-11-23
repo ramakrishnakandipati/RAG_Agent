@@ -17,6 +17,7 @@ bitsandbytes>=0.43.0
 # --- Vector stores & retrieval (faiss-gpu is unsupported on native Windows)
 faiss-cpu
 chromadb
+langchain-chroma
 qdrant-client
 rank-bm25
 
@@ -46,3 +47,8 @@ jupyter
 pytest
 python-dotenv
 rich
+
+# --- Case-study ingestion (docx / tables). pandas<2.3 keeps numpy<2.0
+python-docx
+pandas<2.3
+openpyxl
