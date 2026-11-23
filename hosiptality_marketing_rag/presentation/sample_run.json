@@ -1,0 +1,108 @@
+{
+ "q": "What was the ADR for the Direct channel at Miami Beach Resort in Q3 2025?",
+ "rewrite": {
+  "original": "What was the ADR for the Direct channel at Miami Beach Resort in Q3 2025?",
+  "search_queries": [
+   "What was the average daily rate for direct bookings at Miami Beach Resort in Q3 2025",
+   "Miami Beach Resort average daily rate (ADR) by channel Q3 2025",
+   "Direct channel revenue metrics Miami Beach Resort Q3 2025"
+  ],
+  "filters": {
+   "period": "Q3 2025",
+   "property": "Miami Beach Resort",
+   "channel": "Direct"
+  },
+  "expansions": {
+   "ADR": "average daily rate"
+  }
+ },
+ "n_cands": 5,
+ "cands_top": [
+  [
+   "kpi_miami_beach_resort.csv::p1::t52",
+   0.0976
+  ],
+  [
+   "case_study_miami_beach_resort.md::p1::t31",
+   0.0965
+  ],
+  [
+   "case_study_miami_beach_resort.md::p1::x3200",
+   0.095
+  ],
+  [
+   "campaign_report_miami_beach_resort.pdf::p1::x500",
+   0.0945
+  ],
+  [
+   "case_study_miami_beach_resort.md::p1::x3000",
+   0.0928
+  ]
+ ],
+ "top5": [
+  [
+   "kpi_miami_beach_resort.csv::p1::t52",
+   "Miami Beach Resort",
+   "Q3 2025",
+   0.999
+  ],
+  [
+   "case_study_miami_beach_resort.md::p1::t31",
+   "Miami Beach Resort",
+   "Q3 2025",
+   0.999
+  ],
+  [
+   "campaign_report_miami_beach_resort.pdf::p1::x500",
+   "Miami Beach Resort",
+   "Q3 2025",
+   0.987
+  ],
+  [
+   "case_study_miami_beach_resort.md::p1::x3200",
+   "Miami Beach Resort",
+   "Q3 2025",
+   0.78
+  ],
+  [
+   "case_study_miami_beach_resort.md::p1::x3000",
+   "Miami Beach Resort",
+   "Q3 2025",
+   0.011
+  ]
+ ],
+ "answer": "**Direct Channel ADR Analysis for Miami Beach Resort, Q3 2025**\n\n\u2022 The Average Daily Rate (ADR) for the Direct channel at Miami Beach Resort in Q3 2025 was $182 [case_study_miami_beach_resort.md | 1 | Q3 2025].\n\u2022 This represents the highest ADR among all channels evaluated during the quarter [case_study_miami_beach_resort.md | 1 | Q3 2025].\n\u2022 Direct bookings generated the strongest revenue per room compared to other distribution channels in Q3 2025 [kpi_miami_beach_resort.csv | 1 | Q3 2025].\n\u2022 The direct channel achieved an occupancy rate of 74% while maintaining the premium pricing structure [kpi_miami_beach_resort.csv | 1 | Q3 2025].",
+ "ver": {
+  "claims": [
+   {
+    "text": "\u2022 The Average Daily Rate (ADR) for the Direct channel at Miami Beach Resort in Q3 2025 was $182 [case_study_miami_beach_resort.md | 1 | Q3 2025].",
+    "value": "$182",
+    "supported": true,
+    "evidence_chunk": "kpi_miami_beach_resort.csv::p1::t52"
+   },
+   {
+    "text": "\u2022 The direct channel achieved an occupancy rate of 74% while maintaining the premium pricing structure [kpi_miami_beach_resort.csv | 1 | Q3 2025].",
+    "value": "74%",
+    "supported": true,
+    "evidence_chunk": "kpi_miami_beach_resort.csv::p1::t52"
+   }
+  ],
+  "unsupported_claims": [],
+  "citation_errors": [],
+  "judge_unsupported": [],
+  "faithfulness_score": 1.0,
+  "is_refusal": false
+ },
+ "lat": {
+  "rewrite": 9486.3,
+  "retrieve": 87.9,
+  "rerank": 134.7,
+  "generate": 16317.8,
+  "verify": 1858.9,
+  "total": 27885.6
+ },
+ "citations": [
+  "[case_study_miami_beach_resort.md | 1 | Q3 2025]",
+  "[kpi_miami_beach_resort.csv | 1 | Q3 2025]"
+ ]
+}
