@@ -1,0 +1,134 @@
+[
+  {
+    "question": "What was the average daily rate (ADR) for the Direct channel at Fort Lauderdale Marina Inn in Q1 2025?",
+    "gold_ids": [
+      "case_study_fort_lauderdale_marina_inn.md::p1::t11",
+      "kpi_fort_lauderdale_marina_inn.xlsx::p1::t46"
+    ],
+    "property": "Fort Lauderdale Marina Inn",
+    "period": "Q1 2025",
+    "channel": "Direct",
+    "metric": "ADR"
+  },
+  {
+    "question": "What was the occupancy (Occupancy) for the Booking.com OTA channel at Fort Lauderdale Marina Inn in Q2 2025?",
+    "gold_ids": [
+      "case_study_fort_lauderdale_marina_inn.md::p1::t14",
+      "kpi_fort_lauderdale_marina_inn.xlsx::p1::t47"
+    ],
+    "property": "Fort Lauderdale Marina Inn",
+    "period": "Q2 2025",
+    "channel": "Booking.com OTA",
+    "metric": "Occupancy"
+  },
+  {
+    "question": "What was the revenue per available room (RevPAR) for the Expedia OTA channel at Fort Lauderdale Marina Inn in Q3 2025?",
+    "gold_ids": [
+      "case_study_fort_lauderdale_marina_inn.md::p1::t17",
+      "kpi_fort_lauderdale_marina_inn.xlsx::p1::t48"
+    ],
+    "property": "Fort Lauderdale Marina Inn",
+    "period": "Q3 2025",
+    "channel": "Expedia OTA",
+    "metric": "RevPAR"
+  },
+  {
+    "question": "What was the average daily rate (ADR) for the Corporate channel at Fort Lauderdale Marina Inn in Q4 2025?",
+    "gold_ids": [
+      "case_study_fort_lauderdale_marina_inn.md::p1::t20",
+      "kpi_fort_lauderdale_marina_inn.xlsx::p1::t49"
+    ],
+    "property": "Fort Lauderdale Marina Inn",
+    "period": "Q4 2025",
+    "channel": "Corporate",
+    "metric": "ADR"
+  },
+  {
+    "question": "What was the revenue per available room (RevPAR) for the Booking.com OTA channel at Miami Beach Resort in Q1 2025?",
+    "gold_ids": [
+      "case_study_miami_beach_resort.md::p1::t25",
+      "kpi_miami_beach_resort.csv::p1::t50"
+    ],
+    "property": "Miami Beach Resort",
+    "period": "Q1 2025",
+    "channel": "Booking.com OTA",
+    "metric": "RevPAR"
+  },
+  {
+    "question": "What was the average daily rate (ADR) for the Expedia OTA channel at Miami Beach Resort in Q2 2025?",
+    "gold_ids": [
+      "case_study_miami_beach_resort.md::p1::t28",
+      "kpi_miami_beach_resort.csv::p1::t51"
+    ],
+    "property": "Miami Beach Resort",
+    "period": "Q2 2025",
+    "channel": "Expedia OTA",
+    "metric": "ADR"
+  },
+  {
+    "question": "What was the occupancy (Occupancy) for the Corporate channel at Miami Beach Resort in Q3 2025?",
+    "gold_ids": [
+      "case_study_miami_beach_resort.md::p1::t31",
+      "kpi_miami_beach_resort.csv::p1::t52"
+    ],
+    "property": "Miami Beach Resort",
+    "period": "Q3 2025",
+    "channel": "Corporate",
+    "metric": "Occupancy"
+  },
+  {
+    "question": "What was the revenue per available room (RevPAR) for the Wholesale channel at Miami Beach Resort in Q4 2025?",
+    "gold_ids": [
+      "case_study_miami_beach_resort.md::p1::t34",
+      "kpi_miami_beach_resort.csv::p1::t53"
+    ],
+    "property": "Miami Beach Resort",
+    "period": "Q4 2025",
+    "channel": "Wholesale",
+    "metric": "RevPAR"
+  },
+  {
+    "question": "What was the occupancy (Occupancy) for the Expedia OTA channel at Orlando Grand Hotel in Q1 2025?",
+    "gold_ids": [
+      "case_study_orlando_grand_hotel.pdf::p1::t39",
+      "kpi_orlando_grand_hotel.csv::p1::t54"
+    ],
+    "property": "Orlando Grand Hotel",
+    "period": "Q1 2025",
+    "channel": "Expedia OTA",
+    "metric": "Occupancy"
+  },
+  {
+    "question": "What was the revenue per available room (RevPAR) for the Corporate channel at Orlando Grand Hotel in Q2 2025?",
+    "gold_ids": [
+      "case_study_orlando_grand_hotel.pdf::p2::t41",
+      "kpi_orlando_grand_hotel.csv::p1::t55"
+    ],
+    "property": "Orlando Grand Hotel",
+    "period": "Q2 2025",
+    "channel": "Corporate",
+    "metric": "RevPAR"
+  },
+  {
+    "question": "What was the average daily rate (ADR) for the Wholesale channel at Orlando Grand Hotel in Q3 2025?",
+    "gold_ids": [
+      "case_study_orlando_grand_hotel.pdf::p2::t43",
+      "kpi_orlando_grand_hotel.csv::p1::t56"
+    ],
+    "property": "Orlando Grand Hotel",
+    "period": "Q3 2025",
+    "channel": "Wholesale",
+    "metric": "ADR"
+  },
+  {
+    "question": "What was the occupancy (Occupancy) for the Direct channel at Orlando Grand Hotel in Q4 2025?",
+    "gold_ids": [
+      "case_study_orlando_grand_hotel.pdf::p3::t45",
+      "kpi_orlando_grand_hotel.csv::p1::t57"
+    ],
+    "property": "Orlando Grand Hotel",
+    "period": "Q4 2025",
+    "channel": "Direct",
+    "metric": "Occupancy"
+  }
+]
