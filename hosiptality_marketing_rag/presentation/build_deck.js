@@ -233,90 +233,112 @@ const chartBase = (title) => ({
   txt(s, "faithfulness = 1 - (unsupported numbers + flagged sentences + citation errors) / (numbers + sentences checked)", 5.45, 3.75, 3.7, 1.0, { fontSize: 12, color: C.background1, valign: "middle" });
 }
 
-// ------------------------------------------------------------------ 9 example overview
-pres.addSection({ title: "Worked example" }); current = "Worked example";
+// ------------------------------------------------------------------ UI story
+pres.addSection({ title: "UI story" }); current = "UI story";
+const ASSETS = ROOT + "/presentation/assets/";
+
+// one UI screenshot on the left, three short callouts and one big number on the right
+function shotSlide(o) {
+  const s = addSlide("LIGHT", "UI story", o.notes);
+  s.addText(o.title, { placeholder: "title" });
+  const maxH = o.maxH || 3.7;
+  const w = Math.min(o.maxW || 5.7, maxH * o.aspect), h = w / o.aspect;
+  card(s, 0.5, 1.15, w + 0.2, h + 0.2, `Screenshot frame ${o.step}`, C.background2);
+  s.addImage({ path: ASSETS + o.img, x: 0.6, y: 1.25, w, h, altText: o.alt, objectName: `UI screenshot ${o.step}` });
+  const x = 0.5 + w + 0.5, cw = 9.5 - x;
+  card(s, x, 1.15, cw, 0.38, `Step chip ${o.step}`, C.accent2);
+  txt(s, o.chip, x + 0.12, 1.15, cw - 0.24, 0.38, { fontSize: 12, bold: true, color: C.background1, valign: "middle" });
+  bullets(s, o.bullets, x, 1.7, cw, 2.25, 13);
+  card(s, x, 4.05, cw, 0.95, `Stat card ${o.step}`, C.text2);
+  txt(s, o.stat, x + 0.15, 4.08, cw - 0.3, 0.5, { fontSize: 24, bold: true, color: C.background1, fontFace: "Cambria", valign: "middle" });
+  txt(s, o.statLabel, x + 0.15, 4.55, cw - 0.3, 0.42, { fontSize: 11, color: C.background2 });
+}
+
+// ---- storyboard
 {
-  const s = addSlide("LIGHT", "Worked example", "One real run against live Qwen3-Coder. Latencies are steady-state, measured after a warm-up query.");
-  s.addText("Example: one question end to end", { placeholder: "title" });
-  card(s, 0.5, 1.2, 9, 0.95, "Question card", C.accent2);
-  txt(s, "\"" + sample.q + "\"", 0.7, 1.2, 8.6, 0.95, { fontSize: 18, bold: true, color: C.background1, valign: "middle", fontFace: "Cambria" });
-  const L = sample.lat, fmt = ms => ms >= 1000 ? (ms / 1000).toFixed(1) + " s" : Math.round(ms) + " ms";
-  const st = [["5", "Rewrite", L.rewrite], ["6", "Retrieve", L.retrieve], ["7", "Rerank", L.rerank], ["8", "Answer", L.generate], ["9", "Verify", L.verify]];
-  st.forEach((b, i) => {
-    const x = 0.5 + i * 1.85;
-    card(s, x, 2.5, 1.65, 1.6, `Example step ${b[0]}`);
-    badge(s, b[0], x + 0.62, 2.62, 0.4, C.accent1, `Example badge ${b[0]}`);
-    txt(s, b[1], x, 3.1, 1.65, 0.35, { fontSize: 14, bold: true, color: C.text2, align: "center" });
-    txt(s, fmt(b[2]), x, 3.5, 1.65, 0.45, { fontSize: 20, bold: true, color: C.accent1, align: "center", fontFace: "Cambria" });
+  const s = addSlide("LIGHT", "UI story", "A short story told with real screens from the Streamlit app. Every screen is a live capture against Qwen3-Coder and the GPU models.");
+  s.addText("The story: preparing Miami's Q3 review", { placeholder: "title" });
+  const steps = [
+    ["Ask", "Direct ADR at Miami in Q3?", "stages 5-9"],
+    ["Check the evidence", "Where does $182 come from?", "stages 5-7"],
+    ["Mind the clock", "Where did 30 seconds go?", "performance"],
+    ["Narrow the scope", "Only Orlando, only Q3", "filters"],
+    ["Probe the limits", "What about Tokyo?", "refusal"],
+    ["Test the guard", "Inject a fake $299", "verifier"],
+    ["Ask something softer", "How does CRM use LTV?", "scoring fix"],
+    ["Zoom out", "Is the system any good?", "metrics"],
+  ];
+  steps.forEach((t, i) => {
+    const x = 0.5 + (i % 4) * 2.3, y = 1.2 + Math.floor(i / 4) * 1.95;
+    card(s, x, y, 2.1, 1.75, `Story step ${i + 1}`);
+    badge(s, i + 1, x + 0.12, y + 0.12, 0.4, i % 2 ? C.accent2 : C.accent1, `Story badge ${i + 1}`);
+    txt(s, t[0], x + 0.6, y + 0.1, 1.42, 0.5, { fontSize: 13, bold: true, color: C.text2, valign: "middle" });
+    txt(s, t[1], x + 0.14, y + 0.72, 1.82, 0.55, { fontSize: 12, color: C.text1 });
+    txt(s, t[2], x + 0.14, y + 1.32, 1.82, 0.3, { fontSize: 11, color: C.accent1, bold: true });
   });
-  txt(s, `Total ${fmt(L.total)}. Stages 1-4 were done offline when the corpus was indexed.`, 0.5, 4.4, 9, 0.4, { fontSize: 13, color: C.accent6 });
+  txt(s, "Each step is a real capture from the running app: Streamlit UI on top of the FastAPI service.", 0.5, 5.0, 9, 0.3, { fontSize: 12, color: C.accent6 });
 }
 
-// ------------------------------------------------------------------ 10 example rewrite
-{
-  const s = addSlide("LIGHT", "Worked example", "The filter on property + period + channel narrows 58 chunks to 5 candidates before any scoring.");
-  s.addText("Example, stage 5: queries and filters", { placeholder: "title" });
-  sample.rewrite.search_queries.forEach((q, i) => {
-    const y = 1.2 + i * 1.0;
-    card(s, 0.5, y, 5.3, 0.85, `Query ${i + 1}`);
-    badge(s, i + 1, 0.62, y + 0.22, 0.4, C.accent1, `Query badge ${i + 1}`);
-    txt(s, q, 1.2, y + 0.05, 4.5, 0.75, { fontSize: 12, valign: "middle" });
-  });
-  card(s, 6.0, 1.2, 3.5, 2.85, "Filters card", C.text2);
-  txt(s, "Extracted filters", 6.2, 1.3, 3.1, 0.35, { fontSize: 14, bold: true, color: C.background1 });
-  const f = sample.rewrite.filters;
-  txt(s, [
-    { text: `period    ${f.period}`, options: { breakLine: true } },
-    { text: `property  ${f.property}`, options: { breakLine: true } },
-    { text: `channel   ${f.channel}`, options: { breakLine: true } },
-    { text: "", options: { breakLine: true } },
-    { text: "ADR -> average daily rate" },
-  ], 6.2, 1.75, 3.2, 2.2, { fontSize: 12, fontFace: MONO, color: C.background2 });
-  txt(s, `After filtering: ${sample.n_cands} candidates (2 KPI tables and 3 text chunks), all Miami Beach Resort, Q3 2025.`, 0.5, 4.3, 9, 0.6, { fontSize: 14, color: C.text1 });
-}
+shotSlide({ step: 1, title: "Step 1: ask a question", img: "ui_02_ask_grounded_answer.png", aspect: 1500 / 1180,
+  chip: "Stages 5-9 in one click", stat: "0.83", statLabel: "faithfulness: 4 numbers verified, 1 sentence flagged",
+  alt: "Answer card with citation chips, claim table of four verified numbers and a judge flag, faithfulness 0.83",
+  bullets: ["Plain-English question; period, property and channel filters are extracted", "Answer cites source, page and period; all 4 numbers verified", "The judge flagged the \"highest RevPAR\" sentence"],
+  notes: "The user asks the Miami Direct ADR question. Every number is verified against the retrieved chunks. The judge flags one sentence, so the score is 0.83 instead of 1.00." });
 
-// ------------------------------------------------------------------ 11 example rerank
-{
-  const s = addSlide("LIGHT", "Worked example", "Scores are sigmoid outputs of the cross-encoder. The two KPI tables that contain $182 score highest.");
-  s.addText("Example, stages 6-7: reranked evidence", { placeholder: "title" });
-  const kind = id => /::t\d+$/.test(id) ? "KPI table" : "text";
-  const hdr = ["#", "Chunk", "Type", "Rerank score"].map(t => ({ text: t, options: { bold: true, color: C.background1, fill: { color: C.text2 }, fontSize: 12 } }));
-  const rows = [hdr].concat(sample.top5.map((r, i) => [String(i + 1), r[0].split("::")[0], kind(r[0]), r[3].toFixed(3)].map(t => ({
-    text: t, options: { fontSize: 12, color: C.text1, fill: { color: i % 2 ? C.background2 : C.background1 } } }))));
-  s.addTable(rows, { x: 0.5, y: 1.25, w: 5.9, colW: [0.4, 3.2, 1.1, 1.2], rowH: 0.45, border: { type: "solid", pt: 0.5, color: "D5DEDC" }, margin: [0, 0.08, 0, 0.08], valign: "middle", objectName: "Rerank table" });
-  card(s, 6.6, 1.25, 2.9, 2.7, "Rerank insight");
-  txt(s, "0.999 vs 0.011", 6.75, 1.4, 2.6, 0.6, { fontSize: 22, bold: true, color: C.accent1, fontFace: "Cambria" });
-  txt(s, "The cross-encoder cleanly separates the table that answers the question from filler text, so the generator sees the best evidence first.", 6.75, 2.1, 2.6, 1.8, { fontSize: 13 });
-  txt(s, "Only the top-5 go to the LLM. Citations will point at these chunks.", 0.5, 4.2, 9, 0.5, { fontSize: 13, color: C.accent6 });
-}
+shotSlide({ step: 2, title: "Step 2: check the evidence", img: "ui_03_evidence_tab.png", aspect: 1500 / 1400,
+  chip: "Stages 5-7 made visible", stat: "0.999", statLabel: "rerank score of the Miami Q3 KPI table",
+  alt: "Evidence tab: three rewritten queries, acronym expansion, and the whole Miami Q3 KPI table with row sentences",
+  bullets: ["3 rewritten queries; ADR is expanded to average daily rate", "Top chunk is the whole Q3 KPI table, never split", "Row sentences under the table are what the retrievers matched"],
+  notes: "The Evidence tab shows the rewrite, the acronym map and the reranked chunks, including the intact source table." });
 
-// ------------------------------------------------------------------ 12 example answer
-{
-  const s = addSlide("LIGHT", "Worked example", "Both numbers trace to the intact KPI table chunk. The judge raised no flags.");
-  s.addText("Example, stages 8-9: answer and verify", { placeholder: "title" });
-  card(s, 0.5, 1.15, 5.3, 3.85, "Answer card");
-  txt(s, "Generated answer (Qwen3-Coder)", 0.7, 1.22, 4.9, 0.3, { fontSize: 12, bold: true, color: C.accent2 });
-  const lines = sample.answer.split("\n").filter(l => l.trim()).map(l => l.replace(/\*\*/g, "").replace(/^\u2022\s*/, ""));
-  const arr = lines.map((l, i) => ({ text: l, options: i === 0 ? { bold: true, breakLine: true, paraSpaceAfter: 5 } : { bullet: true, breakLine: i < lines.length - 1, paraSpaceAfter: 4 } }));
-  s.addText(arr, { x: 0.7, y: 1.55, w: 4.9, h: 3.35, fontSize: 11, color: C.text1, margin: 0, valign: "top", isTextBox: true });
-  card(s, 6.0, 1.15, 3.5, 3.85, "Verification card", C.text2);
-  txt(s, "Verifier output", 6.2, 1.25, 3.1, 0.3, { fontSize: 14, bold: true, color: C.background1 });
-  const v = sample.ver;
-  const row = (t, ok, y) => { txt(s, t, 6.2, y, 2.35, 0.5, { fontSize: 12, color: C.background2, valign: "middle" }); txt(s, ok, 8.5, y, 0.85, 0.5, { fontSize: 12, bold: true, color: ok === "OK" ? "7FD6B0" : "F4A261", align: "right", valign: "middle" }); };
-  row(`${v.claims[0].value} supported by ${v.claims[0].evidence_chunk.split("::")[0].replace("kpi_miami_beach_resort", "kpi_miami")}`, "OK", 1.65);
-  row(`${v.claims[1].value} supported`, "OK", 2.2);
-  row("Citations match retrieved chunks (2 of 2)", "OK", 2.75);
-  row("LLM judge unsupported sentences: 0", "OK", 3.3);
-  txt(s, "Faithfulness", 6.2, 3.95, 1.8, 0.4, { fontSize: 13, color: C.background2, valign: "middle" });
-  txt(s, v.faithfulness_score.toFixed(2), 7.9, 3.85, 1.45, 0.6, { fontSize: 30, bold: true, color: "7FD6B0", align: "right", fontFace: "Cambria", valign: "middle" });
-}
+shotSlide({ step: 3, title: "Step 3: where did the time go?", img: "ui_04_pipeline_latency.png", aspect: 1500 / 940, maxW: 5.2,
+  chip: "Per-stage latency", stat: "99%", statLabel: "of the 30.6 s total is LLM time",
+  alt: "Pipeline tab: bar chart of rewrite 8.4 s, retrieve 104 ms, rerank 165 ms, generate 16.5 s, verify 5.4 s",
+  bullets: ["Rewrite 8.4 s, answer 16.5 s, verify 5.4 s: three LLM calls", "Retrieve plus rerank takes 269 ms in total", "Speed-ups belong in the LLM calls, not in search"],
+  notes: "Retrieval and reranking are fast; the three LLM calls dominate the latency." });
 
-// ------------------------------------------------------------------ 13 hallucination guard
+shotSlide({ step: 4, title: "Step 4: narrow the scope", img: "ui_05_filter_isolation.png", aspect: 2060 / 1380, maxW: 5.2,
+  chip: "Sidebar filters + question", stat: "0", statLabel: "chunks from other properties or quarters",
+  alt: "Sidebar with Property set to Orlando Grand Hotel and evidence tab showing only Orlando Q3 2025 chunks",
+  bullets: ["Sidebar: Property = Orlando Grand Hotel; the question says \"only Q3 2025\"", "Sidebar filters override anything extracted from the text", "Every retrieved chunk is Orlando, Q3 2025"],
+  notes: "Filters are applied in Chroma, in BM25 and again after fusion, so nothing leaks through." });
+
+shotSlide({ step: 5, title: "Step 5: what about Tokyo?", img: "ui_06_out_of_scope_refusal.png", aspect: 1500 / 770, maxW: 5.0,
+  chip: "Refusal, not a guess", stat: "7.3 s", statLabel: "to refuse, versus about 30 s to answer",
+  alt: "Out of scope banner: insufficient information, faithfulness 1.00, no numeric claims made",
+  bullets: ["No Tokyo property exists in the corpus", "A rule-based scope guard refuses before the answer LLM runs", "No invented number; faithfulness 1.00"],
+  notes: "Unanswerable questions are refused without calling the generator." });
+
+shotSlide({ step: 6, title: "Step 6: test the hallucination guard", img: "ui_08_verifier_demo.png", aspect: 1500 / 860, maxW: 5.0,
+  chip: "Verifier panel", stat: "0.60", statLabel: "edited answer, down from 0.83",
+  alt: "Verifier panel: fake $299 is blocked, $182, $167 and $134.68 verified, faithfulness 0.60",
+  bullets: ["The panel swaps the first dollar amount for a fake $299", "$299 is BLOCKED: it appears in no retrieved chunk", "$182, $167 and $134.68 stay verified"],
+  notes: "Any text can be pasted and verified against the retrieved evidence through POST /verify." });
+
+shotSlide({ step: 7, title: "Step 7: ask something softer", img: "ui_09_narrative_crm_ltv.png", aspect: 1500 / 970, maxW: 5.2,
+  chip: "Narrative answer, scoring fix", stat: "0.75", statLabel: "was 0.00 before the scoring fix",
+  alt: "Narrative answer about CRM and LTV with one judge-flagged sentence, faithfulness 0.75",
+  bullets: ["No numbers here, so the judge's sentence check decides the score", "One of four bullets is flagged: it claims more than the chunk says", "Old scoring showed 0.00; every sentence now counts as a check"],
+  notes: "Before the fix, a single flagged sentence among four bullets produced 0.00. Now it costs one quarter of the score." });
+
+shotSlide({ step: 8, title: "Step 8: zoom out to the metrics", img: "ui_07_metrics_dashboard.png", aspect: 1500 / 1200, maxW: 4.8,
+  chip: "Metrics tab, from the API", stat: "57 / 57", statLabel: "tests passed in the latest live run",
+  alt: "Metrics dashboard: retrieval comparison chart, mean faithfulness 0.93, 57 of 57 tests, latency table",
+  bullets: ["Retrieval quality for BM25, dense, RRF and RRF plus rerank", "Mean faithfulness 0.93 across six live queries", "Latency per benchmark query, straight from /meta/metrics"],
+  notes: "The dashboard reads the saved metrics through the new GET /meta/metrics endpoint." });
+
+// ---- new API surface
 {
-  const s = addSlide("LIGHT", "Worked example", "Same answer with $182 replaced by a fabricated $299. The verifier blocks it; the faithfulness score drops from 1.00 to 0.50.");
-  s.addText("Hallucination guard: verified vs blocked", { placeholder: "title" });
-  s.addImage({ path: ROOT + "/outputs/screenshots/04_verification_hallucination_guard.png", x: 0.8, y: 1.15, w: 8.4, h: 8.4 * 462 / 1160, altText: "Side-by-side verification card: verified answer scores 1.00, injected $299 hallucination scores 0.50", objectName: "Verification screenshot" });
-  txt(s, "Left: grounded answer, 4 of 4 numeric claims supported. Right: fabricated $299 is blocked as not in the retrieved context.", 0.8, 4.6, 8.4, 0.5, { fontSize: 13, color: C.accent6 });
+  const s = addSlide("LIGHT", "UI story", "The UI is a thin client; these endpoints were added for it and are all visible in Swagger.");
+  s.addText("Behind the UI: new API endpoints", { placeholder: "title" });
+  const aspect = 2076 / 2240, h = 3.7, w = h * aspect;
+  card(s, 0.5, 1.15, w + 0.2, h + 0.2, "Swagger frame", C.background2);
+  s.addImage({ path: ASSETS + "api_09_query_with_filter_override.png", x: 0.6, y: 1.25, w, h, altText: "Swagger: POST /query with filters override, executed, 200 response", objectName: "Swagger screenshot" });
+  const x = 0.5 + w + 0.5, cw = 9.5 - x;
+  const rows = [["Endpoint", "Used by"], ["GET /meta/filters", "sidebar dropdowns"], ["GET /meta/examples", "example buttons"], ["GET /meta/metrics", "Metrics tab"], ["GET /chunks/{id}", "source table view"], ["POST /query", "filters + top_k"]];
+  s.addTable(rows.map((r, i) => r.map(t => ({ text: t, options: { bold: i === 0, fontSize: 12, color: i === 0 ? C.background1 : C.text1, fill: { color: i === 0 ? C.text2 : (i % 2 ? C.background1 : C.background2) } } }))),
+    { x, y: 1.2, w: cw, colW: [cw * 0.55, cw * 0.45], rowH: 0.42, border: { type: "solid", pt: 0.5, color: "D5DEDC" }, margin: [0, 0.08, 0, 0.08], valign: "middle", objectName: "New endpoints table" });
+  txt(s, "Explicit filters in the request win over filters extracted from the question; unknown keys return 422.", x, 3.9, cw, 1.1, { fontSize: 12, color: C.accent6 });
 }
 
 // ------------------------------------------------------------------ 14 retrieval metrics
@@ -350,7 +372,7 @@ pres.addSection({ title: "Metrics" }); current = "Metrics";
   const short = ["Miami Direct ADR", "Orlando RevPAR", "Fort Laud. OTA vs Direct", "Miami campaign ROI", "CRM and LTV", "Tokyo (refused)"];
   const rows = [hdr].concat(lat.map((r, i) => [short[i], (r.total / 1000).toFixed(1) + " s"].map(t => ({ text: t, options: { fontSize: 11, color: C.text1, fill: { color: i % 2 ? C.background2 : C.background1 } } }))));
   s.addTable(rows, { x: 6.0, y: 1.15, w: 3.5, colW: [2.5, 1.0], rowH: 0.36, border: { type: "solid", pt: 0.5, color: "D5DEDC" }, margin: [0, 0.08, 0, 0.08], valign: "middle", objectName: "Latency table" });
-  txt(s, `Indexing 58 chunks: ${metrics.ingest.seconds.ingest_chunk.toFixed(1)} s parse + chunk, ${metrics.ingest.seconds.embed_index.toFixed(1)} s embed + index. Refusals skip generation (5.4 s).`, 6.0, 3.85, 3.5, 1.1, { fontSize: 12, color: C.accent6 });
+  txt(s, `Indexing 58 chunks: ${metrics.ingest.seconds.ingest_chunk.toFixed(1)} s parse + chunk, ${metrics.ingest.seconds.embed_index.toFixed(1)} s embed + index. Refusals skip generation (5.5 s).`, 6.0, 3.85, 3.5, 1.1, { fontSize: 12, color: C.accent6 });
 }
 
 // ------------------------------------------------------------------ 16 quality + tests
@@ -366,6 +388,27 @@ pres.addSection({ title: "Metrics" }); current = "Metrics";
   txt(s, `Mean faithfulness ${metrics.mean_faithfulness.toFixed(2)} over ${metrics.answers.length} queries.`, 6.0, 4.5, 3.5, 0.4, { fontSize: 12, color: C.accent6 });
 }
 
+// ------------------------------------------------------------------ 16b faithfulness scoring fix
+{
+  const s = addSlide("LIGHT", "Metrics", "The old score only counted items that were flagged, so a lone judge flag could zero a narrative answer. Every non-numeric sentence now counts as a check.");
+  s.addText("Faithfulness scoring: before and after", { placeholder: "title" });
+  card(s, 0.5, 1.2, 4.2, 3.75, "Formula card", C.text2);
+  txt(s, "New formula", 0.7, 1.3, 3.8, 0.35, { fontSize: 14, bold: true, color: C.background1 });
+  txt(s, "score = 1 - bad / checks", 0.7, 1.7, 3.8, 0.4, { fontSize: 14, fontFace: MONO, color: C.accent3 });
+  bullets(s, ["checks: every numeric claim, every non-numeric sentence, every citation error", "bad: unsupported numbers, judge-flagged sentences, citation errors", "numbers are matched strictly by regex; sentences rely on the LLM judge"], 0.7, 2.3, 3.8, 2.6, 12, C.background2);
+  const hdr = ["Case", "Before", "After"].map(t => ({ text: t, options: { bold: true, color: C.background1, fill: { color: C.text2 }, fontSize: 12 } }));
+  const data = [
+    ["Narrative: 1 flag among 4 bullets", "0.00", "0.75"],
+    ["Grounded: 4 numbers + 1 flagged sentence", "0.80", "0.83"],
+    ["Injected $299: 1 of 2 numbers wrong", "0.50", "0.50"],
+    ["Refusal (Tokyo)", "1.00", "1.00"],
+  ];
+  const rows = [hdr].concat(data.map((r, i) => r.map((t, j) => ({ text: t, options: { fontSize: 12, bold: j === 2, color: C.text1, fill: { color: i % 2 ? C.background2 : C.background1 }, align: j ? "center" : "left" } }))));
+  s.addTable(rows, { x: 4.95, y: 1.25, w: 4.55, colW: [2.75, 0.9, 0.9], rowH: 0.5, border: { type: "solid", pt: 0.5, color: "D5DEDC" }, margin: [0, 0.08, 0, 0.08], valign: "middle", objectName: "Scoring comparison table" });
+  card(s, 4.95, 3.95, 4.55, 1.0, "Mean card");
+  txt(s, `Live mean over 6 queries: ${metrics.mean_faithfulness.toFixed(2)} (0.96 before). Part of the change is run-to-run variation in what the model writes.`, 5.1, 3.98, 4.25, 0.94, { fontSize: 12, color: C.text1, valign: "middle" });
+}
+
 // ------------------------------------------------------------------ 17 limits / next
 pres.addSection({ title: "Wrap-up" }); current = "Wrap-up";
 {
@@ -373,7 +416,7 @@ pres.addSection({ title: "Wrap-up" }); current = "Wrap-up";
   s.addText("Limitations and next steps", { placeholder: "title" });
   card(s, 0.5, 1.2, 4.4, 3.75, "Limits card");
   txt(s, "Known limits", 0.7, 1.3, 4, 0.4, { fontSize: 16, bold: true, color: C.accent2, fontFace: "Cambria" });
-  bullets(s, ["Synthetic corpus of 58 chunks; golden set of 12 questions is saturated", "LLM judge sometimes flags valid comparisons such as \"highest RevPAR\"", "Model-computed numbers (differences) are rejected by design", "LLM calls take 17-28 s per answerable question"], 0.7, 1.8, 4.0, 3.1, 13);
+  bullets(s, ["Synthetic corpus of 58 chunks; golden set of 12 questions is saturated", "LLM judge sometimes flags valid comparisons such as \"highest RevPAR\"", "Model-computed numbers (differences) are rejected by design", "LLM calls take 17-34 s per answerable question"], 0.7, 1.8, 4.0, 3.1, 13);
   card(s, 5.1, 1.2, 4.4, 3.75, "Next card");
   txt(s, "Next steps", 5.3, 1.3, 4, 0.4, { fontSize: 16, bold: true, color: C.accent1, fontFace: "Cambria" });
   bullets(s, ["Index real campaign and brand documents; grow the golden set", "Skip the LLM rewrite for simple queries to save about 5-9 s", "Stream the answer and run the judge in parallel", "Allow verified derived numbers (sum, difference) with shown formulas"], 5.3, 1.8, 4.0, 3.1, 13);

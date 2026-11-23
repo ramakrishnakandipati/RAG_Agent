@@ -17,28 +17,6 @@
   }
  },
  "n_cands": 5,
- "cands_top": [
-  [
-   "kpi_miami_beach_resort.csv::p1::t52",
-   0.0976
-  ],
-  [
-   "case_study_miami_beach_resort.md::p1::t31",
-   0.0965
-  ],
-  [
-   "case_study_miami_beach_resort.md::p1::x3200",
-   0.095
-  ],
-  [
-   "campaign_report_miami_beach_resort.pdf::p1::x500",
-   0.0945
-  ],
-  [
-   "case_study_miami_beach_resort.md::p1::x3000",
-   0.0928
-  ]
- ],
  "top5": [
   [
    "kpi_miami_beach_resort.csv::p1::t52",
@@ -71,7 +49,7 @@
    0.011
   ]
  ],
- "answer": "**Direct Channel ADR Analysis for Miami Beach Resort, Q3 2025**\n\n\u2022 The Average Daily Rate (ADR) for the Direct channel at Miami Beach Resort in Q3 2025 was $182 [case_study_miami_beach_resort.md | 1 | Q3 2025].\n\u2022 This represents the highest ADR among all channels evaluated during the quarter [case_study_miami_beach_resort.md | 1 | Q3 2025].\n\u2022 Direct bookings generated the strongest revenue per room compared to other distribution channels in Q3 2025 [kpi_miami_beach_resort.csv | 1 | Q3 2025].\n\u2022 The direct channel achieved an occupancy rate of 74% while maintaining the premium pricing structure [kpi_miami_beach_resort.csv | 1 | Q3 2025].",
+ "answer": "**Direct Channel ADR at Miami Beach Resort Q3 2025**\n\n\u2022 The Average Daily Rate (ADR) for the Direct channel at Miami Beach Resort in Q3 2025 was $182 [case_study_miami_beach_resort.md | 1 | Q3 2025].\n\u2022 This represented the highest ADR among all channels evaluated during the quarter [case_study_miami_beach_resort.md | 1 | Q3 2025].\n\u2022 Direct bookings generated $182 ADR compared to $167 for both Booking.com and Expedia OTA channels [kpi_miami_beach_resort.csv | 1 | Q3 2025].\n\u2022 The direct channel also achieved the highest RevPAR of $134.68 in Q3 2025 [case_study_miami_beach_resort.md | 1 | Q3 2025].",
  "ver": {
   "claims": [
    {
@@ -81,25 +59,39 @@
     "evidence_chunk": "kpi_miami_beach_resort.csv::p1::t52"
    },
    {
-    "text": "\u2022 The direct channel achieved an occupancy rate of 74% while maintaining the premium pricing structure [kpi_miami_beach_resort.csv | 1 | Q3 2025].",
-    "value": "74%",
+    "text": "\u2022 The Average Daily Rate (ADR) for the Direct channel at Miami Beach Resort in Q3 2025 was $182 [case_study_miami_beach_resort.md | 1 | Q3 2025].",
+    "value": "$182",
+    "supported": true,
+    "evidence_chunk": "kpi_miami_beach_resort.csv::p1::t52"
+   },
+   {
+    "text": "\u2022 Direct bookings generated $182 ADR compared to $167 for both Booking.com and Expedia OTA channels [kpi_miami_beach_resort.csv | 1 | Q3 2025].",
+    "value": "$167",
+    "supported": true,
+    "evidence_chunk": "kpi_miami_beach_resort.csv::p1::t52"
+   },
+   {
+    "text": "\u2022 The direct channel also achieved the highest RevPAR of $134.68 in Q3 2025 [case_study_miami_beach_resort.md | 1 | Q3 2025].",
+    "value": "$134.68",
     "supported": true,
     "evidence_chunk": "kpi_miami_beach_resort.csv::p1::t52"
    }
   ],
   "unsupported_claims": [],
   "citation_errors": [],
-  "judge_unsupported": [],
-  "faithfulness_score": 1.0,
+  "judge_unsupported": [
+   "The direct channel also achieved the highest RevPAR of $134.68 in Q3 2025 [case_study_miami_beach_resort.md | 1 | Q3 2025]."
+  ],
+  "faithfulness_score": 0.8333,
   "is_refusal": false
  },
  "lat": {
-  "rewrite": 9486.3,
-  "retrieve": 87.9,
-  "rerank": 134.7,
-  "generate": 16317.8,
-  "verify": 1858.9,
-  "total": 27885.6
+  "rewrite": 9821.8,
+  "retrieve": 71.0,
+  "rerank": 130.8,
+  "generate": 17076.1,
+  "verify": 5383.3,
+  "total": 32483.0
  },
  "citations": [
   "[case_study_miami_beach_resort.md | 1 | Q3 2025]",
