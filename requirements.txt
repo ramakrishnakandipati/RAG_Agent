@@ -24,6 +24,8 @@ rank-bm25
 langchain
 langchain-community
 langchain-huggingface
+langchain-openai>=1.0,<1.2   # keep openai<2 (instructor requires it)
+openai>=1.109,<2
 langgraph
 llama-index
 llama-index-embeddings-huggingface
