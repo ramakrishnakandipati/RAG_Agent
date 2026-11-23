@@ -76,3 +76,28 @@ class QueryResponse(BaseModel):
     contexts: list[RetrievedChunk]
     verification: VerificationResult
     latency_ms: dict[str, float]
+
+
+class FilterOptions(BaseModel):
+    property: list[str]
+    period: list[str]
+    channel: list[str]
+    segment: list[str]
+    doc_type: list[str]
+
+
+class ChunkDetail(BaseModel):
+    chunk_id: str
+    kind: str
+    text: str
+    table_md: Optional[str] = None
+    metadata: ChunkMetadata
+
+
+class MetricsSummary(BaseModel):
+    llm_mode: Optional[str] = None
+    retrieval: dict = Field(default_factory=dict)
+    mean_faithfulness: Optional[float] = None
+    ingest: dict = Field(default_factory=dict)
+    latency: list[dict] = Field(default_factory=list)
+    tests: dict = Field(default_factory=dict)

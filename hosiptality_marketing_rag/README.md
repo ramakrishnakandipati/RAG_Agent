@@ -35,6 +35,18 @@ pytest --live-llm                         # also exercise the real Qwen endpoint
 uvicorn api.main:app --port 8000          # /health /ingest /query /verify  (docs at /docs)
 ```
 
+## Streamlit UI
+```powershell
+python scripts/run_ui.py                      # starts FastAPI (:8000) + Streamlit (:8501), warms the GPU models
+python scripts/run_ui.py --mock               # without the Qwen server
+python scripts/capture_ui_screenshots.py      # drives the real UI/Swagger with Chrome -> outputs/screenshots/ui_*.png, api_*.png
+```
+The UI is a thin client over the API (`ui/api_client.py`); tabs: Ask, Evidence, Pipeline, Metrics, History.
+Sidebar filters are sent as explicit overrides that win over filters extracted from the question.
+
+New endpoints: `GET /meta/filters`, `GET /meta/examples`, `GET /meta/metrics`, `GET /chunks/{chunk_id}`;
+`POST /query` now accepts optional `filters` and `top_k`.
+
 ## Design notes
 - **Tables**: the chunk text is the full markdown table plus appended one-sentence-per-row summaries
   (`Miami Beach Resort: Q3 2025, Direct channel, ADR (Average Daily Rate) $182, Occupancy 74%, ...`). The dense

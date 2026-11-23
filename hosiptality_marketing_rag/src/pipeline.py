@@ -85,13 +85,16 @@ class RAGPipeline:
             json.dump(obj, f, indent=2, ensure_ascii=False, default=lambda o: o.model_dump())
 
     # ------------------------------------------------------------------ query
-    def query(self, question: str) -> QueryResponse:
+    def query(self, question: str, overrides: Optional[dict] = None, top_k: Optional[int] = None) -> QueryResponse:
+        """overrides: explicit metadata filters (e.g. from the UI) that win over extracted ones."""
         assert self.ready, "index not loaded - call ingest() or load_index()"
         lat: dict[str, float] = {}
         r = self.cfg["retrieval"]
 
         t = time.perf_counter()
         rq = self.rewriter.rewrite(question, self.index.vocab)
+        if overrides:
+            rq.filters = {**rq.filters, **{k: v for k, v in overrides.items() if v}}
         lat["rewrite"] = (time.perf_counter() - t) * 1000
         self._dump("02_rewritten_query", rq)
 
@@ -101,7 +104,7 @@ class RAGPipeline:
         self._dump("03_rrf_candidates", [{"id": c.chunk_id, "rrf": c.score, **c.metadata.model_dump()} for c in cands])
 
         t = time.perf_counter()
-        top = self.reranker.rerank(rq.search_queries[0], cands, r["final_k"])
+        top = self.reranker.rerank(rq.search_queries[0], cands, top_k or r["final_k"])
         lat["rerank"] = (time.perf_counter() - t) * 1000
         self._dump("04_reranked_top5", [{"id": c.chunk_id, "score": c.score, **c.metadata.model_dump()} for c in top])
 
