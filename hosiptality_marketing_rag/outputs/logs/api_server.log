@@ -1,20 +1,109 @@
-INFO:     Started server process [56888]
+INFO:     Started server process [58508]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-INFO:     127.0.0.1:51393 - "GET /health HTTP/1.1" 200 OK
-W1123 18:04:49.897000 56888 site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
-Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  10%|▉         | 39/391 [00:00<00:00, 384.49it/s]Loading weights:  20%|█▉        | 78/391 [00:00<00:00, 361.47it/s]Loading weights:  29%|██▉       | 115/391 [00:00<00:00, 361.35it/s]Loading weights:  39%|███▉      | 152/391 [00:00<00:00, 318.92it/s]Loading weights:  47%|████▋     | 185/391 [00:00<00:00, 298.67it/s]Loading weights:  55%|█████▌    | 216/391 [00:00<00:00, 295.54it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 565.51it/s]
+INFO:     127.0.0.1:65154 - "GET /health HTTP/1.1" 200 OK
+W1123 18:27:43.678000 58508 site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:   8%|▊         | 31/391 [00:00<00:01, 294.58it/s]Loading weights:  18%|█▊        | 71/391 [00:00<00:00, 327.36it/s]Loading weights:  27%|██▋       | 104/391 [00:00<00:00, 319.95it/s]Loading weights:  35%|███▍      | 136/391 [00:00<00:00, 303.64it/s]Loading weights:  44%|████▎     | 171/391 [00:00<00:00, 307.45it/s]Loading weights:  52%|█████▏    | 202/391 [00:00<00:00, 302.87it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 540.25it/s]
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-[32m2026-11-23 18:04:52.676 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedder loaded: allocated=640 MiB reserved=1352 MiB[0m
-[32m2026-11-23 18:04:52.876 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
-[32m2026-11-23 18:04:52.895 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
-[32m2026-11-23 18:04:52.913 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
-Loading weights:   0%|          | 0/393 [00:00<?, ?it/s]Loading weights:   6%|▋         | 25/393 [00:00<00:01, 238.68it/s]Loading weights:  12%|█▏        | 49/393 [00:00<00:01, 236.65it/s]Loading weights:  19%|█▉        | 75/393 [00:00<00:01, 229.88it/s]Loading weights:  26%|██▌       | 102/393 [00:00<00:01, 238.74it/s]Loading weights:  36%|███▌      | 141/393 [00:00<00:00, 281.06it/s]Loading weights:  47%|████▋     | 183/393 [00:00<00:00, 321.98it/s]Loading weights:  55%|█████▌    | 217/393 [00:00<00:00, 317.95it/s]Loading weights:  63%|██████▎   | 249/393 [00:00<00:00, 313.12it/s]Loading weights: 100%|██████████| 393/393 [00:00<00:00, 454.71it/s]
-[32m2026-11-23 18:04:56.918 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] reranker loaded: allocated=1717 MiB reserved=3288 MiB[0m
-[32m2026-11-23 18:05:24.267 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='warm up ADR Q3 2025' filters={'period': 'Q3 2025'} faith=0.75 lat={'rewrite': 5657, 'retrieve': 5059, 'rerank': 4136, 'generate': 20820, 'verify': 6394, 'total': 42067}ms[0m
-INFO:     127.0.0.1:51396 - "POST /query HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58156 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58157 - "GET /meta/filters HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58158 - "GET /meta/examples HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58159 - "GET /meta/metrics HTTP/1.1" 200 OK
+[32m2026-11-23 18:27:46.550 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedder loaded: allocated=640 MiB reserved=1352 MiB[0m
+[32m2026-11-23 18:27:46.770 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
+[32m2026-11-23 18:27:46.790 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
+[32m2026-11-23 18:27:46.807 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
+Loading weights:   0%|          | 0/393 [00:00<?, ?it/s]Loading weights:   5%|▍         | 19/393 [00:00<00:01, 188.77it/s]Loading weights:  12%|█▏        | 48/393 [00:00<00:01, 234.93it/s]Loading weights:  18%|█▊        | 72/393 [00:00<00:01, 235.34it/s]Loading weights:  27%|██▋       | 107/393 [00:00<00:01, 278.88it/s]Loading weights:  35%|███▍      | 136/393 [00:00<00:00, 274.05it/s]Loading weights:  42%|████▏     | 164/393 [00:00<00:00, 244.43it/s]Loading weights:  48%|████▊     | 190/393 [00:00<00:00, 248.96it/s]Loading weights: 100%|██████████| 393/393 [00:00<00:00, 494.35it/s]
+[32m2026-11-23 18:27:51.040 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] reranker loaded: allocated=1717 MiB reserved=3288 MiB[0m
+[32m2026-11-23 18:28:17.960 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='warm up ADR Q3 2025' filters={'period': 'Q3 2025'} faith=0.75 lat={'rewrite': 4320, 'retrieve': 6754, 'rerank': 4395, 'generate': 20481, 'verify': 6273, 'total': 42223}ms[0m
+INFO:     127.0.0.1:61785 - "POST /query HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56124 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56125 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56127 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56128 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56136 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56137 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56138 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56139 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56152 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56153 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56154 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56155 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56156 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56157 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56158 - "GET /meta/examples HTTP/1.1" 200 OK
+[32m2026-11-23 18:28:32.337 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:28:32.370 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:28:32.402 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:28:54.528 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='What was the ADR for the Direct channel at Miami Beach Resort in Q3 2025?' filters={'period': 'Q3 2025', 'property': 'Miami Beach Resort', 'channel': 'Direct'} faith=0.8333 lat={'rewrite': 8380, 'retrieve': 104, 'rerank': 165, 'generate': 16512, 'verify': 5444, 'total': 30604}ms[0m
+INFO:     127.0.0.1:56159 - "POST /query HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51567 - "GET /chunks/kpi_miami_beach_resort.csv%3A%3Ap1%3A%3At52 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51568 - "GET /chunks/case_study_miami_beach_resort.md%3A%3Ap1%3A%3At31 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51569 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64819 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64823 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64824 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64825 - "POST /verify HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56810 - "GET /chunks/kpi_miami_beach_resort.csv%3A%3Ap1%3A%3At52 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56811 - "GET /chunks/case_study_miami_beach_resort.md%3A%3Ap1%3A%3At31 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56812 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56818 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56819 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56820 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56822 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56823 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56824 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56825 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56826 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56827 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56828 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56829 - "GET /meta/examples HTTP/1.1" 200 OK
+[32m2026-11-23 18:29:20.845 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:29:20.878 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:29:20.910 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:29:38.967 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='Show RevPAR by channel at Orlando Grand Hotel, only Q3 2025' filters={'period': 'Q3 2025', 'property': 'Orlando Grand Hotel'} faith=1.0 lat={'rewrite': 6394, 'retrieve': 98, 'rerank': 136, 'generate': 17341, 'verify': 575, 'total': 24544}ms[0m
+INFO:     127.0.0.1:56830 - "POST /query HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50971 - "GET /chunks/kpi_orlando_grand_hotel.csv%3A%3Ap1%3A%3At56 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50972 - "GET /chunks/case_study_orlando_grand_hotel.pdf%3A%3Ap2%3A%3At43 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50973 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50981 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50982 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50983 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50984 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50985 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50986 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50987 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50988 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51003 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51004 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51005 - "GET /meta/examples HTTP/1.1" 200 OK
+[32m2026-11-23 18:29:50.671 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:29:50.705 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:29:50.736 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:29:50.955 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m115[0m - [1mshort-circuit refusal (unknown_entity=Tokyo, weak_evidence=False)[0m
+[32m2026-11-23 18:29:50.956 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='What was Q3 2025 ADR in Tokyo?' filters={'period': 'Q3 2025'} faith=1.0 lat={'rewrite': 6961, 'retrieve': 102, 'rerank': 213, 'generate': 0, 'verify': 1, 'total': 7278}ms[0m
+INFO:     127.0.0.1:51006 - "POST /query HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51180 - "GET /chunks/case_study_miami_beach_resort.md%3A%3Ap1%3A%3At31 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51181 - "GET /chunks/case_study_orlando_grand_hotel.pdf%3A%3Ap2%3A%3At43 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51182 - "GET /chunks/case_study_fort_lauderdale_marina_inn.md%3A%3Ap1%3A%3At17 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51183 - "GET /chunks/kpi_miami_beach_resort.csv%3A%3Ap1%3A%3At52 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51184 - "GET /chunks/kpi_orlando_grand_hotel.csv%3A%3Ap1%3A%3At56 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51186 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56738 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56739 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56740 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56741 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65436 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58692 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63200 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61897 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61898 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61899 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61900 - "GET /meta/examples HTTP/1.1" 200 OK
+[32m2026-11-23 18:29:59.210 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:29:59.250 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:29:59.291 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:30:17.357 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='How does our CRM team use LTV to target loyalty members?' filters={} faith=0.75 lat={'rewrite': 4389, 'retrieve': 123, 'rerank': 154, 'generate': 13526, 'verify': 4378, 'total': 22570}ms[0m
+INFO:     127.0.0.1:61901 - "POST /query HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52015 - "GET /meta/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52021 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52022 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52023 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52024 - "GET /meta/metrics HTTP/1.1" 200 OK

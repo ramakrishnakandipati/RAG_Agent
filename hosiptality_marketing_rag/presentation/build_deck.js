@@ -95,7 +95,7 @@ const chartBase = (title) => ({
   stat(s, 0.5, 1.25, 2.1, "58", "chunks, 24 intact KPI tables", "Stat chunks");
   stat(s, 2.75, 1.25, 2.1, m["rrf+rerank"]["mrr@5"].toFixed(2), `MRR@5 with rerank (BM25: ${m.bm25["mrr@5"].toFixed(2)})`, "Stat mrr");
   stat(s, 5.0, 1.25, 2.1, metrics.mean_faithfulness.toFixed(2), "mean faithfulness, 6 live queries", "Stat faithfulness");
-  stat(s, 7.25, 1.25, 2.25, "41 / 41", "tests passing, 74% coverage", "Stat tests");
+  stat(s, 7.25, 1.25, 2.25, "57 / 57", "tests passing, 75% coverage", "Stat tests");
   card(s, 0.5, 3.15, 9, 1.8, "Summary card");
   bullets(s, [
     "Every claim carries a [source | page | period] citation",
@@ -230,7 +230,7 @@ const chartBase = (title) => ({
   txt(s, "Verification", 5.75, 1.35, 3.6, 0.4, { fontSize: 16, bold: true, color: C.text2, valign: "middle", fontFace: "Cambria" });
   bullets(s, ["Numbers ($, %, x) must appear in the retrieved chunks", "Every citation must match a retrieved chunk", "LLM judge flags unsupported sentences"], 5.3, 1.9, 4.0, 1.7, 13);
   card(s, 5.3, 3.7, 4.0, 1.1, "Formula card", C.text2);
-  txt(s, "faithfulness = 1 - (unsupported numbers + judge flags + citation errors) / checks", 5.45, 3.75, 3.7, 1.0, { fontSize: 12, color: C.background1, valign: "middle" });
+  txt(s, "faithfulness = 1 - (unsupported numbers + flagged sentences + citation errors) / (numbers + sentences checked)", 5.45, 3.75, 3.7, 1.0, { fontSize: 12, color: C.background1, valign: "middle" });
 }
 
 // ------------------------------------------------------------------ 9 example overview
@@ -355,12 +355,12 @@ pres.addSection({ title: "Metrics" }); current = "Metrics";
 
 // ------------------------------------------------------------------ 16 quality + tests
 {
-  const s = addSlide("LIGHT", "Metrics", "Faithfulness is from the live run. The 0.75 case is an LLM-judge flag on an over-general sentence, with no numeric error.");
+  const s = addSlide("LIGHT", "Metrics", "Faithfulness is from the live run. Both scores below 1.00 are single LLM-judge sentence flags, with no numeric error.");
   s.addText("Quality and test results", { placeholder: "title" });
   const labels = ["Miami ADR", "Orlando RevPAR", "FtL OTA vs Direct", "Campaign ROI", "CRM and LTV", "Tokyo"];
   const vals = metrics.answers.map(a => +a.faithfulness.toFixed(2));
   s.addChart(pres.charts.BAR, [{ name: "faithfulness", labels, values: vals }], Object.assign(chartBase("Faithfulness score per live query"), { x: 0.4, y: 1.1, w: 5.4, h: 3.8, barDir: "col", chartColors: ["0F766E"], showLegend: false, valAxisMaxVal: 1.1, valAxisMinVal: 0, valAxisMajorUnit: 0.25, dataLabelFormatCode: "0.00", dataLabelPosition: "outEnd", catAxisLabelFontSize: 10 }));
-  const rows = [["Check", "Result"], ["Full suite (live Qwen)", "41 / 41 passed"], ["Code coverage (src)", "74%"], ["\"only Q3 2025\" leakage", "0 chunks"], ["Grounded $182 answer", "faithfulness 1.00"], ["Injected $299 answer", "flagged, 0.50"], ["Tokyo question", "refused"]];
+  const rows = [["Check", "Result"], ["Full suite (live Qwen)", "57 / 57 passed"], ["Code coverage (src)", "75%"], ["\"only Q3 2025\" leakage", "0 chunks"], ["Grounded $182 answer", "faithfulness 1.00"], ["Injected $299 answer", "flagged, 0.50"], ["Tokyo question", "refused"]];
   s.addTable(rows.map((r, i) => r.map(t => ({ text: t, options: { bold: i === 0, fontSize: 12, color: i === 0 ? C.background1 : C.text1, fill: { color: i === 0 ? C.text2 : (i % 2 ? C.background1 : C.background2) } } }))),
     { x: 6.0, y: 1.2, w: 3.5, colW: [1.9, 1.6], rowH: 0.45, border: { type: "solid", pt: 0.5, color: "D5DEDC" }, margin: [0, 0.08, 0, 0.08], valign: "middle", objectName: "Test results table" });
   txt(s, `Mean faithfulness ${metrics.mean_faithfulness.toFixed(2)} over ${metrics.answers.length} queries.`, 6.0, 4.5, 3.5, 0.4, { fontSize: 12, color: C.accent6 });

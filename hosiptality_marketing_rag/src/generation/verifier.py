@@ -60,6 +60,19 @@ def _sentence_of(text: str, raw: str) -> str:
     return raw
 
 
+def count_text_sentences(answer: str) -> int:
+    """Non-numeric content sentences (headings and citations ignored); each is one faithfulness check."""
+    n = 0
+    for line in CITE_RE.sub(" ", answer).splitlines():
+        line = re.sub(r"^\s*(•|[-*])\s+", "", line).strip()
+        if not line or (line.startswith("**") and line.endswith("**")):
+            continue
+        for sent in re.split(r"(?<=[.!?])\s+", line):
+            if len(sent.strip(" .")) > 3 and not extract_numbers(sent):
+                n += 1
+    return n
+
+
 def is_refusal(answer: str) -> bool:
     low = answer.lower()
     return any(m in low for m in REFUSAL_MARKERS)
@@ -105,8 +118,12 @@ class Verifier:
             except Exception as e:
                 logger.warning(f"LLM judge failed: {e}")
 
-        total = len(claims) + len(judge_bad) + len(cit_err)
+        # Score units: every numeric claim, every non-numeric answer sentence, every citation error, plus one
+        # sentence-level unit per judge flag that lands on a sentence already counted through its numbers.
+        flagged_num = sum(1 for j in judge_bad if extract_numbers(j))
+        total = len(claims) + count_text_sentences(answer) + len(cit_err) + flagged_num
         bad = len(unsupported) + len(judge_bad) + len(cit_err)
+        total = max(total, bad)  # defensive: a ratio can never exceed 1
         score = 1.0 if total == 0 else max(0.0, round(1 - bad / total, 4))
         return VerificationResult(claims=claims, unsupported_claims=unsupported, citation_errors=cit_err,
                                   judge_unsupported=judge_bad, faithfulness_score=score, is_refusal=refusal)

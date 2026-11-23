@@ -3,7 +3,8 @@ import re
 import pytest
 
 from src.generation.generator import REFUSAL
-from src.generation.verifier import Verifier, extract_numbers
+from src.generation.verifier import Verifier, count_text_sentences, extract_numbers
+from tests.conftest import FakeLLM
 
 CITE = "[case_study_miami_beach_resort.md | 1 | Q3 2025]"
 GOOD = f"In Q3 2025 the Direct channel at Miami Beach Resort achieved an ADR of $182 and 74% occupancy {CITE}."
@@ -72,3 +73,38 @@ def test_end_to_end_answer_is_grounded(pipeline):
 def test_live_qwen_answer_is_faithful(pipeline):
     r = pipeline.query("Summarise Q3 2025 Direct channel performance at Miami Beach Resort.")
     assert r.verification.faithfulness_score >= 0.8
+
+
+NARRATIVE = "\n".join([
+    "**Team overview**",
+    f"- The direct channel is covered in the case study {CITE}.",
+    f"- Wholesale carried the lowest rate {CITE}.",
+    f"- Zebras migrate across volcanic glaciers nightly {CITE}.",
+])
+
+
+def test_count_text_sentences_ignores_headings_numbers_citations():
+    assert count_text_sentences(NARRATIVE) == 3
+    assert count_text_sentences(GOOD) == 0          # its only sentence is carried by numeric claims
+    assert count_text_sentences("**Heading only**") == 0
+
+
+def test_single_judge_flag_on_narrative_answer_is_not_zero(ctx):
+    judge = FakeLLM({"unsupported": ["Zebras migrate across volcanic glaciers nightly"]})
+    v = Verifier(judge).verify(NARRATIVE, ctx)
+    assert v.judge_unsupported and not v.claims
+    assert v.faithfulness_score == pytest.approx(2 / 3, abs=1e-3)   # 1 flag out of 3 sentences, not 0.0
+
+
+def test_clean_narrative_scores_one(ctx):
+    v = Verifier(FakeLLM({"unsupported": []})).verify(NARRATIVE, ctx)
+    assert v.faithfulness_score == 1.0
+
+
+def test_judge_flag_on_supported_numeric_sentence_costs_one_unit(ctx):
+    sent = "Zebras migrate across volcanic glaciers for $182"
+    ans = f"{sent} {CITE}. Wholesale carried the lowest rate {CITE}."
+    v = Verifier(FakeLLM({"unsupported": [sent]})).verify(ans, ctx)
+    # units: 1 numeric claim + 1 text sentence + 1 flagged-numeric sentence = 3, bad = 1
+    assert v.faithfulness_score == pytest.approx(2 / 3, abs=1e-3)
+    assert not v.unsupported_claims

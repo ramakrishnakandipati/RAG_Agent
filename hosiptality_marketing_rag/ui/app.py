@@ -100,7 +100,7 @@ with tab_ask:
                             unsafe_allow_html=True)
         with right:
             st.markdown(gauge_html(v["faithfulness_score"]), unsafe_allow_html=True)
-            st.caption("1 - (unsupported numbers + judge flags + citation errors) / checks")
+            st.caption("1 - (unsupported numbers + flagged sentences + citation errors) / (numbers + sentences checked)")
             if v["claims"]:
                 df = pd.DataFrame([{"Claim value": c["value"], "Supported": "yes" if c["supported"] else "NO",
                                     "Evidence chunk": (c["evidence_chunk"] or "-").split("::")[0]} for c in v["claims"]])

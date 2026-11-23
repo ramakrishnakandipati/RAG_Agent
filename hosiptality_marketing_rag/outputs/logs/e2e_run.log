@@ -1,0 +1,110 @@
+[32m2026-11-23 18:12:49.691 -05:00[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m:[36m58[0m - [1m=== 1/6 data + index (llm mode: live) ===[0m
+W1123 18:12:55.555000 51644 site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  12%|#1        | 45/391 [00:00<00:00, 449.72it/s]Loading weights:  30%|###       | 118/391 [00:00<00:00, 581.70it/s]Loading weights:  45%|####5     | 176/391 [00:00<00:00, 448.91it/s]Loading weights:  57%|#####7    | 224/391 [00:00<00:00, 453.59it/s]Loading weights:  69%|######9   | 271/391 [00:00<00:00, 361.57it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 583.98it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[32m2026-11-23 18:12:58.018 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedder loaded: allocated=640 MiB reserved=1352 MiB[0m
+Batches:   0%|          | 0/2 [00:00<?, ?it/s]Batches:  50%|#####     | 1/2 [00:00<00:00,  2.88it/s]Batches: 100%|##########| 2/2 [00:00<00:00,  5.44it/s]
+[32m2026-11-23 18:12:58.390 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 58 docs: allocated=649 MiB reserved=1352 MiB[0m
+[32m2026-11-23 18:12:58.692 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.vector_sparse_store[0m:[36mbuild[0m:[36m93[0m - [1mIndex built: 58 chunks (chroma=58, bm25 synced)[0m
+[32m2026-11-23 18:12:58.692 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mingest[0m:[36m70[0m - [1mingest complete: 58 chunks, timings={'generate': 0.14, 'ingest_chunk': 1.49, 'embed_index': 7.37}[0m
+[32m2026-11-23 18:12:58.692 -05:00[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m:[36m62[0m - [1m=== 2/6 pipeline queries ===[0m
+[32m2026-11-23 18:13:07.189 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
+[32m2026-11-23 18:13:07.212 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
+[32m2026-11-23 18:13:07.233 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
+Loading weights:   0%|          | 0/393 [00:00<?, ?it/s]Loading weights:   8%|8         | 33/393 [00:00<00:01, 295.48it/s]Loading weights:  16%|#6        | 64/393 [00:00<00:01, 298.49it/s]Loading weights:  24%|##3       | 94/393 [00:00<00:01, 291.41it/s]Loading weights:  32%|###1      | 125/393 [00:00<00:00, 297.07it/s]Loading weights:  40%|####      | 159/393 [00:00<00:00, 291.83it/s]Loading weights:  48%|####8     | 189/393 [00:00<00:00, 289.10it/s]Loading weights:  81%|########1 | 319/393 [00:00<00:00, 601.57it/s]Loading weights: 100%|##########| 393/393 [00:00<00:00, 523.83it/s]
+[32m2026-11-23 18:13:11.386 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] reranker loaded: allocated=1717 MiB reserved=3288 MiB[0m
+[32m2026-11-23 18:13:32.906 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='What was the ADR for the Direct channel at Miami Beach Resort in Q3 2025?' filters={'period': 'Q3 2025', 'property': 'Miami Beach Resort', 'channel': 'Direct'} faith=0.8333 lat={'rewrite': 8466, 'retrieve': 77, 'rerank': 4220, 'generate': 16197, 'verify': 5252, 'total': 34212}ms[0m
+[32m2026-11-23 18:13:39.610 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:13:39.633 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:13:39.653 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:13:56.791 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='Show RevPAR and occupancy by channel at Orlando Grand Hotel, only Q3 2025' filters={'period': 'Q3 2025', 'property': 'Orlando Grand Hotel'} faith=1.0 lat={'rewrite': 6673, 'retrieve': 67, 'rerank': 134, 'generate': 15223, 'verify': 1778, 'total': 23875}ms[0m
+[32m2026-11-23 18:14:04.134 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:14:04.155 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:14:04.181 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:14:23.413 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='How did the OTA channels compare with Direct on ADR at Fort Lauderdale Marina Inn in Q1 2025?' filters={'period': 'Q1 2025', 'property': 'Fort Lauderdale Marina Inn'} faith=1.0 lat={'rewrite': 7320, 'retrieve': 69, 'rerank': 134, 'generate': 18112, 'verify': 983, 'total': 26619}ms[0m
+[32m2026-11-23 18:14:27.900 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:14:27.921 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:14:27.941 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:14:47.222 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='What ROI did the summer direct booking campaign at Miami Beach Resort deliver?' filters={'property': 'Miami Beach Resort'} faith=0.75 lat={'rewrite': 4464, 'retrieve': 66, 'rerank': 320, 'generate': 14537, 'verify': 4419, 'total': 23806}ms[0m
+[32m2026-11-23 18:14:51.437 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:14:51.459 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:14:51.479 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:15:03.972 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='How does our CRM team use LTV to target loyalty members?' filters={} faith=1.0 lat={'rewrite': 4191, 'retrieve': 69, 'rerank': 354, 'generate': 10798, 'verify': 1338, 'total': 16748}ms[0m
+[32m2026-11-23 18:15:09.215 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:15:09.239 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:15:09.261 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1754 MiB[0m
+[32m2026-11-23 18:15:09.454 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m115[0m - [1mshort-circuit refusal (unknown_entity=Tokyo, weak_evidence=False)[0m
+[32m2026-11-23 18:15:09.455 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='What was Q3 2025 ADR in Tokyo?' filters={'period': 'Q3 2025'} faith=1.0 lat={'rewrite': 5219, 'retrieve': 70, 'rerank': 190, 'generate': 0, 'verify': 1, 'total': 5480}ms[0m
+[32m2026-11-23 18:15:09.456 -05:00[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m:[36m67[0m - [1m=== 3/6 retrieval metrics + charts ===[0m
+[32m2026-11-23 18:15:09.477 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:15:09.500 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:15:09.516 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1756 MiB[0m
+[32m2026-11-23 18:15:09.668 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1960 MiB[0m
+[32m2026-11-23 18:15:09.691 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1960 MiB[0m
+[32m2026-11-23 18:15:09.716 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=1960 MiB[0m
+[32m2026-11-23 18:15:09.858 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:09.873 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:09.897 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.076 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.094 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.110 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.282 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.298 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.314 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.494 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.516 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.538 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.689 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.710 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.731 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.874 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.894 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:10.915 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.053 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.070 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.087 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.216 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.233 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.249 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.416 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.433 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.455 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.598 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.616 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:11.638 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1717 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:20.849 -05:00[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m:[36m81[0m - [1m=== 4/6 API payload ===[0m
+[32m2026-11-23 18:15:30.266 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1727 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:30.288 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1727 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:30.309 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=1727 MiB reserved=2088 MiB[0m
+[32m2026-11-23 18:15:55.852 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='What was the ADR for the Direct channel at Miami Beach Resort in Q3 2025? only Q3 2025' filters={'period': 'Q3 2025', 'property': 'Miami Beach Resort', 'channel': 'Direct'} faith=0.6667 lat={'rewrite': 9358, 'retrieve': 66, 'rerank': 126, 'generate': 16989, 'verify': 8424, 'total': 34964}ms[0m
+[32m2026-11-23 18:15:56.232 -05:00[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m:[36m102[0m - [1m=== 5/6 pytest ===[0m
+[32m2026-11-23 18:20:26.928 -05:00[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m:[36m107[0m - [1mpytest exit code 0[0m
+[32m2026-11-23 18:20:26.928 -05:00[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m:[36m109[0m - [1m=== 6/6 screenshots ===[0m
+[32m2026-11-23 18:20:27.064 -05:00[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m:[36m126[0m - [1mDone. Artifacts in D:\Ramakrishna_D\Python\GitProjects\RAG_Agent\hosiptality_marketing_rag\outputs[0m
+{
+  "mode": "live",
+  "pytest_exit": 0,
+  "retrieval": {
+    "bm25": {
+      "hit@5": 1.0,
+      "mrr@5": 0.6208333333333333,
+      "ndcg@5": 0.7006569359305838
+    },
+    "dense": {
+      "hit@5": 1.0,
+      "mrr@5": 0.9583333333333334,
+      "ndcg@5": 0.8901179022730435
+    },
+    "rrf": {
+      "hit@5": 1.0,
+      "mrr@5": 1.0,
+      "ndcg@5": 1.0
+    },
+    "rrf+rerank": {
+      "hit@5": 1.0,
+      "mrr@5": 1.0,
+      "ndcg@5": 1.0
+    }
+  },
+  "mean_faithfulness": 0.9305499999999999
+}

@@ -35,6 +35,8 @@ pytest --live-llm                         # also exercise the real Qwen endpoint
 uvicorn api.main:app --port 8000          # /health /ingest /query /verify  (docs at /docs)
 ```
 
+**Guided tour with screenshots: [docs/WALKTHROUGH.md](docs/WALKTHROUGH.md)**
+
 ## Streamlit UI
 ```powershell
 python scripts/run_ui.py                      # starts FastAPI (:8000) + Streamlit (:8501), warms the GPU models
@@ -59,7 +61,7 @@ New endpoints: `GET /meta/filters`, `GET /meta/examples`, `GET /meta/metrics`, `
 - **Verifier**: numbers ($, %, x) must appear in the retrieved chunks; citations must reference a retrieved
   chunk; the LLM judge's flags are cross-checked by lexical overlap so paraphrases are not penalised. Derived
   numbers (differences/sums) are *not* accepted - the generator prompt forbids computing them.
-  `faithfulness = 1 - (unsupported numbers + judge flags + citation errors) / (all of those checked)`.
+  `faithfulness = 1 - bad / checks`, where checks are every numeric claim, every non-numeric answer sentence and every citation error (plus one unit for a judge flag on a sentence already counted through its numbers), so a single judge flag among four bullets costs 0.25 rather than zeroing the score.
 - **VRAM**: embedder (~0.7 GB) + reranker (~1.1 GB) share the GPU with Qwen in LM Studio; models load lazily.
 
 ## Outputs (`outputs/`, git-ignored)

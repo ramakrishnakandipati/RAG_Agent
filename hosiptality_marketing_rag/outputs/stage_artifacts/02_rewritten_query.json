@@ -1,14 +1,15 @@
 {
-  "original": "warm up ADR Q3 2025",
+  "original": "What was the ADR and RevPAR for the Direct channel at Miami Beach Resort in Q3 2025?",
   "search_queries": [
-    "warm up average daily rate Q3 2025",
-    "average daily rate (ADR) performance Q3 2025",
-    "average daily rate trends Q3 2025"
+    "What was the average daily rate (ADR) and revenue per available room (RevPAR) for the Direct channel at Miami Beach Resort in Q3 2025?"
   ],
   "filters": {
-    "period": "Q3 2025"
+    "period": "Q3 2025",
+    "channel": "Direct",
+    "property": "Miami Beach Resort"
   },
   "expansions": {
-    "ADR": "average daily rate"
+    "ADR": "average daily rate",
+    "RevPAR": "revenue per available room"
   }
 }
