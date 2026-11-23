@@ -1,0 +1,6 @@
+18:04:52.676 | INFO    | [VRAM] embedder loaded: allocated=640 MiB reserved=1352 MiB
+18:04:52.876 | INFO    | [VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB
+18:04:52.895 | INFO    | [VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB
+18:04:52.913 | INFO    | [VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB
+18:04:56.918 | INFO    | [VRAM] reranker loaded: allocated=1717 MiB reserved=3288 MiB
+18:05:24.267 | INFO    | Q='warm up ADR Q3 2025' filters={'period': 'Q3 2025'} faith=0.75 lat={'rewrite': 5657, 'retrieve': 5059, 'rerank': 4136, 'generate': 20820, 'verify': 6394, 'total': 42067}ms

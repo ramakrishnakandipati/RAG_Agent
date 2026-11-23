@@ -1,0 +1,87 @@
+{
+  "retrieval": {
+    "bm25": {
+      "hit@5": 1.0,
+      "mrr@5": 0.6208333333333333,
+      "ndcg@5": 0.7006569359305838
+    },
+    "dense": {
+      "hit@5": 1.0,
+      "mrr@5": 0.9583333333333334,
+      "ndcg@5": 0.8901179022730435
+    },
+    "rrf": {
+      "hit@5": 1.0,
+      "mrr@5": 1.0,
+      "ndcg@5": 1.0
+    },
+    "rrf+rerank": {
+      "hit@5": 1.0,
+      "mrr@5": 1.0,
+      "ndcg@5": 1.0
+    }
+  },
+  "ingest": {
+    "chunks": 58,
+    "tables": 24,
+    "seconds": {
+      "generate": 0.2,
+      "ingest_chunk": 1.4,
+      "embed_index": 7.79
+    }
+  },
+  "llm_mode": "live",
+  "mean_faithfulness": 0.9583333333333334,
+  "answers": [
+    {
+      "q": "What was the ADR for the Direct channel at Miami Beach Resort in Q3 2025?",
+      "faithfulness": 1.0,
+      "refusal": false,
+      "filters": {
+        "period": "Q3 2025",
+        "property": "Miami Beach Resort",
+        "channel": "Direct"
+      }
+    },
+    {
+      "q": "Show RevPAR and occupancy by channel at Orlando Grand Hotel, only Q3 2025",
+      "faithfulness": 1.0,
+      "refusal": false,
+      "filters": {
+        "period": "Q3 2025",
+        "property": "Orlando Grand Hotel"
+      }
+    },
+    {
+      "q": "How did the OTA channels compare with Direct on ADR at Fort Lauderdale Marina Inn in Q1 2025?",
+      "faithfulness": 1.0,
+      "refusal": false,
+      "filters": {
+        "period": "Q1 2025",
+        "property": "Fort Lauderdale Marina Inn"
+      }
+    },
+    {
+      "q": "What ROI did the summer direct booking campaign at Miami Beach Resort deliver?",
+      "faithfulness": 0.75,
+      "refusal": false,
+      "filters": {
+        "property": "Miami Beach Resort"
+      }
+    },
+    {
+      "q": "How does our CRM team use LTV to target loyalty members?",
+      "faithfulness": 1.0,
+      "refusal": false,
+      "filters": {}
+    },
+    {
+      "q": "What was Q3 2025 ADR in Tokyo?",
+      "faithfulness": 1.0,
+      "refusal": true,
+      "filters": {
+        "period": "Q3 2025"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+INFO:     Started server process [56888]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51393 - "GET /health HTTP/1.1" 200 OK
+W1123 18:04:49.897000 56888 site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  10%|▉         | 39/391 [00:00<00:00, 384.49it/s]Loading weights:  20%|█▉        | 78/391 [00:00<00:00, 361.47it/s]Loading weights:  29%|██▉       | 115/391 [00:00<00:00, 361.35it/s]Loading weights:  39%|███▉      | 152/391 [00:00<00:00, 318.92it/s]Loading weights:  47%|████▋     | 185/391 [00:00<00:00, 298.67it/s]Loading weights:  55%|█████▌    | 216/391 [00:00<00:00, 295.54it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 565.51it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[32m2026-11-23 18:04:52.676 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedder loaded: allocated=640 MiB reserved=1352 MiB[0m
+[32m2026-11-23 18:04:52.876 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
+[32m2026-11-23 18:04:52.895 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
+[32m2026-11-23 18:04:52.913 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] embedded 1 docs: allocated=649 MiB reserved=1352 MiB[0m
+Loading weights:   0%|          | 0/393 [00:00<?, ?it/s]Loading weights:   6%|▋         | 25/393 [00:00<00:01, 238.68it/s]Loading weights:  12%|█▏        | 49/393 [00:00<00:01, 236.65it/s]Loading weights:  19%|█▉        | 75/393 [00:00<00:01, 229.88it/s]Loading weights:  26%|██▌       | 102/393 [00:00<00:01, 238.74it/s]Loading weights:  36%|███▌      | 141/393 [00:00<00:00, 281.06it/s]Loading weights:  47%|████▋     | 183/393 [00:00<00:00, 321.98it/s]Loading weights:  55%|█████▌    | 217/393 [00:00<00:00, 317.95it/s]Loading weights:  63%|██████▎   | 249/393 [00:00<00:00, 313.12it/s]Loading weights: 100%|██████████| 393/393 [00:00<00:00, 454.71it/s]
+[32m2026-11-23 18:04:56.918 -05:00[0m | [1mINFO    [0m | [36msrc.indexing.embedder[0m:[36mlog_vram[0m:[36m16[0m - [1m[VRAM] reranker loaded: allocated=1717 MiB reserved=3288 MiB[0m
+[32m2026-11-23 18:05:24.267 -05:00[0m | [1mINFO    [0m | [36msrc.pipeline[0m:[36mquery[0m:[36m128[0m - [1mQ='warm up ADR Q3 2025' filters={'period': 'Q3 2025'} faith=0.75 lat={'rewrite': 5657, 'retrieve': 5059, 'rerank': 4136, 'generate': 20820, 'verify': 6394, 'total': 42067}ms[0m
+INFO:     127.0.0.1:51396 - "POST /query HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58156 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58157 - "GET /meta/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58158 - "GET /meta/examples HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58159 - "GET /meta/metrics HTTP/1.1" 200 OK

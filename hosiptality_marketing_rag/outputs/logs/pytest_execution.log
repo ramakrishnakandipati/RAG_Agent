@@ -1,0 +1,33 @@
+.........................................                                [100%]
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.11.18-final-0 _______________
+
+Name                                    Stmts   Miss  Cover
+-----------------------------------------------------------
+src\__init__.py                             0      0   100%
+src\config.py                              16      0   100%
+src\evaluation\__init__.py                  0      0   100%
+src\evaluation\metrics.py                  59     10    83%
+src\evaluation\screenshot_renderer.py     109    109     0%
+src\evaluation\visualizer.py               67     67     0%
+src\generation\__init__.py                  0      0   100%
+src\generation\generator.py                37      7    81%
+src\generation\verifier.py                 72      4    94%
+src\indexing\__init__.py                    0      0   100%
+src\indexing\embedder.py                   34      3    91%
+src\indexing\vector_sparse_store.py        97      6    94%
+src\ingest\__init__.py                      0      0   100%
+src\ingest\chunker.py                     143     13    91%
+src\ingest\data_generator.py               97     76    22%
+src\ingest\parser.py                      147      4    97%
+src\llm_client.py                          45      8    82%
+src\pipeline.py                           101      2    98%
+src\retrieval\__init__.py                   0      0   100%
+src\retrieval\hybrid_retriever.py          32      1    97%
+src\retrieval\query_rewriter.py            68      3    96%
+src\retrieval\reranker.py                  22      0   100%
+src\schemas.py                             60      0   100%
+-----------------------------------------------------------
+TOTAL                                    1206    313    74%
+Coverage JSON written to file outputs/metrics/coverage.json
+41 passed in 200.24s (0:03:20)

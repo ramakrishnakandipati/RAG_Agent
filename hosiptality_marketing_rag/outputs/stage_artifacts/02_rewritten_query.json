@@ -1,0 +1,14 @@
+{
+  "original": "warm up ADR Q3 2025",
+  "search_queries": [
+    "warm up average daily rate Q3 2025",
+    "average daily rate (ADR) performance Q3 2025",
+    "average daily rate trends Q3 2025"
+  ],
+  "filters": {
+    "period": "Q3 2025"
+  },
+  "expansions": {
+    "ADR": "average daily rate"
+  }
+}

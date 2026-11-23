@@ -1,0 +1,32 @@
+{
+  "answer": "**Q3 2025 Warm-Up ADR Analysis**\n\n• Miami Beach Resort's direct channel had the highest ADR at $182 [case_study_miami_beach_resort.md | 1 | Q3 2025].\n• Orlando Grand Hotel's direct channel showed an ADR of $151 [case_study_orlando_grand_hotel.pdf | 2 | Q3 2025].\n• Fort Lauderdale Marina Inn's direct channel reported an ADR of $129 [case_study_fort_lauderdale_marina_inn.md | 1 | Q3 2025].\n• Among all properties, Miami Beach Resort maintained the highest average daily rate across all channels in Q3 2025 [kpi_miami_beach_resort.csv | 1 | Q3 2025].",
+  "verification": {
+    "claims": [
+      {
+        "text": "• Miami Beach Resort's direct channel had the highest ADR at $182 [case_study_miami_beach_resort.md | 1 | Q3 2025].",
+        "value": "$182",
+        "supported": true,
+        "evidence_chunk": "case_study_miami_beach_resort.md::p1::t31"
+      },
+      {
+        "text": "• Orlando Grand Hotel's direct channel showed an ADR of $151 [case_study_orlando_grand_hotel.pdf | 2 | Q3 2025].",
+        "value": "$151",
+        "supported": true,
+        "evidence_chunk": "case_study_orlando_grand_hotel.pdf::p2::t43"
+      },
+      {
+        "text": "• Fort Lauderdale Marina Inn's direct channel reported an ADR of $129 [case_study_fort_lauderdale_marina_inn.md | 1 | Q3 2025].",
+        "value": "$129",
+        "supported": true,
+        "evidence_chunk": "case_study_fort_lauderdale_marina_inn.md::p1::t17"
+      }
+    ],
+    "unsupported_claims": [],
+    "citation_errors": [],
+    "judge_unsupported": [
+      "Among all properties, Miami Beach Resort maintained the highest average daily rate across all channels in Q3 2025 [kpi_miami_beach_resort.csv | 1 | Q3 2025]."
+    ],
+    "faithfulness_score": 0.75,
+    "is_refusal": false
+  }
+}

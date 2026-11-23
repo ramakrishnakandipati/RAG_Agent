@@ -1,0 +1,62 @@
+[
+  {
+    "id": "case_study_miami_beach_resort.md::p1::t31",
+    "score": 0.9197867512702942,
+    "source": "case_study_miami_beach_resort.md",
+    "section": "Q3 2025 Channel Performance",
+    "page": 1,
+    "property": "Miami Beach Resort",
+    "period": "Q3 2025",
+    "channel": "all",
+    "segment": "all",
+    "doc_type": "case_study"
+  },
+  {
+    "id": "case_study_orlando_grand_hotel.pdf::p2::t43",
+    "score": 0.894789457321167,
+    "source": "case_study_orlando_grand_hotel.pdf",
+    "section": "Q3 2025 Channel Performance",
+    "page": 2,
+    "property": "Orlando Grand Hotel",
+    "period": "Q3 2025",
+    "channel": "all",
+    "segment": "all",
+    "doc_type": "case_study"
+  },
+  {
+    "id": "case_study_fort_lauderdale_marina_inn.md::p1::t17",
+    "score": 0.8649961352348328,
+    "source": "case_study_fort_lauderdale_marina_inn.md",
+    "section": "Q3 2025 Channel Performance",
+    "page": 1,
+    "property": "Fort Lauderdale Marina Inn",
+    "period": "Q3 2025",
+    "channel": "all",
+    "segment": "all",
+    "doc_type": "case_study"
+  },
+  {
+    "id": "kpi_miami_beach_resort.csv::p1::t52",
+    "score": 0.3254133462905884,
+    "source": "kpi_miami_beach_resort.csv",
+    "section": "Miami Beach Resort KPI Q3 2025",
+    "page": 1,
+    "property": "Miami Beach Resort",
+    "period": "Q3 2025",
+    "channel": "all",
+    "segment": "all",
+    "doc_type": "case_study"
+  },
+  {
+    "id": "kpi_fort_lauderdale_marina_inn.xlsx::p1::t48",
+    "score": 0.2933032512664795,
+    "source": "kpi_fort_lauderdale_marina_inn.xlsx",
+    "section": "Fort Lauderdale Marina Inn KPI Q3 2025",
+    "page": 1,
+    "property": "Fort Lauderdale Marina Inn",
+    "period": "Q3 2025",
+    "channel": "all",
+    "segment": "all",
+    "doc_type": "case_study"
+  }
+]
