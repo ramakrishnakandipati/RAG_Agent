@@ -33,7 +33,7 @@ gpu = health.get("gpu", {})
 c3.metric("GPU", gpu.get("name", "cpu"), f"{gpu.get('free_vram_gb', 0)} GB free" if gpu.get("cuda") else "CPU fallback")
 c4.metric("Folio postings", health.get("pms", {}).get("folio", 0), f"{health.get('pms', {}).get('hitl_queue', 0)} HITL items")
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["🚀 Live Trigger", "🧭 State Trace", "🧑‍💼 HITL Queue", "🗺️ Data Lineage", "📊 Metrics & Logs"])
+tab1, tabuc, tab2, tab3, tab4, tab5 = st.tabs(["🚀 Live Trigger", "🎬 Use Cases", "🧭 State Trace", "🧑‍💼 HITL Queue", "🗺️ Data Lineage", "📊 Metrics & Logs"])
 
 # ------------------------------------------------------------------ tab 1
 with tab1:
@@ -87,6 +87,66 @@ with tab1:
                     st.success(f"Folio posting: {res['booking']}")
         else:
             st.info("Pick a reservation and run the workflow.")
+
+
+# ------------------------------------------------------------------ use cases
+BADGE = {"SENT": "🟢", "BOOKED": "✅", "ESCALATED": "🟠", "NO_OFFER": "⚪", "FAIL_VALIDATION": "🔴", "REJECTED": "⛔", "SOLD_OUT": "🟡"}
+with tabuc:
+    code, sl = api("GET", "/scenarios")
+    scs = sl.get("scenarios", []) if code == 200 else []
+    st.subheader("Sample use cases - end-to-end flows")
+    st.caption("Each case auto-selects a suitable upcoming reservation and runs the real workflow: GPU XGBoost + RMS rules, Qwen3-VL drafting, compliance gate, HITL, folio.")
+    if scs:
+        titles = {sc["title"]: sc for sc in scs}
+        choice = st.radio("Choose a use case", list(titles), key="uc_choice")
+        sc = titles[choice]
+        st.markdown(f"**Persona:** {sc['persona']}")
+        st.markdown(f"**What happens:** {sc['story']}")
+        st.markdown(f"**Expected outcome:** `{sc['outcome']}` · **Steps:** {sc['n_steps']}")
+        if st.button("▶ Run use case end-to-end", type="primary", key="uc_run"):
+            with st.spinner("Running use case through the LangGraph workflow..."):
+                code, out = api("POST", f"/scenarios/{sc['id']}/run")
+            st.session_state["uc_result"] = out
+        out = st.session_state.get("uc_result")
+        if out and out.get("scenario", {}).get("id") == sc["id"]:
+            if out.get("error"):
+                st.error(out["error"])
+            else:
+                g, r = out["guest"], out["reservation"]
+                st.success(f"Guest **{g['first_name']}** ({g['segment']}, {g['loyalty_tier']}, LTV ${g['ltv_usd']:,.0f}) · reservation `{r['reservation_id']}` "
+                           f"· {r['channel_group']} · check-in {r['check_in']} · total {out['total_seconds']} s")
+                for stp in out["steps"]:
+                    rs = stp["response"]
+                    with st.container(border=True):
+                        st.markdown(f"#### Step {stp['n']} · {stp['title']}  {BADGE.get(rs['status'], '🔵')} `{rs['status']}`")
+                        st.caption(f"{stp['request']['endpoint']}  {json.dumps(stp['request']['body'])}  ·  {stp['seconds']} s")
+                        path = " → ".join(t["node"] for t in rs["trace"]) or "-"
+                        st.markdown(f"**Graph path:** `{path}`")
+                        cc1, cc2 = st.columns(2)
+                        with cc1:
+                            if rs.get("intent"):
+                                st.markdown(f"**Guest intent:** `{rs['intent'].get('intent')}` · sentiment `{rs['intent'].get('sentiment')}`")
+                            o = rs.get("offer")
+                            if o:
+                                st.markdown(f"**Offer:** {o['name']} (`{o['sku']}`) · list ${o['list_price']:.2f} · discount {o['discount_pct']:g}% · **final ${o['final_price']:.2f}** · p={o['propensity']:.2f}")
+                            if rs.get("violations_seen"):
+                                st.error("Gate caught: " + ", ".join(rs["violations_seen"]) + f"  → retries: {rs['retries']}")
+                            if rs.get("hitl_reasons"):
+                                st.warning("Human-in-the-loop: " + ", ".join(rs["hitl_reasons"]))
+                            if rs.get("guardrail"):
+                                st.markdown(f"**Guardrail:** `{rs['guardrail']['status']}`")
+                            if rs.get("booking"):
+                                st.success(f"Folio posting: {rs['booking']}")
+                        with cc2:
+                            m = rs.get("message")
+                            if m:
+                                st.markdown(f"**Message** _{m.get('subject', '')}_ · source `{m.get('source')}`")
+                                st.info(m.get("body") or m.get("body_template", ""))
+                if out.get("folio"):
+                    st.markdown("**Room folio after the flow**")
+                    st.dataframe(pd.DataFrame(out["folio"])[["sku", "qty", "amount", "service_date"]], hide_index=True)
+    else:
+        st.warning("Scenario API unavailable.")
 
 # ------------------------------------------------------------------ tab 2
 with tab2:

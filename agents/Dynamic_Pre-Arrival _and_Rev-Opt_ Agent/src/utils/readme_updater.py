@@ -74,6 +74,9 @@ sequenceDiagram
 ```"""
 
 
+NL = chr(10)
+
+
 def _load(p):
     if not p.exists():
         raise FileNotFoundError(f"readme_updater needs {p} - run the pipeline first (python run_all.py)")
@@ -119,7 +122,19 @@ def update_readme() -> str:
     mm = m["model"]
     rev = m["revenue"]
     charts = sorted(s.charts_dir.glob("*.png"))
-    shots = sorted(s.screens_dir.glob("*.png"))
+    from src.scenarios import SCENARIOS
+    uc_ids = {sc["id"] for sc in SCENARIOS}
+    shots = [p for p in sorted(s.screens_dir.glob("*.png")) if p.stem not in uc_ids]
+    uc_html = []
+    for sc in SCENARIOS:
+        p = s.screens_dir / f"{sc['id']}.png"
+        img_tag = f'<img src="outputs/ui_screens/{p.name}" width="900" alt="{sc["id"]}">' if p.exists() else "_screenshot pending_"
+        steps = " -> ".join(st["title"] for st in sc["steps"])
+        uc_html.append(NL.join([
+            f"#### {sc['title']}", "",
+            f"- **Persona:** {sc['persona']}", f"- **Flow:** {sc['story']}",
+            f"- **Expected outcome:** `{sc['outcome']}`", f"- **Steps:** {steps}", "", img_tag, ""]))
+    uc_md = NL.join(uc_html)
     gpu = m.get("gpu", {})
     llm_src = ", ".join(f"{k}: {v}" for k, v in m["llm_sources"].items())
     funnel = _table([[k, v] for k, v in m["funnel"].items()], ["outcome", "journeys"])
@@ -208,9 +223,15 @@ Services: `python -m src.api.flask_app` (port {s.flask_port}) and `streamlit run
 5. **HITL Queue** - review, edit, approve or reject escalations; approval resumes the paused graph from its SQLite checkpoint.
 6. **Data Lineage** - lineage graph, raw table explorer and validation results.
 7. **Metrics & Logs** - live metrics from `/api/v1/metrics` plus structured JSONL logs.
+8. **Use Cases** - five one-click end-to-end flows (upsell to folio booking, OTA-to-direct loyalty conversion, hallucination blocked then retried, escalation after repeated policy failure, Platinum custom request).
 
 ### Screenshots
 {shot_html}
+
+## Sample use cases (end-to-end flows)
+In the Streamlit app open the **Use Cases** tab, pick a case and press **Run use case end-to-end**. Each run auto-selects a suitable upcoming reservation and drives the real workflow (also callable via `POST /api/v1/scenarios/<id>/run`, list with `GET /api/v1/scenarios`; definitions in `src/scenarios.py`). The screens below were captured by Playwright from the live UI.
+
+{uc_md}
 
 ## Charts
 {chart_html}
@@ -224,6 +245,7 @@ Services: `python -m src.api.flask_app` (port {s.flask_port}) and `streamlit run
 | `POST /api/v1/hitl/approve` | `{{thread_id, decision: approve|reject, reviewer, edited_body?}}` resume paused graph |
 | `GET /api/v1/metrics` | latest `metrics/metrics.json` |
 | `GET /api/v1/health` | LLM, GPU and PMS status |
+| `GET /api/v1/scenarios`, `POST /api/v1/scenarios/<id>/run` | list / run the five sample use cases |
 
 Invalid payloads return HTTP 422 with Pydantic error details.
 

@@ -9,22 +9,12 @@ from pydantic import ValidationError
 from src.config import get_settings
 from src.graph.workflow import resume_workflow, run_workflow
 from src.llm.client import get_llm
-from src.schemas.domain import ApproveRequest, ReplyRequest, TriggerRequest, WorkflowResponse
+from src.scenarios import BY_ID, SCENARIOS, run_scenario, to_response as _resp
+from src.schemas.domain import ApproveRequest, ReplyRequest, TriggerRequest
 from src.tools import pms_crm_tools as pms
 from src.utils import device as dev
 
 _lock = threading.Lock()   # serialise graph runs (single SQLite checkpointer connection)
-
-
-def _resp(res: dict) -> dict:
-    st = res["state"]
-    intr = res.get("interrupt") or {}
-    return WorkflowResponse(
-        thread_id=res["thread_id"], status=st.get("status", "UNKNOWN"), interrupted=res["interrupted"],
-        hitl_reasons=st.get("hitl_reasons") or intr.get("reasons", []),
-        message=(st.get("draft") if not res["interrupted"] else intr.get("draft")) or None,
-        offer=st.get("selected_offer"), guardrail=st.get("guardrail"), booking=st.get("booking"),
-        trace=st.get("trace", []), errors=st.get("errors", [])).model_dump(mode="json")
 
 
 def create_app() -> Flask:
@@ -82,6 +72,17 @@ def create_app() -> Flask:
         if not p.exists():
             return jsonify({"error": "metrics_not_generated", "hint": "run python run_all.py"}), 404
         return jsonify(json.loads(p.read_text()))
+
+    @app.get("/api/v1/scenarios")
+    def scenarios():
+        return jsonify({"scenarios": [{k: v for k, v in sc.items() if k != "steps"} | {"n_steps": len(sc["steps"])} for sc in SCENARIOS]})
+
+    @app.post("/api/v1/scenarios/<sid>/run")
+    def scenario_run(sid):
+        if sid not in BY_ID:
+            return jsonify({"error": "unknown_scenario", "scenario": sid}), 404
+        with _lock:
+            return jsonify(run_scenario(sid))
 
     @app.get("/api/v1/reservations")
     def reservations():

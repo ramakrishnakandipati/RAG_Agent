@@ -27,6 +27,9 @@ def capture() -> list[str]:
     s.screens_dir.mkdir(parents=True, exist_ok=True)
     for p in s.screens_dir.glob("*.png"):
         p.unlink()
+    from src.tools import pms_crm_tools as pms
+    pms.init_pms()
+    pms.reset_runtime_tables()   # deterministic start: empty folio/outbox/HITL, baseline inventory
     env = {**os.environ, "FLASK_PORT": str(s.flask_port), "API_BASE": f"http://127.0.0.1:{s.flask_port}", "PYTHONPATH": str(ROOT)}
     procs = [
         subprocess.Popen([sys.executable, "-m", "src.api.flask_app"], cwd=ROOT, env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL),
@@ -50,6 +53,13 @@ def capture() -> list[str]:
 
             def shot(name: str):
                 page.wait_for_timeout(1800)
+                # Streamlit scrolls inside its own container: size the viewport to the real content height so nothing is clipped
+                page.set_viewport_size({"width": 1500, "height": 3000})
+                page.wait_for_timeout(500)
+                h = page.evaluate("""() => { const m = document.querySelector('[data-testid="stMain"]');
+                    const c = m && m.querySelector('[data-testid="stMainBlockContainer"]'); return c ? c.getBoundingClientRect().bottom + m.scrollTop : 1000; }""")
+                page.set_viewport_size({"width": 1500, "height": int(min(max(h + 60, 700), 5000))})
+                page.wait_for_timeout(400)
                 path = s.screens_dir / f"{name}.png"
                 page.screenshot(path=str(path), full_page=True)
                 saved.append(path.name)
@@ -68,6 +78,15 @@ def capture() -> list[str]:
             page.wait_for_selector("text=Processing reply", state="detached", timeout=300000)
             page.wait_for_selector("text=Folio posting", timeout=60000)
             shot("03_two_way_reply_booking")
+            from src.scenarios import SCENARIOS
+            tab("Use Cases")
+            for sc in SCENARIOS:
+                page.get_by_text(sc["title"], exact=True).click()
+                page.wait_for_timeout(800)
+                page.get_by_role("button", name="Run use case end-to-end").click()
+                page.wait_for_selector("text=Graph path:", timeout=300000)
+                page.wait_for_selector("text=Running use case through", state="detached", timeout=300000)
+                shot(sc["id"])
             tab("State Trace"); shot("04_state_trace")
             tab("HITL Queue"); shot("05_hitl_queue")
             tab("Data Lineage"); shot("06_data_lineage")

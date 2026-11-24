@@ -255,3 +255,62 @@
 {"ts": "2026-11-24T14:32:49", "logger": "rag", "level": "INFO", "event": "reranker_loaded", "model": "BAAI/bge-reranker-large", "device": "cuda"}
 {"ts": "2026-11-24T14:32:56", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-a53db960", "status": "SENT", "sku": "LOY-DIRECT"}
 {"ts": "2026-11-24T14:33:02", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-8d1612eb", "status": "BOOKED", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:42:38", "logger": "rag", "level": "INFO", "event": "embedder_loaded", "model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+{"ts": "2026-11-24T14:42:42", "logger": "rag", "level": "INFO", "event": "reranker_loaded", "model": "BAAI/bge-reranker-large", "device": "cuda"}
+{"ts": "2026-11-24T14:42:47", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500064-25807a11", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:42:50", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500064-97477fa9", "status": "BOOKED", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:42:52", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-90f60830", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:42:54", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-d52554be", "status": "BOOKED", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:42:56", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500183-525a9c21", "status": "SENT", "sku": "SPA-COUPLE"}
+{"ts": "2026-11-24T14:42:57", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R501542-ec357445", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:43:00", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R503573-5123e872", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:43:01", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R503573-8cb885ea", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:43:29", "logger": "rag", "level": "INFO", "event": "embedder_loaded", "model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+{"ts": "2026-11-24T14:43:33", "logger": "rag", "level": "INFO", "event": "reranker_loaded", "model": "BAAI/bge-reranker-large", "device": "cuda"}
+{"ts": "2026-11-24T14:43:40", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-7042dcea", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:43:44", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-b40872e7", "status": "BOOKED", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:43:54", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500064-87b3369e", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:43:56", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500064-d75068b7", "status": "BOOKED", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:44:02", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500203-5e289294", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:44:04", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500203-557da7d5", "status": "BOOKED", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:44:10", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500183-877f3575", "status": "SENT", "sku": "SPA-COUPLE"}
+{"ts": "2026-11-24T14:44:14", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R501542-95c446c0", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:44:20", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R503573-4fe1f8a6", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:44:21", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R503573-90ee6cf9", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:45:01", "logger": "rag", "level": "INFO", "event": "embedder_loaded", "model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+{"ts": "2026-11-24T14:45:05", "logger": "rag", "level": "INFO", "event": "reranker_loaded", "model": "BAAI/bge-reranker-large", "device": "cuda"}
+{"ts": "2026-11-24T14:45:07", "logger": "rag", "level": "INFO", "event": "embedder_loaded", "model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+{"ts": "2026-11-24T14:45:12", "logger": "rag", "level": "INFO", "event": "reranker_loaded", "model": "BAAI/bge-reranker-large", "device": "cuda"}
+{"ts": "2026-11-24T14:45:12", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-09c425e9", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:45:13", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-e2ff1e24", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:45:15", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-7a9b43d9", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:45:17", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-bed9f382", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:45:17", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-7a8943aa", "status": "BOOKED", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:45:18", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-1d2c5016", "status": "BOOKED", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:45:19", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-2bf5a740", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:45:20", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R503573-6550d460", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:45:23", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-a27d099e", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:45:43", "logger": "rag", "level": "INFO", "event": "embedder_loaded", "model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+{"ts": "2026-11-24T14:45:48", "logger": "rag", "level": "INFO", "event": "reranker_loaded", "model": "BAAI/bge-reranker-large", "device": "cuda"}
+{"ts": "2026-11-24T14:45:54", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-09a2df10", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:45:59", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-95f10f50", "status": "BOOKED", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:46:08", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500064-ede572fd", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:46:12", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500064-5938022a", "status": "BOOKED", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:46:18", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500203-1a3a3ba2", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:46:20", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500203-f131108c", "status": "BOOKED", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:46:25", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500183-673803dc", "status": "SENT", "sku": "SPA-COUPLE"}
+{"ts": "2026-11-24T14:46:30", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R501542-875e3e16", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:46:36", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R503573-5612509e", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:46:37", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R503573-3bacd934", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:47:37", "logger": "rag", "level": "INFO", "event": "embedder_loaded", "model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+{"ts": "2026-11-24T14:47:42", "logger": "rag", "level": "INFO", "event": "reranker_loaded", "model": "BAAI/bge-reranker-large", "device": "cuda"}
+{"ts": "2026-11-24T14:47:49", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-d431ce17", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:47:56", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500046-75acb8c0", "status": "BOOKED", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:48:08", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500064-d7612e99", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:48:10", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500064-9154e690", "status": "BOOKED", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:48:17", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500203-68602c5a", "status": "SENT", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:48:19", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500203-9aa6525e", "status": "BOOKED", "sku": "LOY-DIRECT"}
+{"ts": "2026-11-24T14:48:26", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R500183-e5d4128a", "status": "SENT", "sku": "SPA-COUPLE"}
+{"ts": "2026-11-24T14:48:31", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R501542-ad2065b3", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:48:38", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R503573-85ce9f39", "status": "SENT", "sku": "DIN-BRKFST"}
+{"ts": "2026-11-24T14:48:39", "logger": "compliance", "level": "INFO", "event": "dispatched", "thread": "R503573-432b812d", "status": "SENT", "sku": "DIN-BRKFST"}

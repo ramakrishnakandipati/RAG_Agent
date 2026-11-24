@@ -255,3 +255,62 @@
 2026-11-24 14:32:49,476 INFO hra.rag reranker_loaded {"model": "BAAI/bge-reranker-large", "device": "cuda"}
 2026-11-24 14:32:56,898 INFO hra.compliance dispatched {"thread": "R500046-a53db960", "status": "SENT", "sku": "LOY-DIRECT"}
 2026-11-24 14:33:02,080 INFO hra.compliance dispatched {"thread": "R500046-8d1612eb", "status": "BOOKED", "sku": "LOY-DIRECT"}
+2026-11-24 14:42:38,379 INFO hra.rag embedder_loaded {"model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+2026-11-24 14:42:42,497 INFO hra.rag reranker_loaded {"model": "BAAI/bge-reranker-large", "device": "cuda"}
+2026-11-24 14:42:47,476 INFO hra.compliance dispatched {"thread": "R500064-25807a11", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:42:50,167 INFO hra.compliance dispatched {"thread": "R500064-97477fa9", "status": "BOOKED", "sku": "DIN-BRKFST"}
+2026-11-24 14:42:52,309 INFO hra.compliance dispatched {"thread": "R500046-90f60830", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:42:54,466 INFO hra.compliance dispatched {"thread": "R500046-d52554be", "status": "BOOKED", "sku": "LOY-DIRECT"}
+2026-11-24 14:42:56,748 INFO hra.compliance dispatched {"thread": "R500183-525a9c21", "status": "SENT", "sku": "SPA-COUPLE"}
+2026-11-24 14:42:57,882 INFO hra.compliance dispatched {"thread": "R501542-ec357445", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:43:00,673 INFO hra.compliance dispatched {"thread": "R503573-5123e872", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:43:01,823 INFO hra.compliance dispatched {"thread": "R503573-8cb885ea", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:43:29,070 INFO hra.rag embedder_loaded {"model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+2026-11-24 14:43:33,255 INFO hra.rag reranker_loaded {"model": "BAAI/bge-reranker-large", "device": "cuda"}
+2026-11-24 14:43:40,232 INFO hra.compliance dispatched {"thread": "R500046-7042dcea", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:43:44,899 INFO hra.compliance dispatched {"thread": "R500046-b40872e7", "status": "BOOKED", "sku": "LOY-DIRECT"}
+2026-11-24 14:43:54,005 INFO hra.compliance dispatched {"thread": "R500064-87b3369e", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:43:56,553 INFO hra.compliance dispatched {"thread": "R500064-d75068b7", "status": "BOOKED", "sku": "DIN-BRKFST"}
+2026-11-24 14:44:02,169 INFO hra.compliance dispatched {"thread": "R500203-5e289294", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:44:04,553 INFO hra.compliance dispatched {"thread": "R500203-557da7d5", "status": "BOOKED", "sku": "LOY-DIRECT"}
+2026-11-24 14:44:10,118 INFO hra.compliance dispatched {"thread": "R500183-877f3575", "status": "SENT", "sku": "SPA-COUPLE"}
+2026-11-24 14:44:14,409 INFO hra.compliance dispatched {"thread": "R501542-95c446c0", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:44:20,491 INFO hra.compliance dispatched {"thread": "R503573-4fe1f8a6", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:44:21,616 INFO hra.compliance dispatched {"thread": "R503573-90ee6cf9", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:45:01,140 INFO hra.rag embedder_loaded {"model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+2026-11-24 14:45:05,421 INFO hra.rag reranker_loaded {"model": "BAAI/bge-reranker-large", "device": "cuda"}
+2026-11-24 14:45:07,693 INFO hra.rag embedder_loaded {"model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+2026-11-24 14:45:12,203 INFO hra.rag reranker_loaded {"model": "BAAI/bge-reranker-large", "device": "cuda"}
+2026-11-24 14:45:12,565 INFO hra.compliance dispatched {"thread": "R500046-09c425e9", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:45:13,706 INFO hra.compliance dispatched {"thread": "R500046-e2ff1e24", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:45:15,106 INFO hra.compliance dispatched {"thread": "R500046-7a9b43d9", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:45:17,306 INFO hra.compliance dispatched {"thread": "R500046-bed9f382", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:45:17,972 INFO hra.compliance dispatched {"thread": "R500046-7a8943aa", "status": "BOOKED", "sku": "LOY-DIRECT"}
+2026-11-24 14:45:18,571 INFO hra.compliance dispatched {"thread": "R500046-1d2c5016", "status": "BOOKED", "sku": "LOY-DIRECT"}
+2026-11-24 14:45:19,580 INFO hra.compliance dispatched {"thread": "R500046-2bf5a740", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:45:20,838 INFO hra.compliance dispatched {"thread": "R503573-6550d460", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:45:23,571 INFO hra.compliance dispatched {"thread": "R500046-a27d099e", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:45:43,688 INFO hra.rag embedder_loaded {"model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+2026-11-24 14:45:48,015 INFO hra.rag reranker_loaded {"model": "BAAI/bge-reranker-large", "device": "cuda"}
+2026-11-24 14:45:54,322 INFO hra.compliance dispatched {"thread": "R500046-09a2df10", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:45:59,272 INFO hra.compliance dispatched {"thread": "R500046-95f10f50", "status": "BOOKED", "sku": "LOY-DIRECT"}
+2026-11-24 14:46:08,904 INFO hra.compliance dispatched {"thread": "R500064-ede572fd", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:46:12,295 INFO hra.compliance dispatched {"thread": "R500064-5938022a", "status": "BOOKED", "sku": "DIN-BRKFST"}
+2026-11-24 14:46:18,044 INFO hra.compliance dispatched {"thread": "R500203-1a3a3ba2", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:46:20,460 INFO hra.compliance dispatched {"thread": "R500203-f131108c", "status": "BOOKED", "sku": "LOY-DIRECT"}
+2026-11-24 14:46:25,944 INFO hra.compliance dispatched {"thread": "R500183-673803dc", "status": "SENT", "sku": "SPA-COUPLE"}
+2026-11-24 14:46:30,567 INFO hra.compliance dispatched {"thread": "R501542-875e3e16", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:46:36,232 INFO hra.compliance dispatched {"thread": "R503573-5612509e", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:46:37,590 INFO hra.compliance dispatched {"thread": "R503573-3bacd934", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:47:37,898 INFO hra.rag embedder_loaded {"model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+2026-11-24 14:47:42,381 INFO hra.rag reranker_loaded {"model": "BAAI/bge-reranker-large", "device": "cuda"}
+2026-11-24 14:47:49,618 INFO hra.compliance dispatched {"thread": "R500046-d431ce17", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:47:56,016 INFO hra.compliance dispatched {"thread": "R500046-75acb8c0", "status": "BOOKED", "sku": "LOY-DIRECT"}
+2026-11-24 14:48:08,457 INFO hra.compliance dispatched {"thread": "R500064-d7612e99", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:48:10,989 INFO hra.compliance dispatched {"thread": "R500064-9154e690", "status": "BOOKED", "sku": "DIN-BRKFST"}
+2026-11-24 14:48:17,505 INFO hra.compliance dispatched {"thread": "R500203-68602c5a", "status": "SENT", "sku": "LOY-DIRECT"}
+2026-11-24 14:48:19,895 INFO hra.compliance dispatched {"thread": "R500203-9aa6525e", "status": "BOOKED", "sku": "LOY-DIRECT"}
+2026-11-24 14:48:26,201 INFO hra.compliance dispatched {"thread": "R500183-e5d4128a", "status": "SENT", "sku": "SPA-COUPLE"}
+2026-11-24 14:48:31,793 INFO hra.compliance dispatched {"thread": "R501542-ad2065b3", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:48:38,241 INFO hra.compliance dispatched {"thread": "R503573-85ce9f39", "status": "SENT", "sku": "DIN-BRKFST"}
+2026-11-24 14:48:39,425 INFO hra.compliance dispatched {"thread": "R503573-432b812d", "status": "SENT", "sku": "DIN-BRKFST"}
