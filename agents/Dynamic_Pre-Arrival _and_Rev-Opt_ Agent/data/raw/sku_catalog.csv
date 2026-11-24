@@ -1,0 +1,9 @@
+sku,name,category,price,cost,capacity,service_date,desc,fixed_discount_pct
+UPG-OCEAN,Ocean View Upgrade,room_upgrade,95.0,20.0,12,stay,"Upgrade to a Deluxe Ocean View room with balcony, subject to availability.",
+UPG-SUITE,Junior Suite Upgrade,room_upgrade,160.0,45.0,6,stay,Upgrade to a Junior Suite with separate lounge and soaking tub.,
+SPA-RELAX,Signature Relaxation Massage (60 min),spa,140.0,45.0,20,checkin,60-minute signature massage at the Tidewater Spa.,
+SPA-COUPLE,Couples Spa Ritual,spa,290.0,95.0,6,checkin,Side-by-side massage and private hydrotherapy suite for two.,
+DIN-CHEF,Chef's Tasting Dinner for Two,dining,180.0,70.0,16,checkin,Five-course tasting menu at Salt & Ember with wine pairing.,
+DIN-BRKFST,Daily Breakfast Package,dining,60.0,22.0,200,checkin,Full breakfast buffet at the Terrace Cafe for every morning of your stay.,
+LCO-4PM,Late Checkout until 4 PM,late_checkout,50.0,8.0,25,checkout,Keep your room until 4 PM on departure day.,
+LOY-DIRECT,Azure Circle Membership,loyalty,0.0,0.0,99999,checkin,Free loyalty membership: 10% off your next direct booking plus member-only perks.,10.0

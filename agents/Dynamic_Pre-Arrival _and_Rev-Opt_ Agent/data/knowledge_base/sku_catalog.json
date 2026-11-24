@@ -1,0 +1,83 @@
+[
+  {
+    "sku": "UPG-OCEAN",
+    "name": "Ocean View Upgrade",
+    "category": "room_upgrade",
+    "price": 95.0,
+    "cost": 20.0,
+    "capacity": 12,
+    "service_date": "stay",
+    "desc": "Upgrade to a Deluxe Ocean View room with balcony, subject to availability."
+  },
+  {
+    "sku": "UPG-SUITE",
+    "name": "Junior Suite Upgrade",
+    "category": "room_upgrade",
+    "price": 160.0,
+    "cost": 45.0,
+    "capacity": 6,
+    "service_date": "stay",
+    "desc": "Upgrade to a Junior Suite with separate lounge and soaking tub."
+  },
+  {
+    "sku": "SPA-RELAX",
+    "name": "Signature Relaxation Massage (60 min)",
+    "category": "spa",
+    "price": 140.0,
+    "cost": 45.0,
+    "capacity": 20,
+    "service_date": "checkin",
+    "desc": "60-minute signature massage at the Tidewater Spa."
+  },
+  {
+    "sku": "SPA-COUPLE",
+    "name": "Couples Spa Ritual",
+    "category": "spa",
+    "price": 290.0,
+    "cost": 95.0,
+    "capacity": 6,
+    "service_date": "checkin",
+    "desc": "Side-by-side massage and private hydrotherapy suite for two."
+  },
+  {
+    "sku": "DIN-CHEF",
+    "name": "Chef's Tasting Dinner for Two",
+    "category": "dining",
+    "price": 180.0,
+    "cost": 70.0,
+    "capacity": 16,
+    "service_date": "checkin",
+    "desc": "Five-course tasting menu at Salt & Ember with wine pairing."
+  },
+  {
+    "sku": "DIN-BRKFST",
+    "name": "Daily Breakfast Package",
+    "category": "dining",
+    "price": 60.0,
+    "cost": 22.0,
+    "capacity": 200,
+    "service_date": "checkin",
+    "desc": "Full breakfast buffet at the Terrace Cafe for every morning of your stay."
+  },
+  {
+    "sku": "LCO-4PM",
+    "name": "Late Checkout until 4 PM",
+    "category": "late_checkout",
+    "price": 50.0,
+    "cost": 8.0,
+    "capacity": 25,
+    "service_date": "checkout",
+    "desc": "Keep your room until 4 PM on departure day."
+  },
+  {
+    "sku": "LOY-DIRECT",
+    "name": "Azure Circle Membership",
+    "category": "loyalty",
+    "price": 0.0,
+    "cost": 0.0,
+    "capacity": 99999,
+    "service_date": "checkin",
+    "fixed_discount_pct": 10.0,
+    "desc": "Free loyalty membership: 10% off your next direct booking plus member-only perks."
+  }
+]

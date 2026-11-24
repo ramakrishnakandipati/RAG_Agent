@@ -1,0 +1,8 @@
+{
+  "device": "cuda",
+  "tree_method": "hist",
+  "best_iteration": 137,
+  "n_train": 12961,
+  "n_test": 5083,
+  "auc": 0.6549
+}

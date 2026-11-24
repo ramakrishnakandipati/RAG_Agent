@@ -1,0 +1,826 @@
+[
+  {
+    "reservation_id": "R510565",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'cozy evening,' 'coastal calm,' and 'sea air meets fine dining.' It is concise and includes one clear call to action ('reply YES') without pressure language or exaggerated claims. There is no use of all caps, and the overall tone feels inviting yet understated.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R514543",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with descriptive language about the dining experience. It includes a clear call to action (reply YES) without pressure or urgency. The language is concise, avoids all caps, and refrains from exaggerated claims. However, it slightly leans toward promotional phrasing ('savor a special evening,' 'perfect for a moment of calm indulgence'), which keeps it just below a perfect score.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R500203",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message is warm and welcoming with a relaxed coastal tone, using phrases like 'sea air meets calm and indulgence' and 'we're here to make your experience as seamless and enjoyable.' It includes one clear call to action ('reply YES to confirm') without pressure language or exaggerated claims. The tone is concise, avoids all caps, and maintains a friendly yet professional brand voice.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R517860",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'sea air' and 'calm of your upcoming stay.' It is concise, features one clear call to action ('reply YES'), and avoids pressure language, all caps, or exaggerated claims. The brand voice feels inviting without being pushy.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R514058",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language about the resort and its offerings. It includes one clear call to action (replying YES) without pressure or exaggerated claims. The tone is concise and avoids all caps, though it slightly leans toward promotional phrasing ('We can\u2019t wait to welcome you'). Overall, it aligns well with brand tone expectations.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R517534",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language that evokes a serene dining experience. It is concise, features one clear call to action (replying YES), avoids pressure language, uses no all caps, and refrains from exaggerated claims. The only minor deviation is the use of 'luxurious' and 'fine dining,' which are slightly more elevated than neutral but still within acceptable bounds for a resort brand.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R505761",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle, inviting language. It is concise yet descriptive, focusing on a clear call to action (replying YES) without pressure or exaggerated claims. There is no use of all caps, and the brand voice feels authentic and welcoming.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R516457",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air, calm moments, and indulgence.' It is concise, includes one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet professional brand voice. The only minor deduction is the slight formality of 'We\u2019re here to make your arrival smooth and memorable,' which could feel slightly less personal than ideal for a coastal resort.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R511075",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air is crisp' and 'serene escape by the coast.' It is concise and includes one clear call to action ('reply YES') without pressure language or exaggerated claims. The brand voice feels consistent and inviting, though slightly more formal than ideal for a fully casual coastal vibe.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R516389",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with gentle language, emphasizing calm and indulgence. It is concise, features one clear call to action (replying YES), avoids pressure, all caps, or exaggerated claims. The brand voice feels inviting and authentic without being overly promotional.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R507786",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with inviting language like 'unforgettable evening' and 'indulge in flavors inspired by the coast.' It is concise, features one clear call to action ('reply YES'), avoids pressure language, uses no all caps, and refrains from exaggerated claims. The only minor deduction is that 'unforgettable' slightly edges toward exaggeration, but it remains within acceptable bounds.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R512213",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language that evokes the setting (sea air, evening light). It is concise and includes one clear call to action ('reply YES') without pressure or exaggerated claims. There is no use of all caps or overly promotional language.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R513798",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air is crisp' and 'indulgence comes naturally.' It is concise and includes one clear call to action ('reply YES') without pressure or exaggerated claims. The language is friendly but not overly casual, and there's no use of all caps or hyperbolic statements. However, the mention of 'loyalty program benefits' slightly shifts focus toward incentives, which could be seen as a minor deviation from pure brand tone neutrality.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R517425",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'sea air and calm' and 'memorable evening.' It is concise, includes one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice. The only minor deviation is the use of 'Mateo,' which personalizes it but slightly reduces neutrality in tone consistency.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R512331",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with descriptive language about the experience (e.g., 'sea air,' 'soft lighting,' 'calm views') and emphasizes indulgence without pressure. It includes one clear call to action ('reply YES') and avoids all caps, exaggerated claims, or high-pressure language. The brand voice feels consistent with a luxury coastal resort.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R504121",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone through descriptive language like 'sea air,' 'calm ocean views,' and 'warm smile.' It is concise, with one clear call to action ('reply YES'), no pressure language, no all caps, and no exaggerated claims. The brand voice feels inviting and genuine without being pushy.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R502890",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 3.0,
+    "tone_reason": "The message has a warm tone with a personal touch, but it includes pressure language ('We would love to offer you') and an exaggerated claim ('perfect way to settle in'). It also uses all caps for emphasis on 'YES', which violates the guidelines. The call to action is clear but not concise enough due to the extra details.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R516011",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with natural language that feels inviting but not pushy. It is concise, features one clear call to action ('reply YES'), avoids pressure language, uses no all caps, and makes no exaggerated claims. The phrasing emphasizes comfort and ease, aligning well with the brand's likely identity.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R513645",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with descriptive language about the setting and experience. It is concise, features one clear call to action (replying YES for reservations), avoids pressure language, uses no all caps, and refrains from exaggerated claims. The only minor deviation is the use of 'special' which slightly leans toward exaggeration but remains within acceptable bounds.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R502828",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air is fresh' and 'pace is calm.' It is concise and includes one clear call to action ('reply YES') without pressure language or exaggerated claims. There is no use of all caps, and the brand voice feels consistent and inviting.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R508754",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with natural language that feels inviting without being pushy. It is concise, features one clear call to action ('reply YES'), avoids pressure language, uses no all caps, and makes no exaggerated claims. The brand voice aligns well with a luxury beach resort experience.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R512902",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'cozy evening,' 'sea air meets indulgence,' and 'calm, connection.' It is concise and includes one clear call to action ('reply YES') without pressure language or exaggerated claims. There is no use of all caps, and the overall tone feels inviting yet understated.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R510375",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language about the environment and experience. It includes one clear call to action ('Reply YES') without pressure or urgency. There is no use of all caps, exaggerated claims, or overly formal language. The tone is concise while still feeling inviting and personal.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R511068",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language that feels inviting without being pushy. It includes one clear call to action ('reply YES') without pressure or urgency. There is no use of all caps, exaggerated claims, or overly formal phrasing. The messaging is concise while still providing essential details about the breakfast experience and accommodations for dietary needs.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R513487",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'sea air,' 'calm waters,' and 'indulgent moments.' It is concise, includes one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a friendly yet professional brand voice. The only minor deduction is the slight formality of 'Tara, we're excited...' which could feel slightly less personal than ideal for a truly warm tone.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R502458",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language and no pressure. It includes one clear call to action (replying YES) without using all caps or exaggerated claims. The brand voice feels inviting and concise while maintaining a personal touch.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R511820",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'gentle escape,' 'breathe in the sea air,' and 'unwind with calm indulgence.' It is concise and includes one clear call to action ('reply YES') without pressure or exaggerated claims. There is no use of all caps, and the language feels inviting yet understated.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R517717",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air is fresh' and 'calm is contagious.' It is concise, includes one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice. The only minor deviation is the use of 'excited,' which slightly leans toward enthusiasm but remains within acceptable bounds for warmth.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R511031",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language that evokes a serene atmosphere. It is concise and includes one clear call to action (replying YES) without pressure or exaggerated claims. There is no use of all caps, and the language feels inviting yet understated.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R510483",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language that evokes serenity and indulgence. It is concise, features one clear call to action (replying YES), avoids pressure language, uses no all caps, and refrains from exaggerated claims. The only minor deviation is the slightly formal phrasing 'secure your experience,' which adds a touch of formality but doesn't detract significantly from the overall tone.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R500842",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with inviting language like 'escape,' 'sea air,' and 'under the stars.' It is concise, features one clear call to action ('reply YES'), avoids pressure language, uses no all caps, and makes no exaggerated claims. The tone feels welcoming without being overly promotional.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R514832",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with gentle, inviting language. It is concise yet personal, using a clear call to action ('reply YES') without pressure or urgency. There's no use of all caps, exaggerated claims, or overly formal phrasing. The brand voice feels authentic and welcoming, aligning well with the resort\u2019s ambiance.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R507931",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air is fresh' and 'calm is endless.' It is concise and includes one clear call to action ('reply YES') without pressure or exaggerated claims. There is no use of all caps, and the language feels inviting yet professional. The only minor deviation from perfection is the slightly formal phrasing 'As a valued guest,' which could feel slightly less personal than ideal for a truly warm tone.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R507772",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'moments of calm and indulgence by the sea' and a welcoming, friendly voice. It is concise, includes one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a natural flow. The only minor deduction is that 'we can't wait to welcome you back' slightly leans toward mild enthusiasm, but it remains appropriate and not overbearing.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R516172",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'sea air and calm views' and 'indulgence,' while maintaining conciseness and a clear call to action ('reply YES'). It avoids pressure language, all caps, and exaggerated claims. The brand voice feels inviting yet understated, aligning well with a resort setting.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R504777",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with natural language that feels inviting without being pushy. It is concise, includes one clear call to action ('reply YES'), avoids pressure language, uses no all caps, and makes no exaggerated claims. The focus on comfort, simplicity, and guest care aligns well with the brand's likely identity.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R507949",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language and a focus on comfort and connection. It includes one clear call to action (replying YES) without pressure or urgency. The tone is concise yet inviting, avoiding all caps, exaggerated claims, or overly formal phrasing. The only minor deviation from perfection is the slight use of promotional language ('special touch,' 'perfect way'), but it remains subtle and aligned with a welcoming brand voice.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R506544",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle, inviting language. It is concise yet descriptive, focusing on a clear call to action (replying YES) without pressure or urgency. There's no use of all caps, exaggerated claims, or pushy language\u2014just a thoughtful, personalized invitation that aligns well with the brand\u2019s voice.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R507557",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language about the setting and experience. It is concise, features one clear call to action (replying YES), avoids pressure language, uses no all caps, and refrains from exaggerated claims. The only minor deviation is the slightly formal phrasing 'we\u2019d love to help make your stay even more special,' which adds a touch of formality but doesn't detract significantly from the overall tone.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R503140",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language like 'gentle breeze,' 'warm sun,' and 'moments of calm by the sea.' It is concise, features one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice. The only minor deduction is that 'We\u2019re excited' slightly leans toward enthusiasm, which could be seen as mild exaggeration, but overall it aligns well with the desired tone.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R508021",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'sea air,' 'calm moments,' and 'indulgent experience.' It is concise, features one clear call to action ('reply YES by tomorrow'), and avoids pressure language, all caps, or exaggerated claims. The brand voice feels inviting without being pushy.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R502944",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed tone with coastal elements (sea air, thermal pools), is concise, includes one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice. The only minor deviation is the use of 'excited' which slightly elevates enthusiasm but remains within acceptable bounds for warmth.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R505775",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air is fresh' and 'pace is slow.' It includes one clear call to action ('reply YES') without pressure language or exaggerated claims. The brand voice is consistent and concise, though slightly more formal than ideal for a fully casual coastal feel. No all caps or over-the-top language is used.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R516944",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language like 'sea air is crisp' and 'calm indulgence.' It is concise, features one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R515973",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'sea air,' 'calm,' and 'indulgence.' It is concise and includes one clear call to action ('reply YES') without pressure or exaggerated claims. The language is friendly but not overly casual, and there are no all caps or hyperbolic statements. However, the phrase 'We can\u2019t wait to see you soon' slightly leans toward mild urgency, which keeps it from being a perfect 5.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R517173",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language about the evening ambiance and dining experience. It is concise, features one clear call to action (replying YES), avoids pressure language, uses no all caps, and refrains from exaggerated claims. The only minor deviation is the slightly formal phrasing of 'a memorable dining experience,' which edges toward a more upscale tone but still aligns with coastal luxury.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R516369",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language that feels inviting without being pushy. It is concise, features one clear call to action ('reply YES'), avoids pressure language, uses no all caps, and makes no exaggerated claims. The mention of 'gentle sea air' and 'calm surroundings' reinforces the coastal vibe.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R504848",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message is warm and welcoming with a relaxed coastal tone, using phrases like 'sea air meets calm and indulgence' and 'we're looking forward to hosting you.' It includes one clear call to action ('reply YES') without pressure language or exaggerated claims. The tone is concise and avoids all caps, though it slightly leans toward promotional by mentioning membership benefits, which keeps it from being a perfect 5.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R514042",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language that evokes serenity and intimacy. It is concise, features one clear call to action ('reply YES'), and avoids pressure, all caps, or exaggerated claims. The use of 'Mateo' personalizes the message, enhancing warmth without being overly formal.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R510864",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone through descriptive language like 'sea air is crisp' and 'ocean views.' It is concise, with one clear call to action ('reply YES') and no pressure language or exaggerated claims. The tone is inviting without using all caps or overly promotional phrases.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R513599",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language and no pressure or exaggerated claims. It includes one clear call to action ('reply YES') without using all caps or aggressive phrasing. The brand voice is consistent and inviting, though slightly more formal than ideally concise.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R512424",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language that feels inviting without being pushy. It is concise, features one clear call to action ('reply YES'), avoids pressure language, uses no all caps, and makes no exaggerated claims. The overall tone aligns well with a luxury beach resort brand.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R509439",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with natural language that feels inviting without being pushy. It is concise, features one clear call to action ('reply YES'), avoids pressure language, uses no all caps, and refrains from exaggerated claims. The brand voice aligns well with the specified criteria.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R511445",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language like 'sea air is crisp' and 'calm indulgence.' It is concise, features one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R508235",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'sea air,' 'calm sounds,' and 'evening sky.' It is concise and includes one clear call to action ('reply YES') without pressure language or exaggerated claims. There is no use of all caps, and the overall tone feels inviting yet understated.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R508007",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message is warm and welcoming with a relaxed coastal vibe, using phrases like 'unwinding with sea air' and 'calm views.' It includes one clear call to action ('reply YES') without pressure language or exaggerated claims. The tone is concise and avoids all caps. However, it slightly leans toward promotional by emphasizing benefits of direct booking, which could be seen as a minor push.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R500382",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language that feels inviting without being pushy. It is concise, features one clear call to action ('reply YES'), avoids pressure, all caps, or exaggerated claims, and maintains a calm, welcoming brand voice consistent with a resort setting.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R513996",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'moments of calm and indulgence by the sea' and 'soaking in the fresh air.' It is concise, includes one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice. The only minor deduction is that 'We\u2019ve got your stay covered' slightly leans toward promotional phrasing, but it remains subtle.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R517839",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language that evokes a serene atmosphere. It is concise yet inviting, with one clear call to action (replying YES) without pressure or exaggerated claims. There is no use of all caps, and the language feels natural and welcoming.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R507594",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language like 'crisp sea air,' 'calm pace,' and 'rhythm of the coast.' It is concise, features one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming, unhurried feel consistent with a resort brand.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R501298",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language and no pressure. It includes one clear call to action (replying YES) without using all caps or exaggerated claims. The tone is concise while maintaining a welcoming feel.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R510867",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'sea air, calm moments, and indulgence.' It is concise and includes one clear call to action ('reply YES') without pressure or exaggerated claims. There is no use of all caps, and the language feels inviting yet professional. The brand tone aligns well with a luxury coastal resort experience.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R500696",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language like 'cozy evening,' 'serene as the sea air,' and 'gentle waves.' It is concise, features one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice. The only minor deduction is that 'exquisite courses' slightly leans toward exaggeration, but it remains within acceptable bounds.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R507014",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with gentle language, evoking a sense of tranquility and intimacy. It is concise, features one clear call to action ('reply YES'), and avoids pressure, all caps, or exaggerated claims. The brand voice feels inviting and authentic without being overly promotional.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R512036",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'sea air meets calm' and 'indulgence feels like a natural part of the day.' It is concise, includes one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet professional brand voice. The only minor deviation is the use of 'We\u2019re excited,' which adds slight enthusiasm but doesn't cross into overstatement.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R502006",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'soaking in the sea air' and 'well-deserved calm.' It is concise, includes one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a friendly yet professional brand voice. The only minor deduction is that 'We\u2019re excited...' slightly leans toward enthusiasm that could be perceived as mildly energetic, but it remains within the acceptable range for warmth without overstatement.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R500258",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone through descriptive language like 'sea air,' 'calm moments,' and 'ocean views.' It is concise, with one clear call to action ('reply YES') that is not pressurized. There is no use of all caps or exaggerated claims, and the overall tone feels inviting without being pushy.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R517057",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language like 'truly special experience,' 'perfect escape,' and 'calm meets indulgence.' It is concise, features one clear call to action ('reply YES'), and avoids pressure, all caps, or exaggerated claims. The brand voice feels inviting without being pushy.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R500685",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'unwind with the sea air' and 'calm waters.' It is concise and includes one clear call to action ('reply YES') without pressure language or exaggerated claims. There is no use of all caps, and the brand voice feels consistent with a luxury resort experience.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R507307",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language and a focus on guest comfort. It includes one clear call to action ('reply YES') without pressure or urgency. The tone is concise, avoids all caps, and refrains from exaggerated claims. However, the use of 'Platinum member' slightly leans toward exclusivity, which could feel marginally less inclusive, though not strongly detracting from the overall warm and relaxed vibe.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R509672",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air,' 'calm moments,' and 'indulge.' It is concise and includes one clear call to action ('reply YES') without pressure or exaggerated claims. The language is polite and inviting, avoiding all caps and overly promotional language.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R516901",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'serene escape,' 'breathing in sea air,' and 'calm indulgence.' It is concise, features one clear call to action ('reply YES'), and avoids pressure language, all caps, or exaggerated claims. The brand voice feels inviting yet understated, aligning well with a luxury coastal resort.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R510897",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air is fresh' and 'calm is endless.' It includes one clear call to action ('reply YES') without pressure or exaggerated claims. The language is concise and avoids all caps, though it slightly leans toward promotional by mentioning perks, which keeps it from being a perfect 5.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R501309",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air is crisp' and 'pace is unhurried.' It includes one clear call to action ('reply YES') without pressure language or exaggerated claims. The brand voice feels consistent and inviting, though it uses slightly more formal phrasing than ideal for a fully casual tone. No all caps or over-the-top language is present.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R504959",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone through phrases like 'gentle sea air' and 'calm rhythms.' It is concise and includes one clear call to action ('reply YES') without pressure or exaggerated claims. The language is inviting but not overly promotional, avoiding all caps and hyperbole.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R502783",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone through phrases like 'sea air and calm' and 'ocean views.' It is concise, with one clear call to action ('reply YES') that feels low-pressure. There's no use of all caps or exaggerated claims, and the language remains inviting without being pushy.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R516274",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with inviting language like 'unwind,' 'savor a memorable evening,' and 'quiet moments of indulgence.' It is concise, features one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a gentle, welcoming brand voice consistent with a luxury resort.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R512060",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language that feels inviting without pressure. It is concise, features one clear call to action (replying YES with date/time), avoids all caps, exaggerated claims, or high-pressure phrases. The focus on experience and care aligns well with the brand's likely identity.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R512113",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language that evokes the resort's ambiance. It includes one clear call to action (replying YES) without pressure or urgency. The language is concise, avoids all caps, and refrains from exaggerated claims. However, 'a little something special' slightly leans toward promotional phrasing, preventing a perfect score.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R517767",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language that evokes calm indulgence and ocean views. It is concise, features one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R514801",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language that feels inviting without being pushy. It is concise, features one clear call to action ('reply YES'), avoids pressure language, uses no all caps, and makes no exaggerated claims. The brand voice aligns well with the described attributes.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R516482",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message has a warm and relaxed tone with a coastal feel, using friendly language like 'Hi Mateo' and 'we are looking forward to welcoming you.' It includes one clear call to action ('reply YES') without pressure or exaggerated claims. The brand voice is concise and avoids all caps or overly promotional language. The only minor deviation is the slightly formal phrasing of 'better rates and warmer perks,' which could be more casual, but overall aligns well with the criteria.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R508541",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone through descriptive language like 'sea air,' 'calm indulgence,' and 'ocean views.' It is concise, with one clear call to action ('reply YES') that is not pressurized. There is no use of all caps or exaggerated claims, and the overall tone feels inviting without being pushy.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R504296",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone through descriptive language like 'sea air,' 'sound of waves,' and 'ocean views.' It is concise, with one clear call to action ('reply YES') that is not pressured or exaggerated. There is no use of all caps or hyperbolic claims, maintaining a calm and inviting brand voice.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R510905",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language that feels inviting without pressure. It is concise, features one clear call to action ('reply YES'), avoids all caps, exaggerated claims, or high-pressure phrasing. The brand voice aligns well with a luxury resort experience.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R517353",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air is crisp' and 'under the stars.' It is concise and includes one clear call to action ('reply YES and let us know your preferred date') without pressure language or exaggerated claims. There is no use of all caps, and the overall tone feels inviting yet understated.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R507023",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'clear skies, sea air, and a calm escape' and 'indulgence comes naturally.' It is concise and includes one clear call to action ('reply YES') without pressure or exaggerated claims. There is no use of all caps, and the language feels inviting yet professional. The only minor deviation is the slight promotional tone with perks listed, but it remains subtle and not overly pushy.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R508689",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone through phrases like 'cozy evening,' 'sea air,' and 'calm of your stay.' It is concise, with one clear call to action ('reply YES') and no pressure language or exaggerated claims. The brand voice feels inviting without being pushy, avoids all caps, and maintains a natural, conversational flow.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R512126",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language like 'sea air is crisp' and 'calm indulgence.' It is concise, features one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R509075",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed tone with coastal undertones through phrases like 'sea air,' 'calm,' and 'indulgence.' It is concise, features one clear call to action (replying YES), avoids pressure language, uses no all caps, and refrains from exaggerated claims. The only minor deviation is the use of 'Special Evening' in the headline, which slightly leans toward excitement but remains within acceptable bounds.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R515039",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with inviting language like 'cozy evening' and 'unwind.' It is concise, features one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a friendly yet professional brand voice. The only minor deduction is the slight formality of 'We can\u2019t wait to welcome you,' which could feel slightly less casual than ideal for a coastal vibe.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R512142",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language that feels inviting without pressure. It is concise, features one clear call to action ('reply YES'), avoids all caps, exaggerated claims, or high-pressure phrasing, and maintains a consistent brand voice aligned with a resort experience.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R514918",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone through descriptive language like 'sea air,' 'calm moments,' and 'ocean-side views.' It is concise, with one clear call to action ('Reply YES') that is not pressurized or exaggerated. There is no use of all caps, and the language remains inviting without overpromising.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R512105",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language that evokes a serene atmosphere. It is concise and includes one clear call to action (replying YES) without pressure or exaggerated claims. The brand voice feels inviting and personal, though it uses slightly more formal phrasing than the most casual tone might allow.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R501511",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 3.0,
+    "tone_reason": "The message has a warm tone with a personal touch, but it includes pressure language ('We would love to offer you') and an exaggerated claim ('perfect way to settle in'). It also uses all caps in 'YES', which violates the guidelines. The call to action is clear but not concise enough due to the extra details.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R508147",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with inviting language that emphasizes enjoyment and comfort. It is concise, features one clear call to action (replying YES), uses no pressure language or exaggerated claims, avoids all caps, and maintains a natural, welcoming brand voice.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R513479",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with descriptive language like 'sea air meets calm indulgence' and 'soft lights.' It is concise, features one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice. The only minor deduction is the slightly formal phrasing of 'savor a five-course tasting menu,' which could feel slightly less casual than ideal for a fully relaxed tone.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R511232",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language that feels inviting without pressure. It uses concise phrasing, avoids all caps or exaggerated claims, and includes one clear call to action ('reply YES') without being pushy. The focus on shared experience and natural elements like sea air aligns well with the brand's coastal identity.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R513225",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone through descriptive language like 'calm of our coastal escape' and 'serene surroundings.' It is concise and includes one clear call to action ('reply YES') without pressure or exaggerated claims. There is no use of all caps, and the overall tone feels inviting yet understated.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R516676",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'sea air' and 'calm rhythm.' It is concise and includes one clear call to action ('reply YES') without pressure or exaggerated claims. The language is friendly but not overly casual, and there's no use of all caps or hyperbolic statements. The brand voice feels consistent with a coastal resort experience.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R500061",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 5.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with gentle language like 'sea air,' 'calm moments,' and 'indulgence.' It is concise, features one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming, unhurried feel consistent with a resort brand.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R502303",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm and relaxed coastal tone with phrases like 'sea air is fresh' and 'indulgence by the water.' It is concise, includes one clear call to action ('reply YES'), uses no pressure language or exaggerated claims, avoids all caps, and maintains a welcoming yet understated brand voice. The only minor deviation is the slight promotional emphasis on benefits, but it remains subtle and non-pushy.",
+    "tone_source": "llm"
+  },
+  {
+    "reservation_id": "R502160",
+    "hallucination_free": true,
+    "violations": [],
+    "tone_score": 4.0,
+    "tone_reason": "The message conveys a warm, relaxed, and coastal tone with phrases like 'gentle sea air,' 'calm rhythms,' and 'ocean views.' It is concise and includes one clear call to action ('reply YES') without pressure language or exaggerated claims. There is no use of all caps, and the overall tone feels inviting yet understated.",
+    "tone_source": "llm"
+  }
+]

@@ -1,0 +1,174 @@
+{
+  "n_requested": 120,
+  "n_journeys": 120,
+  "n_crashed": 0,
+  "seed": 42,
+  "wall_seconds": 483.3,
+  "gpu": {
+    "cuda": true,
+    "device": "cuda",
+    "name": "NVIDIA GeForce RTX 3090",
+    "total_vram_gb": 25.77,
+    "free_vram_gb": 17.59,
+    "torch": "2.11.0+cu128"
+  },
+  "llm_sources": {
+    "qwen3-vl": 100,
+    "safe_fallback": 3
+  },
+  "messages_sent": 103,
+  "messages_judged": 103,
+  "hallucinated_messages": 0,
+  "hallucination_rate_pct": 0.0,
+  "adversarial_injected": 13,
+  "adversarial_caught": 13,
+  "adversarial_sent_to_guest": 0,
+  "adversarial_catch_rate_pct": 100.0,
+  "funnel": {
+    "no_offer": 10,
+    "retried_then_passed": 13,
+    "first_pass": 87,
+    "hard_stop_guest_not_opted_in": 6,
+    "escalated_hitl": 3,
+    "hard_stop_frequency_cap_exceeded": 1
+  },
+  "hitl_reasons": {
+    "repeated_policy_failure": 3,
+    "negative_sentiment": 4,
+    "vip_platinum_custom_request": 4
+  },
+  "inbound_replies": 38,
+  "inbound_accepts": 30,
+  "inbound_booked": 30,
+  "inbound_sold_out": 0,
+  "avg_tone_score": 4.291,
+  "tone_source": {
+    "llm": 103
+  },
+  "offers_by_sku": {
+    "DIN-CHEF": 40,
+    "LOY-DIRECT": 29,
+    "DIN-BRKFST": 22,
+    "SPA-COUPLE": 10,
+    "SPA-RELAX": 2
+  },
+  "loyalty_offers_sent": 29,
+  "node_latency": {
+    "enrich_context": {
+      "mean_ms": 3.0,
+      "p50_ms": 2.7,
+      "p95_ms": 6.3,
+      "n": 120
+    },
+    "retrieve_knowledge_and_offers": {
+      "mean_ms": 188.0,
+      "p50_ms": 99.8,
+      "p95_ms": 114.5,
+      "n": 120
+    },
+    "draft_message": {
+      "mean_ms": 1616.9,
+      "p50_ms": 1848.3,
+      "p95_ms": 2222.9,
+      "n": 129
+    },
+    "compliance_check": {
+      "mean_ms": 2.6,
+      "p50_ms": 1.9,
+      "p95_ms": 6.7,
+      "n": 129
+    },
+    "hitl_gate": {
+      "mean_ms": 5.4,
+      "p50_ms": 0.0,
+      "p95_ms": 0.0,
+      "n": 103
+    },
+    "dispatch_and_log": {
+      "mean_ms": 282.2,
+      "p50_ms": 281.7,
+      "p95_ms": 324.8,
+      "n": 103
+    }
+  },
+  "avg_journey_s": 2.25,
+  "revenue": {
+    "room_nights": 421,
+    "agent_realized_usd": 2820.0,
+    "baseline_realized_usd": 3080.0,
+    "agent_expected_usd": 3306.04,
+    "baseline_expected_usd": 3484.26,
+    "agent_anc_revpar": 7.853,
+    "baseline_anc_revpar": 8.276,
+    "anc_revpar_lift_usd": -0.423,
+    "anc_revpar_lift_pct": -5.1,
+    "realized_lift_pct": -8.4,
+    "agent_exp_margin_usd": 2084.7,
+    "baseline_exp_margin_usd": 2364.32,
+    "margin_lift_pct": -11.8,
+    "est_ota_commission_avoided_usd": 3113.56,
+    "basis": "expected value = P(accept | hidden behaviour model) x final price; realized = Bernoulli draws; baseline = static SPA-RELAX at list price to every opted-in guest"
+  },
+  "model": {
+    "device": "cuda",
+    "tree_method": "hist",
+    "n_test": 5083,
+    "base_rate": 0.2829,
+    "roc_auc": 0.6549,
+    "pr_auc": 0.4336,
+    "ks": 0.2265,
+    "brier": 0.1898,
+    "brier_baseline": 0.2029,
+    "top_decile_lift": 1.788,
+    "feature_importance": [
+      {
+        "feature": "discount_pct",
+        "gain": 19.437
+      },
+      {
+        "feature": "category",
+        "gain": 16.896
+      },
+      {
+        "feature": "segment",
+        "gain": 10.497
+      },
+      {
+        "feature": "loyalty_tier",
+        "gain": 9.778
+      },
+      {
+        "feature": "price",
+        "gain": 9.735
+      },
+      {
+        "feature": "total_stays",
+        "gain": 8.711
+      },
+      {
+        "feature": "room_type",
+        "gain": 8.617
+      },
+      {
+        "feature": "ltv_usd",
+        "gain": 8.364
+      },
+      {
+        "feature": "adr",
+        "gain": 7.268
+      },
+      {
+        "feature": "has_event",
+        "gain": 7.078
+      },
+      {
+        "feature": "precip_prob",
+        "gain": 6.714
+      },
+      {
+        "feature": "party_size",
+        "gain": 5.715
+      }
+    ]
+  }
+}

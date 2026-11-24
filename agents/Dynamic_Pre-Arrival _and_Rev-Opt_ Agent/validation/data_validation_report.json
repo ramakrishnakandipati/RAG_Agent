@@ -1,0 +1,306 @@
+{
+  "generated": "2026-11-24T14:31:49",
+  "n_checks": 47,
+  "n_passed": 45,
+  "all_passed": false,
+  "psi": {
+    "adr": 0.0039,
+    "lead_days": 0.0019,
+    "nights": 0.0012,
+    "party_size": 0.0002
+  },
+  "row_counts": {
+    "guests": 6000,
+    "reservations": 18000,
+    "weather": 472,
+    "occupancy": 472,
+    "inventory": 3776,
+    "offer_history": 20332,
+    "sku_catalog": 8,
+    "events": 17
+  },
+  "checks": [
+    {
+      "table": "guests",
+      "check": "schema_columns_present",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "table": "guests",
+      "check": "no_nulls",
+      "passed": true,
+      "detail": "{}"
+    },
+    {
+      "table": "guests",
+      "check": "range_total_stays[0,200]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "guests",
+      "check": "range_ltv_usd[0,1000000.0]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "guests",
+      "check": "range_avg_adr[1,5000]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "guests",
+      "check": "range_avg_sentiment[-1,1]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "guests",
+      "check": "enum_segment",
+      "passed": true,
+      "detail": "0 invalid"
+    },
+    {
+      "table": "guests",
+      "check": "enum_loyalty_tier",
+      "passed": true,
+      "detail": "0 invalid"
+    },
+    {
+      "table": "guests",
+      "check": "unique_guest_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "reservations",
+      "check": "schema_columns_present",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "table": "reservations",
+      "check": "no_nulls",
+      "passed": true,
+      "detail": "{}"
+    },
+    {
+      "table": "reservations",
+      "check": "range_nights[1,30]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "reservations",
+      "check": "range_party_size[1,20]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "reservations",
+      "check": "range_adr[1,5000]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "reservations",
+      "check": "range_lead_days[0,400]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "reservations",
+      "check": "enum_channel_group",
+      "passed": true,
+      "detail": "0 invalid"
+    },
+    {
+      "table": "reservations",
+      "check": "enum_room_type",
+      "passed": true,
+      "detail": "0 invalid"
+    },
+    {
+      "table": "reservations",
+      "check": "enum_status",
+      "passed": true,
+      "detail": "0 invalid"
+    },
+    {
+      "table": "reservations",
+      "check": "unique_reservation_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "weather",
+      "check": "schema_columns_present",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "table": "weather",
+      "check": "no_nulls",
+      "passed": true,
+      "detail": "{}"
+    },
+    {
+      "table": "weather",
+      "check": "range_precip_prob[0,1]",
+      "passed": false,
+      "detail": "1 violations"
+    },
+    {
+      "table": "weather",
+      "check": "range_temp_c[-30,55]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "weather",
+      "check": "range_wind_kph[0,200]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "occupancy",
+      "check": "schema_columns_present",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "table": "occupancy",
+      "check": "no_nulls",
+      "passed": true,
+      "detail": "{}"
+    },
+    {
+      "table": "occupancy",
+      "check": "range_occupancy_pct[0,100]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "occupancy",
+      "check": "range_rooms_sold[0,100000]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "inventory",
+      "check": "schema_columns_present",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "table": "inventory",
+      "check": "no_nulls",
+      "passed": true,
+      "detail": "{}"
+    },
+    {
+      "table": "inventory",
+      "check": "range_capacity[0,1000000.0]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "inventory",
+      "check": "range_booked[0,1000000.0]",
+      "passed": true,
+      "detail": "0 violations"
+    },
+    {
+      "table": "reservations",
+      "check": "ref_guest_exists",
+      "passed": false,
+      "detail": "1 orphans"
+    },
+    {
+      "table": "reservations",
+      "check": "check_out_after_check_in",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "reservations",
+      "check": "nights_matches_dates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "guests",
+      "check": "stays_consistent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "inventory",
+      "check": "booked_le_capacity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "inventory",
+      "check": "ref_sku_in_catalog",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "occupancy",
+      "check": "sold_le_total",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "weather",
+      "check": "covers_reservation_dates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "offer_history",
+      "check": "ref_reservation_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "offer_history",
+      "check": "label_binary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "offer_history",
+      "check": "final_price_consistent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "table": "reservations",
+      "check": "psi_adr<0.25",
+      "passed": true,
+      "detail": "psi=0.0039"
+    },
+    {
+      "table": "reservations",
+      "check": "psi_lead_days<0.25",
+      "passed": true,
+      "detail": "psi=0.0019"
+    },
+    {
+      "table": "reservations",
+      "check": "psi_nights<0.25",
+      "passed": true,
+      "detail": "psi=0.0012"
+    },
+    {
+      "table": "reservations",
+      "check": "psi_party_size<0.25",
+      "passed": true,
+      "detail": "psi=0.0002"
+    }
+  ]
+}

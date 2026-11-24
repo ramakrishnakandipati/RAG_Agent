@@ -1,0 +1,189 @@
+
+[1/7] Hardware
+14:22:08 INFO hra.device device_detected {"cuda": true, "device": "cuda", "name": "NVIDIA GeForce RTX 3090", "total_vram_gb": 25.77, "free_vram_gb": 19.34, "torch": "2.11.0+cu128"}
+{'cuda': True, 'device': 'cuda', 'name': 'NVIDIA GeForce RTX 3090', 'total_vram_gb': 25.77, 'free_vram_gb': 19.34, 'torch': '2.11.0+cu128'}
+LLM mode=live model=qwen3-vl-30b-a3b-instruct up=True
+
+[2/7] Synthetic data
+{'guests': 6000, 'reservations': 18000, 'weather': 472, 'events': 17, 'occupancy': 472, 'inventory': 3776, 'sku_catalog': 8, 'offer_history': 20332}
+
+[3/7] Data validation
+47/47 checks passed
+
+[4/7] PMS load + GPU XGBoost training
+14:22:15 INFO hra.pms pms_initialised {"guests": 6000, "reservations": 18000, "inventory": 3776}
+14:22:17 INFO hra.nba xgb_trained {"device": "cuda", "tree_method": "hist", "best_iteration": 137, "n_train": 12961, "n_test": 5083, "auc": 0.6549}
+{'device': 'cuda', 'tree_method': 'hist', 'best_iteration': 137, 'n_train': 12961, 'n_test': 5083, 'auc': 0.6549}
+
+[5/7] Offline replay (120 journeys)
+W1124 14:22:21.252000 52580 site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:   9%|▉         | 36/391 [00:00<00:01, 344.56it/s]Loading weights:  20%|█▉        | 77/391 [00:00<00:00, 345.29it/s]Loading weights:  29%|██▊       | 112/391 [00:00<00:00, 345.71it/s]Loading weights:  38%|███▊      | 147/391 [00:00<00:00, 320.04it/s]Loading weights:  46%|████▌     | 180/391 [00:00<00:00, 289.83it/s]Loading weights:  54%|█████▍    | 212/391 [00:00<00:00, 290.69it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 505.93it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+14:22:24 INFO hra.rag embedder_loaded {"model": "BAAI/bge-large-en-v1.5", "device": "cuda", "fp16": true}
+Loading weights:   0%|          | 0/393 [00:00<?, ?it/s]Loading weights:   2%|▏         | 7/393 [00:00<00:31, 12.24it/s]Loading weights:   2%|▏         | 9/393 [00:00<00:30, 12.42it/s]Loading weights:  12%|█▏        | 49/393 [00:00<00:03, 91.63it/s]Loading weights:  22%|██▏       | 85/393 [00:00<00:02, 148.27it/s]Loading weights:  30%|███       | 119/393 [00:01<00:01, 193.52it/s]Loading weights:  39%|███▉      | 153/393 [00:01<00:01, 228.79it/s]Loading weights:  47%|████▋     | 185/393 [00:01<00:00, 251.78it/s]Loading weights:  57%|█████▋    | 223/393 [00:01<00:00, 284.65it/s]Loading weights:  65%|██████▌   | 257/393 [00:01<00:00, 294.76it/s]Loading weights:  75%|███████▍  | 293/393 [00:01<00:00, 304.65it/s]Loading weights:  83%|████████▎ | 328/393 [00:01<00:00, 316.86it/s]Loading weights:  92%|█████████▏| 362/393 [00:01<00:00, 320.56it/s]Loading weights: 100%|██████████| 393/393 [00:01<00:00, 211.45it/s]
+14:22:28 INFO hra.rag reranker_loaded {"model": "BAAI/bge-reranker-large", "device": "cuda"}
+14:22:33 INFO hra.compliance dispatched {"thread": "R510565-040d51ea", "status": "SENT", "sku": "DIN-CHEF"}
+14:22:37 INFO hra.compliance dispatched {"thread": "R514543-8b5ea443", "status": "SENT", "sku": "DIN-CHEF"}
+14:22:41 INFO hra.compliance dispatched {"thread": "R500203-812ca7d7", "status": "SENT", "sku": "LOY-DIRECT"}
+14:22:44 INFO hra.compliance dispatched {"thread": "R517860-07b221bc", "status": "SENT", "sku": "LOY-DIRECT"}
+14:22:48 INFO hra.compliance dispatched {"thread": "R514058-91f0cde5", "status": "SENT", "sku": "DIN-BRKFST"}
+14:22:51 INFO hra.compliance dispatched {"thread": "R514058-fccc9cef", "status": "SENT", "sku": "DIN-BRKFST"}
+14:22:53 INFO hra.compliance dispatched {"thread": "R517534-aa889fa5", "status": "SENT", "sku": "DIN-CHEF"}
+14:22:57 INFO hra.compliance dispatched {"thread": "R505761-e81b06c5", "status": "SENT", "sku": "DIN-CHEF"}
+14:23:01 INFO hra.compliance dispatched {"thread": "R505761-34f367de", "status": "BOOKED", "sku": "DIN-CHEF"}
+14:23:05 INFO hra.compliance dispatched {"thread": "R516457-cc947cb0", "status": "SENT", "sku": "LOY-DIRECT"}
+14:23:08 INFO hra.compliance dispatched {"thread": "R516457-4f712c34", "status": "BOOKED", "sku": "LOY-DIRECT"}
+  replay 10/120  (51s)
+14:23:10 INFO hra.compliance dispatched {"thread": "R511075-b053ca9d", "status": "SENT", "sku": "LOY-DIRECT"}
+14:23:16 INFO hra.compliance dispatched {"thread": "R516389-81a11d93", "status": "SENT", "sku": "SPA-COUPLE"}
+14:23:20 INFO hra.compliance dispatched {"thread": "R507786-00542d30", "status": "SENT", "sku": "DIN-CHEF"}
+14:23:22 INFO hra.compliance dispatched {"thread": "R507786-d053e917", "status": "SENT", "sku": "DIN-CHEF"}
+14:23:25 INFO hra.compliance dispatched {"thread": "R512213-43647119", "status": "SENT", "sku": "DIN-CHEF"}
+14:23:28 INFO hra.compliance dispatched {"thread": "R513798-fd6d70a6", "status": "SENT", "sku": "LOY-DIRECT"}
+14:23:32 INFO hra.compliance dispatched {"thread": "R513798-e3f96464", "status": "BOOKED", "sku": "LOY-DIRECT"}
+14:23:35 INFO hra.compliance dispatched {"thread": "R517425-a9ab8ece", "status": "SENT", "sku": "DIN-CHEF"}
+14:23:38 INFO hra.compliance dispatched {"thread": "R512331-5afdedd8", "status": "SENT", "sku": "DIN-CHEF"}
+14:23:42 INFO hra.compliance dispatched {"thread": "R504121-55981e19", "status": "SENT", "sku": "DIN-BRKFST"}
+14:23:44 INFO hra.compliance dispatched {"thread": "R502890-0984d329", "status": "SENT", "sku": "DIN-CHEF"}
+14:23:48 INFO hra.compliance dispatched {"thread": "R516011-331adeaf", "status": "SENT", "sku": "DIN-BRKFST"}
+  replay 20/120  (91s)
+14:23:51 INFO hra.compliance dispatched {"thread": "R513645-a97c4240", "status": "SENT", "sku": "DIN-CHEF"}
+14:23:55 INFO hra.compliance dispatched {"thread": "R502828-e9e73804", "status": "SENT", "sku": "LOY-DIRECT"}
+14:23:59 INFO hra.compliance dispatched {"thread": "R508754-edab64eb", "status": "SENT", "sku": "DIN-BRKFST"}
+14:24:02 INFO hra.compliance dispatched {"thread": "R512902-9bab9b14", "status": "SENT", "sku": "DIN-CHEF"}
+14:24:06 INFO hra.compliance dispatched {"thread": "R512902-94cd1884", "status": "BOOKED", "sku": "DIN-CHEF"}
+14:24:08 INFO hra.compliance dispatched {"thread": "R510375-af56a879", "status": "SENT", "sku": "DIN-BRKFST"}
+14:24:12 INFO hra.compliance dispatched {"thread": "R511068-29c1526f", "status": "SENT", "sku": "DIN-BRKFST"}
+14:24:15 INFO hra.compliance dispatched {"thread": "R513487-1dc45ad5", "status": "SENT", "sku": "LOY-DIRECT"}
+14:24:19 INFO hra.compliance dispatched {"thread": "R502458-7a90761d", "status": "SENT", "sku": "DIN-CHEF"}
+14:24:22 INFO hra.compliance dispatched {"thread": "R502458-684420b2", "status": "BOOKED", "sku": "DIN-CHEF"}
+14:24:24 INFO hra.compliance dispatched {"thread": "R511820-5d43d2d4", "status": "SENT", "sku": "LOY-DIRECT"}
+14:24:27 INFO hra.compliance dispatched {"thread": "R511820-82092167", "status": "SENT", "sku": "LOY-DIRECT"}
+14:24:29 INFO hra.compliance dispatched {"thread": "R517717-c65ebf04", "status": "SENT", "sku": "LOY-DIRECT"}
+14:24:33 INFO hra.compliance dispatched {"thread": "R517717-5fd221c1", "status": "BOOKED", "sku": "LOY-DIRECT"}
+  replay 30/120  (136s)
+14:24:38 INFO hra.compliance dispatched {"thread": "R511031-ce62894a", "status": "SENT", "sku": "DIN-CHEF"}
+14:24:41 INFO hra.compliance dispatched {"thread": "R510483-3e3b4568", "status": "SENT", "sku": "SPA-COUPLE"}
+14:24:45 INFO hra.compliance dispatched {"thread": "R500842-20f90877", "status": "SENT", "sku": "DIN-CHEF"}
+14:24:49 INFO hra.compliance dispatched {"thread": "R514832-ebf26bcb", "status": "SENT", "sku": "DIN-CHEF"}
+14:24:51 INFO hra.compliance dispatched {"thread": "R514832-eb948515", "status": "SENT", "sku": "DIN-CHEF"}
+14:24:53 INFO hra.compliance dispatched {"thread": "R507931-65a36ce2", "status": "SENT", "sku": "LOY-DIRECT"}
+14:24:57 INFO hra.compliance dispatched {"thread": "R507772-08f712fe", "status": "SENT", "sku": "LOY-DIRECT"}
+14:25:01 INFO hra.compliance dispatched {"thread": "R507772-13d1a512", "status": "BOOKED", "sku": "LOY-DIRECT"}
+14:25:03 INFO hra.compliance dispatched {"thread": "R516172-02aa94fd", "status": "SENT", "sku": "DIN-CHEF"}
+  replay 40/120  (166s)
+14:25:07 INFO hra.compliance dispatched {"thread": "R504777-a03a021e", "status": "SENT", "sku": "DIN-BRKFST"}
+14:25:11 INFO hra.compliance dispatched {"thread": "R504777-3ca44451", "status": "BOOKED", "sku": "DIN-BRKFST"}
+14:25:13 INFO hra.compliance dispatched {"thread": "R507949-868103e8", "status": "SENT", "sku": "SPA-COUPLE"}
+14:25:19 INFO hra.compliance dispatched {"thread": "R506544-3494acb5", "status": "SENT", "sku": "DIN-CHEF"}
+14:25:23 INFO hra.compliance dispatched {"thread": "R507557-6560692a", "status": "SENT", "sku": "DIN-CHEF"}
+14:25:27 INFO hra.compliance dispatched {"thread": "R507557-592faa25", "status": "BOOKED", "sku": "DIN-CHEF"}
+14:25:29 INFO hra.compliance dispatched {"thread": "R503140-26b1336d", "status": "SENT", "sku": "LOY-DIRECT"}
+14:25:33 INFO hra.compliance dispatched {"thread": "R508021-0c460e7c", "status": "SENT", "sku": "DIN-CHEF"}
+  replay 50/120  (198s)
+14:25:39 INFO hra.compliance dispatched {"thread": "R502944-53512b24", "status": "SENT", "sku": "SPA-COUPLE"}
+14:25:42 INFO hra.compliance dispatched {"thread": "R505775-d1fc3047", "status": "SENT", "sku": "LOY-DIRECT"}
+14:25:46 INFO hra.compliance dispatched {"thread": "R516944-786ca9fd", "status": "SENT", "sku": "DIN-BRKFST"}
+14:25:50 INFO hra.compliance dispatched {"thread": "R516944-012e7412", "status": "BOOKED", "sku": "DIN-BRKFST"}
+14:25:52 INFO hra.compliance dispatched {"thread": "R515973-3e6f131b", "status": "SENT", "sku": "LOY-DIRECT"}
+14:25:56 INFO hra.compliance dispatched {"thread": "R515973-8d75df20", "status": "BOOKED", "sku": "LOY-DIRECT"}
+14:25:58 INFO hra.compliance dispatched {"thread": "R517173-f69977c3", "status": "SENT", "sku": "DIN-CHEF"}
+14:26:04 INFO hra.compliance dispatched {"thread": "R516369-fb22b0ff", "status": "SENT", "sku": "SPA-RELAX"}
+14:26:08 INFO hra.compliance dispatched {"thread": "R504848-6504d859", "status": "SENT", "sku": "LOY-DIRECT"}
+14:26:11 INFO hra.compliance dispatched {"thread": "R514042-94b2c5be", "status": "SENT", "sku": "SPA-COUPLE"}
+  replay 60/120  (235s)
+14:26:15 INFO hra.compliance dispatched {"thread": "R510864-e9cccdf9", "status": "SENT", "sku": "DIN-BRKFST"}
+14:26:19 INFO hra.compliance dispatched {"thread": "R510864-3db05da5", "status": "BOOKED", "sku": "DIN-BRKFST"}
+14:26:23 INFO hra.compliance dispatched {"thread": "R513599-aa6dced4", "status": "SENT", "sku": "LOY-DIRECT"}
+14:26:26 INFO hra.compliance dispatched {"thread": "R512424-8c85865e", "status": "SENT", "sku": "DIN-BRKFST"}
+14:26:30 INFO hra.compliance dispatched {"thread": "R509439-31271d3f", "status": "SENT", "sku": "DIN-BRKFST"}
+14:26:34 INFO hra.compliance dispatched {"thread": "R509439-e0e7b36e", "status": "BOOKED", "sku": "DIN-BRKFST"}
+14:26:36 INFO hra.compliance dispatched {"thread": "R511445-e7c81dad", "status": "SENT", "sku": "DIN-BRKFST"}
+14:26:39 INFO hra.compliance dispatched {"thread": "R508235-20e0b48f", "status": "SENT", "sku": "DIN-CHEF"}
+14:26:43 INFO hra.compliance dispatched {"thread": "R508007-d717e3c5", "status": "SENT", "sku": "LOY-DIRECT"}
+14:26:46 INFO hra.compliance dispatched {"thread": "R500382-db89f9bc", "status": "SENT", "sku": "DIN-BRKFST"}
+14:26:50 INFO hra.compliance dispatched {"thread": "R513996-49e25e65", "status": "SENT", "sku": "LOY-DIRECT"}
+14:26:53 INFO hra.compliance dispatched {"thread": "R513996-bf499d78", "status": "BOOKED", "sku": "LOY-DIRECT"}
+  replay 70/120  (276s)
+14:26:56 INFO hra.compliance dispatched {"thread": "R517839-4606b227", "status": "SENT", "sku": "DIN-CHEF"}
+14:26:59 INFO hra.compliance dispatched {"thread": "R517839-4c3f0ed9", "status": "BOOKED", "sku": "DIN-CHEF"}
+14:27:02 INFO hra.compliance dispatched {"thread": "R507594-3740bd59", "status": "SENT", "sku": "DIN-BRKFST"}
+14:27:05 INFO hra.compliance dispatched {"thread": "R501298-d361dfd5", "status": "SENT", "sku": "DIN-CHEF"}
+14:27:08 INFO hra.compliance dispatched {"thread": "R510867-89cfc1b1", "status": "SENT", "sku": "LOY-DIRECT"}
+14:27:12 INFO hra.compliance dispatched {"thread": "R500696-066f8161", "status": "SENT", "sku": "DIN-CHEF"}
+14:27:16 INFO hra.compliance dispatched {"thread": "R500696-d4a4782a", "status": "BOOKED", "sku": "DIN-CHEF"}
+14:27:18 INFO hra.compliance dispatched {"thread": "R507014-b7b0c552", "status": "SENT", "sku": "SPA-COUPLE"}
+14:27:22 INFO hra.compliance dispatched {"thread": "R512036-e517fa4b", "status": "SENT", "sku": "LOY-DIRECT"}
+14:27:26 INFO hra.compliance dispatched {"thread": "R512036-95504b70", "status": "BOOKED", "sku": "LOY-DIRECT"}
+14:27:27 INFO hra.compliance dispatched {"thread": "R502006-f8f5d8c7", "status": "SENT", "sku": "LOY-DIRECT"}
+14:27:31 INFO hra.compliance dispatched {"thread": "R500258-f6999e30", "status": "SENT", "sku": "DIN-BRKFST"}
+  replay 80/120  (315s)
+14:27:35 INFO hra.compliance dispatched {"thread": "R517057-0514e86e", "status": "SENT", "sku": "SPA-COUPLE"}
+14:27:38 INFO hra.compliance dispatched {"thread": "R500685-de92ee61", "status": "SENT", "sku": "LOY-DIRECT"}
+14:27:42 INFO hra.compliance dispatched {"thread": "R500685-a4c4c365", "status": "BOOKED", "sku": "LOY-DIRECT"}
+14:27:44 INFO hra.compliance dispatched {"thread": "R507307-039b5afb", "status": "SENT", "sku": "SPA-COUPLE"}
+14:27:47 INFO hra.compliance dispatched {"thread": "R507307-94901bd1", "status": "SENT", "sku": "SPA-COUPLE"}
+14:27:49 INFO hra.compliance dispatched {"thread": "R509672-2f40b30c", "status": "SENT", "sku": "DIN-CHEF"}
+14:27:53 INFO hra.compliance dispatched {"thread": "R509672-26b0f368", "status": "BOOKED", "sku": "DIN-CHEF"}
+14:27:55 INFO hra.compliance dispatched {"thread": "R516901-4880cee2", "status": "SENT", "sku": "SPA-COUPLE"}
+14:27:59 INFO hra.compliance dispatched {"thread": "R510897-03b2dbce", "status": "SENT", "sku": "LOY-DIRECT"}
+14:28:02 INFO hra.compliance dispatched {"thread": "R501309-fd3a70aa", "status": "SENT", "sku": "LOY-DIRECT"}
+14:28:06 INFO hra.compliance dispatched {"thread": "R504959-7fb52abb", "status": "SENT", "sku": "DIN-CHEF"}
+14:28:08 INFO hra.compliance dispatched {"thread": "R504959-42b9d0b5", "status": "SENT", "sku": "DIN-CHEF"}
+14:28:10 INFO hra.compliance dispatched {"thread": "R502783-0ef50127", "status": "SENT", "sku": "DIN-CHEF"}
+  replay 90/120  (354s)
+14:28:14 INFO hra.compliance dispatched {"thread": "R516274-b2ef1ac4", "status": "SENT", "sku": "DIN-CHEF"}
+14:28:17 INFO hra.compliance dispatched {"thread": "R516274-b09a1d10", "status": "BOOKED", "sku": "DIN-CHEF"}
+14:28:20 INFO hra.compliance dispatched {"thread": "R512060-67c89625", "status": "SENT", "sku": "DIN-CHEF"}
+14:28:24 INFO hra.compliance dispatched {"thread": "R512113-9f201272", "status": "SENT", "sku": "DIN-CHEF"}
+14:28:27 INFO hra.compliance dispatched {"thread": "R512113-63c5ded4", "status": "BOOKED", "sku": "DIN-CHEF"}
+14:28:29 INFO hra.compliance dispatched {"thread": "R517767-ac9b18cf", "status": "SENT", "sku": "DIN-BRKFST"}
+14:28:33 INFO hra.compliance dispatched {"thread": "R517767-e2dc3f9f", "status": "BOOKED", "sku": "DIN-BRKFST"}
+14:28:36 INFO hra.compliance dispatched {"thread": "R514801-f8476073", "status": "SENT", "sku": "LOY-DIRECT"}
+14:28:38 INFO hra.compliance dispatched {"thread": "R514801-27db7db7", "status": "SENT", "sku": "LOY-DIRECT"}
+14:28:39 INFO hra.compliance dispatched {"thread": "R516482-abc512b2", "status": "SENT", "sku": "LOY-DIRECT"}
+14:28:45 INFO hra.compliance dispatched {"thread": "R508541-ab7f7fb7", "status": "SENT", "sku": "DIN-BRKFST"}
+14:28:48 INFO hra.compliance dispatched {"thread": "R504296-4979623e", "status": "SENT", "sku": "DIN-BRKFST"}
+14:28:52 INFO hra.compliance dispatched {"thread": "R504296-f0466d15", "status": "BOOKED", "sku": "DIN-BRKFST"}
+14:28:54 INFO hra.compliance dispatched {"thread": "R510905-ad478a8e", "status": "SENT", "sku": "DIN-CHEF"}
+14:28:58 INFO hra.compliance dispatched {"thread": "R517353-fb26e9b2", "status": "SENT", "sku": "DIN-CHEF"}
+14:29:01 INFO hra.compliance dispatched {"thread": "R517353-f0611a6d", "status": "BOOKED", "sku": "DIN-CHEF"}
+  replay 100/120  (404s)
+14:29:03 INFO hra.compliance dispatched {"thread": "R507023-e441e326", "status": "SENT", "sku": "LOY-DIRECT"}
+14:29:07 INFO hra.compliance dispatched {"thread": "R507023-a0578a0f", "status": "BOOKED", "sku": "LOY-DIRECT"}
+14:29:09 INFO hra.compliance dispatched {"thread": "R508689-54224dd9", "status": "SENT", "sku": "DIN-CHEF"}
+14:29:13 INFO hra.compliance dispatched {"thread": "R512126-a778f62c", "status": "SENT", "sku": "DIN-BRKFST"}
+14:29:17 INFO hra.compliance dispatched {"thread": "R512126-a22c2bed", "status": "BOOKED", "sku": "DIN-BRKFST"}
+14:29:19 INFO hra.compliance dispatched {"thread": "R509075-5e29b884", "status": "SENT", "sku": "DIN-CHEF"}
+14:29:23 INFO hra.compliance dispatched {"thread": "R509075-178e8526", "status": "BOOKED", "sku": "DIN-CHEF"}
+14:29:25 INFO hra.compliance dispatched {"thread": "R515039-ece2a823", "status": "SENT", "sku": "DIN-CHEF"}
+14:29:29 INFO hra.compliance dispatched {"thread": "R512142-35885d94", "status": "SENT", "sku": "DIN-CHEF"}
+14:29:32 INFO hra.compliance dispatched {"thread": "R512142-a037874a", "status": "BOOKED", "sku": "DIN-CHEF"}
+14:29:35 INFO hra.compliance dispatched {"thread": "R514918-69c5af01", "status": "SENT", "sku": "DIN-BRKFST"}
+14:29:39 INFO hra.compliance dispatched {"thread": "R512105-11baec71", "status": "SENT", "sku": "DIN-CHEF"}
+14:29:42 INFO hra.compliance dispatched {"thread": "R512105-ff668ca4", "status": "BOOKED", "sku": "DIN-CHEF"}
+  replay 110/120  (444s)
+14:29:43 INFO hra.compliance dispatched {"thread": "R501511-4e9c4d8b", "status": "SENT", "sku": "DIN-BRKFST"}
+14:29:47 INFO hra.compliance dispatched {"thread": "R501511-1ad64374", "status": "BOOKED", "sku": "DIN-BRKFST"}
+14:29:49 INFO hra.compliance dispatched {"thread": "R508147-47e366fa", "status": "SENT", "sku": "DIN-CHEF"}
+14:29:53 INFO hra.compliance dispatched {"thread": "R513479-760a1c88", "status": "SENT", "sku": "DIN-CHEF"}
+14:29:56 INFO hra.compliance dispatched {"thread": "R511232-3cbe442e", "status": "SENT", "sku": "SPA-COUPLE"}
+14:30:00 INFO hra.compliance dispatched {"thread": "R513225-aa9a88b4", "status": "SENT", "sku": "SPA-RELAX"}
+14:30:06 INFO hra.compliance dispatched {"thread": "R516676-c4d53133", "status": "SENT", "sku": "LOY-DIRECT"}
+14:30:12 INFO hra.compliance dispatched {"thread": "R500061-6f9024d6", "status": "SENT", "sku": "DIN-BRKFST"}
+14:30:14 INFO hra.compliance dispatched {"thread": "R500061-76b7260d", "status": "SENT", "sku": "DIN-BRKFST"}
+14:30:16 INFO hra.compliance dispatched {"thread": "R502303-a156548e", "status": "SENT", "sku": "LOY-DIRECT"}
+14:30:20 INFO hra.compliance dispatched {"thread": "R502160-d17365ab", "status": "SENT", "sku": "DIN-CHEF"}
+  replay 120/120  (483s)
+14:30:21 INFO hra.replay replay_done {"n_journeys": 120, "hallucination_rate_pct": 0.0}
+{'n_journeys': 120, 'hallucination_rate_pct': 0.0, 'funnel': {'no_offer': 10, 'retried_then_passed': 13, 'first_pass': 87, 'hard_stop_guest_not_opted_in': 6, 'escalated_hitl': 3, 'hard_stop_frequency_cap_exceeded': 1}, 'adversarial_catch_rate_pct': 100.0}
+
+[6/7] Charts
+['01_guest_segments.png', '02_booking_channel_split.png', '03_adr_vs_ancillary_spend.png', '04_weather_vs_conversion.png', '05_roc_curve.png', '06_pr_curve.png', '07_calibration.png', '08_feature_importance.png', '09_node_latency.png', '10_guardrail_funnel.png', '11_revpar_lift.png', '12_state_transitions.png']
+
+[7/7] UI screenshots + README
+['01_control_center_home.png', '02_live_trigger_result.png', '03_two_way_reply_booking.png', '04_state_trace.png', '05_hitl_queue.png', '06_data_lineage.png', '07_metrics_and_logs.png']
+README -> D:\Ramakrishna_D\Python\GitProjects\RAG_Agent\agents\Dynamic_Pre-Arrival _and_Rev-Opt_ Agent\README.md
+14:31:41 INFO hra.run_all run_all_done {"seconds": 574.1}
+
+Done in 574s
