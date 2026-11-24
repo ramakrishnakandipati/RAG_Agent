@@ -1,8 +1,8 @@
 {
-  "generated": "2026-11-24T14:44:50",
+  "generated": "2026-11-24T14:52:55",
   "n_checks": 47,
-  "n_passed": 45,
-  "all_passed": false,
+  "n_passed": 47,
+  "all_passed": true,
   "psi": {
     "adr": 0.0039,
     "lead_days": 0.0019,
@@ -149,8 +149,8 @@
     {
       "table": "weather",
       "check": "range_precip_prob[0,1]",
-      "passed": false,
-      "detail": "1 violations"
+      "passed": true,
+      "detail": "0 violations"
     },
     {
       "table": "weather",
@@ -215,8 +215,8 @@
     {
       "table": "reservations",
       "check": "ref_guest_exists",
-      "passed": false,
-      "detail": "1 orphans"
+      "passed": true,
+      "detail": "0 orphans"
     },
     {
       "table": "reservations",

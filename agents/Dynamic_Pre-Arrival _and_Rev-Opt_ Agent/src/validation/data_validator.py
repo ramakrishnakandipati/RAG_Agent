@@ -40,8 +40,11 @@ def psi(expected: pd.Series, actual: pd.Series, bins: int = 10) -> float:
     return float(np.sum((a - e) * np.log(a / e)))
 
 
-def validate_all(data: dict[str, pd.DataFrame] | None = None) -> dict:
+def validate_all(data: dict[str, pd.DataFrame] | None = None, write_report: bool | None = None) -> dict:
+    """Validate; the JSON report is only written for the real datasets (data=None) unless write_report is forced."""
     s = get_settings()
+    if write_report is None:
+        write_report = data is None
     if data is None:
         data = {k: pd.read_csv(s.raw_dir / f"{k}.csv", keep_default_na=False, na_values=[""]) for k in
                 [*SCHEMAS, "offer_history", "sku_catalog", "events"]}
@@ -92,7 +95,8 @@ def validate_all(data: dict[str, pd.DataFrame] | None = None) -> dict:
     report = {"generated": datetime.now().isoformat(timespec="seconds"), "n_checks": len(checks),
               "n_passed": sum(c["passed"] for c in checks), "all_passed": all(c["passed"] for c in checks),
               "psi": drift, "row_counts": {k: len(v) for k, v in data.items()}, "checks": checks}
-    (s.validation_dir / "data_validation_report.json").write_text(json.dumps(report, indent=2))
+    if write_report:
+        (s.validation_dir / "data_validation_report.json").write_text(json.dumps(report, indent=2))
     return report
 
 

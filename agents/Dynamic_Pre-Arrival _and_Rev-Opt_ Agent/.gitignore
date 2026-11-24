@@ -5,3 +5,5 @@ models/*.joblib
 data/chroma/
 *.sqlite
 .pytest_cache/
+*.sqlite-*
+presentation/node_modules/
