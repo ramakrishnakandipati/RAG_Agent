@@ -1,19 +1,7 @@
 [
   {
-    "id": "case_study_miami_beach_resort.md::p1::t31",
-    "rrf": 0.03252247488101534,
-    "source": "case_study_miami_beach_resort.md",
-    "section": "Q3 2025 Channel Performance",
-    "page": 1,
-    "property": "Miami Beach Resort",
-    "period": "Q3 2025",
-    "channel": "all",
-    "segment": "all",
-    "doc_type": "case_study"
-  },
-  {
     "id": "kpi_miami_beach_resort.csv::p1::t52",
-    "rrf": 0.03252247488101534,
+    "rrf": 0.09705539187294873,
     "source": "kpi_miami_beach_resort.csv",
     "section": "Miami Beach Resort KPI Q3 2025",
     "page": 1,
@@ -24,8 +12,32 @@
     "doc_type": "case_study"
   },
   {
+    "id": "case_study_miami_beach_resort.md::p1::t31",
+    "rrf": 0.09653457165520889,
+    "source": "case_study_miami_beach_resort.md",
+    "section": "Q3 2025 Channel Performance",
+    "page": 1,
+    "property": "Miami Beach Resort",
+    "period": "Q3 2025",
+    "channel": "all",
+    "segment": "all",
+    "doc_type": "case_study"
+  },
+  {
+    "id": "case_study_miami_beach_resort.md::p1::x3000",
+    "rrf": 0.09453370513821334,
+    "source": "case_study_miami_beach_resort.md",
+    "section": "Q3 2025 Channel Performance",
+    "page": 1,
+    "property": "Miami Beach Resort",
+    "period": "Q3 2025",
+    "channel": "all",
+    "segment": "all",
+    "doc_type": "case_study"
+  },
+  {
     "id": "case_study_miami_beach_resort.md::p1::x3200",
-    "rrf": 0.03149801587301587,
+    "rrf": 0.09450204813108039,
     "source": "case_study_miami_beach_resort.md",
     "section": "Q3 2025 Channel Performance",
     "page": 1,
@@ -37,7 +49,7 @@
   },
   {
     "id": "campaign_report_miami_beach_resort.pdf::p1::x500",
-    "rrf": 0.03125763125763126,
+    "rrf": 0.09380492003442824,
     "source": "campaign_report_miami_beach_resort.pdf",
     "section": "Miami Beach Resort Summer Direct Booking Campaign",
     "page": 1,
@@ -46,17 +58,5 @@
     "channel": "Direct",
     "segment": "all",
     "doc_type": "campaign_report"
-  },
-  {
-    "id": "case_study_miami_beach_resort.md::p1::x3000",
-    "rrf": 0.031009615384615385,
-    "source": "case_study_miami_beach_resort.md",
-    "section": "Q3 2025 Channel Performance",
-    "page": 1,
-    "property": "Miami Beach Resort",
-    "period": "Q3 2025",
-    "channel": "all",
-    "segment": "all",
-    "doc_type": "case_study"
   }
 ]

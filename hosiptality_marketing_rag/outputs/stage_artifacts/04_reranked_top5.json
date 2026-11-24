@@ -1,7 +1,7 @@
 [
   {
     "id": "kpi_miami_beach_resort.csv::p1::t52",
-    "score": 0.9998775720596313,
+    "score": 0.9991768002510071,
     "source": "kpi_miami_beach_resort.csv",
     "section": "Miami Beach Resort KPI Q3 2025",
     "page": 1,
@@ -13,7 +13,7 @@
   },
   {
     "id": "case_study_miami_beach_resort.md::p1::t31",
-    "score": 0.9998557567596436,
+    "score": 0.9988664388656616,
     "source": "case_study_miami_beach_resort.md",
     "section": "Q3 2025 Channel Performance",
     "page": 1,
@@ -24,20 +24,8 @@
     "doc_type": "case_study"
   },
   {
-    "id": "case_study_miami_beach_resort.md::p1::x3200",
-    "score": 0.8700461983680725,
-    "source": "case_study_miami_beach_resort.md",
-    "section": "Q3 2025 Channel Performance",
-    "page": 1,
-    "property": "Miami Beach Resort",
-    "period": "Q3 2025",
-    "channel": "Direct",
-    "segment": "all",
-    "doc_type": "case_study"
-  },
-  {
     "id": "campaign_report_miami_beach_resort.pdf::p1::x500",
-    "score": 0.7902066707611084,
+    "score": 0.9867772459983826,
     "source": "campaign_report_miami_beach_resort.pdf",
     "section": "Miami Beach Resort Summer Direct Booking Campaign",
     "page": 1,
@@ -48,8 +36,20 @@
     "doc_type": "campaign_report"
   },
   {
+    "id": "case_study_miami_beach_resort.md::p1::x3200",
+    "score": 0.7798252701759338,
+    "source": "case_study_miami_beach_resort.md",
+    "section": "Q3 2025 Channel Performance",
+    "page": 1,
+    "property": "Miami Beach Resort",
+    "period": "Q3 2025",
+    "channel": "Direct",
+    "segment": "all",
+    "doc_type": "case_study"
+  },
+  {
     "id": "case_study_miami_beach_resort.md::p1::x3000",
-    "score": 0.13106197118759155,
+    "score": 0.011029469780623913,
     "source": "case_study_miami_beach_resort.md",
     "section": "Q3 2025 Channel Performance",
     "page": 1,
