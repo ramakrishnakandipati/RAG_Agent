@@ -1,0 +1,82 @@
+{
+  "ts": "2026-11-25T04:47:03.351379+00:00",
+  "model": "qwen3-vl-30b-a3b-instruct",
+  "endpoint": "http://localhost:1234/v1",
+  "vlm_live": true,
+  "n_charts": 6,
+  "mean_score": 9.0,
+  "audits": [
+    {
+      "file": "data_pipeline_erd_flow.png",
+      "mode": "live",
+      "errors": [],
+      "chart_type": "flow chart",
+      "title_present": true,
+      "axes_or_labels_legible": true,
+      "overlapping_or_clipped_text": false,
+      "issues": [],
+      "quality_score": 9,
+      "summary": "The flow chart is clear and well-structured with a title, legible labels on all nodes, no text overlap or clipping, and effective use of color to differentiate components."
+    },
+    {
+      "file": "langgraph_state_machine.png",
+      "mode": "live",
+      "errors": [],
+      "chart_type": "flow chart",
+      "title_present": true,
+      "axes_or_labels_legible": true,
+      "overlapping_or_clipped_text": false,
+      "issues": [],
+      "quality_score": 9,
+      "summary": "The flow chart is clear and well-structured with a descriptive title, legible labels for all nodes and gates, and no text overlap or clipping issues."
+    },
+    {
+      "file": "lift_by_decile.png",
+      "mode": "live",
+      "errors": [],
+      "chart_type": "line chart",
+      "title_present": true,
+      "axes_or_labels_legible": true,
+      "overlapping_or_clipped_text": false,
+      "issues": [],
+      "quality_score": 9,
+      "summary": "The line chart is clear and well-labeled with a title, legible axis labels, and a non-overlapping legend, though the y-axis label text orientation could be improved for better readability."
+    },
+    {
+      "file": "net_margin_waterfall.png",
+      "mode": "live",
+      "errors": [],
+      "chart_type": "waterfall chart",
+      "title_present": true,
+      "axes_or_labels_legible": true,
+      "overlapping_or_clipped_text": false,
+      "issues": [],
+      "quality_score": 9,
+      "summary": "The waterfall chart is clear and well-labeled with a title, axis labels, and value annotations; all text is legible without overlap or clipping."
+    },
+    {
+      "file": "qini_curve.png",
+      "mode": "live",
+      "errors": [],
+      "chart_type": "Qini curve",
+      "title_present": true,
+      "axes_or_labels_legible": true,
+      "overlapping_or_clipped_text": false,
+      "issues": [],
+      "quality_score": 9,
+      "summary": "The chart is a clear Qini curve with legible labels and no text overlap or clipping."
+    },
+    {
+      "file": "system_architecture_diagram.png",
+      "mode": "live",
+      "errors": [],
+      "chart_type": "system architecture diagram",
+      "title_present": true,
+      "axes_or_labels_legible": true,
+      "overlapping_or_clipped_text": false,
+      "issues": [],
+      "quality_score": 9,
+      "summary": "The system architecture diagram is clear and well-organized with a title, legible labels, and no text overlap or clipping."
+    }
+  ]
+}

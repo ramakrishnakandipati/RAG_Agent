@@ -1,0 +1,18 @@
+{
+  "cuda": true,
+  "device_name": "NVIDIA GeForce RTX 3090",
+  "cuda_version": "12.8",
+  "vram_total_mb": 24575,
+  "vram_used_mb": 0,
+  "xgboost_device": "cuda",
+  "faiss_backend": "faiss-cpu",
+  "torch_cosine_device": "cuda",
+  "timings": {
+    "uplift_t_train_cuda_s": 0.702,
+    "uplift_x_train_cuda_s": 1.054,
+    "uplift_x_train_cpu_s": 0.382,
+    "cancel_train_cuda_s": 0.35
+  },
+  "ts": "2026-11-25T04:46:37.761093+00:00",
+  "vram_peak_mb": 1619
+}

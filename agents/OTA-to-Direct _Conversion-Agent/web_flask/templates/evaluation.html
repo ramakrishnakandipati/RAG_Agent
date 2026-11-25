@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OTA-to-Direct Agent - Evaluation</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<header><h1>OTA-to-Direct Conversion Agent</h1><nav><a href="/">Booking Simulator</a><a class="on" href="/evaluation">Evaluation &amp; Validation</a></nav><span id="health" class="pill">loading...</span></header>
+<main>
+<div class="card"><h2>Offline replay (test split, treated vs 15% ghost holdout)</h2><div id="replay" class="kpis"></div></div>
+<div class="card"><h2>Data validation gates</h2><div id="dgates"></div></div>
+<div class="card"><h2>Model metrics &amp; hardware</h2><div id="models"></div></div>
+<div class="card"><h2>Agent step gates (all runs)</h2><div id="steps"></div></div>
+<div class="card"><h2>Charts</h2><div class="charts" id="charts"></div></div>
+<div class="card"><h2>VLM visual audit</h2><div id="vlm"></div></div>
+</main>
+<script>
+const $=s=>document.querySelector(s);const pct=x=>(x*100).toFixed(1)+"%";
+function kpi(l,v){return `<div class="kpi"><span>${l}</span><b>${v}</b></div>`}
+async function main(){
+ const [ev,val,met]=await Promise.all(["/api/evaluation","/api/validation","/api/metrics"].map(u=>fetch(u).then(r=>r.json())));
+ const r=ev.replay||{};
+ $("#replay").innerHTML=r.n_test?[kpi("Targeted guests",r.n_targeted),kpi("Conv. treated",pct(r.conv_treated)),kpi("Conv. ghost holdout",pct(r.conv_holdout)),kpi("Incremental lift",pct(r.incremental_lift)),
+  kpi("Lift 95% CI",pct(r.lift_ci95[0])+" to "+pct(r.lift_ci95[1])),kpi("Net revenue delta","$"+r.net_revenue_delta_usd.toLocaleString()),kpi("ROI on incentive spend",r.roi_x+"x"),kpi("Unconstrained blast (non-compliant)","$"+r.blast_all_net_revenue_delta_usd.toLocaleString())].join(""):"Run evaluation/verify_e2e.py first.";
+ const d=val.data||{};$("#dgates").innerHTML="<table><tr><th>Gate</th><th>Result</th><th>Failed checks / key metrics</th></tr>"+["D1","D2","D3"].filter(k=>d[k]).map(k=>{const g=d[k];const bad=(g.checks||[]).filter(c=>!c.passed).map(c=>c.check).join(", ");
+  return `<tr><td>${g.gate}</td><td class="${g.passed?"ok":"bad"}">${g.passed?"PASS":"FAIL"}</td><td class="mono">${bad||(g.metrics?JSON.stringify(g.metrics.recall!==undefined?{recall:g.metrics.recall,fp_merge:g.metrics.false_positive_merge_rate}:g.metrics):(g.qini!==undefined?"qini="+g.qini+" cancel_auc="+g.cancel_auc:"all checks passed"))}</td></tr>`}).join("")+"</table>";
+ const h=met.hardware||{};const rows=(met.model_metrics||[]).map(m=>`<tr><td>${m.model}</td><td>${m.device}</td><td class="mono">${Object.entries(m).filter(([k])=>!["model","device"].includes(k)&&m[k]!==null&&m[k]!=="").map(([k,v])=>k+"="+v).join("  ")}</td></tr>`).join("");
+ $("#models").innerHTML=`<p>GPU: <b>${h.device_name||"none"}</b> | CUDA ${h.cuda_version||"-"} | VRAM ${h.vram_total_mb||"-"} MB | XGBoost device: <b>${h.xgboost_device||"-"}</b> | FAISS: ${h.faiss_backend||"-"}</p><table><tr><th>Model</th><th>Device</th><th>Metrics</th></tr>${rows}</table><pre>${JSON.stringify(h.timings||{},null,2)}</pre>`;
+ const s=val.steps||{};$("#steps").innerHTML=s.nodes?"<table><tr><th>Node</th><th>Pass</th><th>Fail</th></tr>"+Object.entries(s.nodes).map(([n,c])=>`<tr><td>${n}</td><td class="ok">${c.pass}</td><td class="${c.fail?"bad":""}">${c.fail}</td></tr>`).join("")+`</table><p>${s.runs} agent runs recorded.</p>`:"No agent runs yet.";
+ const ch=await (await fetch("/api/charts")).json();$("#charts").innerHTML=ch.map(n=>`<figure><img src="/charts/${n}" alt="${n}"><figcaption class="mono">${n}</figcaption></figure>`).join("");
+ const v=ev.vlm||{};$("#health").textContent=v.vlm_live?"VLM audit: live "+v.model:"VLM audit: offline heuristic";
+ $("#vlm").innerHTML=v.audits?`<p>Mean score <b>${v.mean_score}</b> across ${v.n_charts} charts (mode per chart below).</p><table><tr><th>File</th><th>Mode</th><th>Score</th><th>Issues</th><th>Summary</th></tr>`+v.audits.map(a=>`<tr><td>${a.file}</td><td>${a.mode}</td><td>${a.quality_score}</td><td>${(a.issues||[]).join("; ")||"-"}</td><td>${a.summary}</td></tr>`).join("")+"</table>":"No audit yet.";
+}
+main();
+</script></body></html>

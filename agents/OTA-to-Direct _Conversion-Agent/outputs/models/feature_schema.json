@@ -1,0 +1,37 @@
+{
+  "features": [
+    "adr",
+    "los",
+    "lead_days",
+    "ota_commission",
+    "saved_commission_usd",
+    "free_cancellation",
+    "is_resolved",
+    "tier_n",
+    "past_direct_stays",
+    "past_ota_stays",
+    "ltv",
+    "email_opt_in",
+    "msgs_30d",
+    "ota_expedia",
+    "ota_booking",
+    "ota_agoda",
+    "purpose_leisure",
+    "purpose_business",
+    "purpose_group"
+  ],
+  "cancel_features": [
+    "lead_days",
+    "free_cancellation",
+    "ota_booking",
+    "ota_expedia",
+    "ota_agoda",
+    "los",
+    "tier_n",
+    "adr",
+    "purpose_leisure",
+    "purpose_business",
+    "purpose_group",
+    "is_resolved"
+  ]
+}

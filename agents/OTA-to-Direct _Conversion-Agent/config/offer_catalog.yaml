@@ -1,0 +1,21 @@
+# Closed-user-group (CUG) perks. Offers are NOT public rate cuts, so they do not breach OTA rate parity.
+# cost_usd = hard cost to the hotel; point_value_usd = loyalty points valuation.
+offers:
+  - {id: CUG_LATE_CHECKOUT, window: pre_arrival, label: "Late checkout until 2pm", cost_usd: 12, kind: perk}
+  - {id: CUG_BREAKFAST,     window: pre_arrival, label: "Complimentary breakfast", cost_usd: 28, kind: perk}
+  - {id: CUG_ROOM_UPGRADE,  window: pre_arrival, label: "Room upgrade (subject to availability)", cost_usd: 35, kind: perk}
+  - {id: WIFI_PREMIUM,      window: on_property, label: "Premium Wi-Fi + member welcome drink", cost_usd: 9, kind: perk}
+  - {id: WIFI_LOYALTY_JOIN, window: on_property, label: "Join loyalty on Wi-Fi: 1,000 bonus points", cost_usd: 10, kind: points, points: 1000}
+  - {id: WINBACK_POINTS,    window: post_stay, label: "2,500 points on your next direct stay", cost_usd: 25, kind: points, points: 2500}
+  - {id: WINBACK_CUG_RATE,  window: post_stay, label: "Member-only perks bundle on next direct booking", cost_usd: 30, kind: perk}
+  - {id: PUBLIC_RATE_DISCOUNT_10, window: any, label: "10% public rate cut", cost_usd: 0, kind: public_rate, discount_pct: 0.10}  # breaks OTA parity -> always blocked
+  - {id: NO_OFFER,          window: any, label: "No incentive", cost_usd: 0, kind: none}
+loyalty:
+  point_value_usd: 0.01
+constraints:
+  min_margin_pct: 0.35          # margin floor: net margin after incentive / stay revenue
+  max_incentive_to_commission_ratio: 0.60   # incentive cost must not exceed 60% of saved commission
+  fatigue_max_msgs_30d: 3
+  parity_tolerance_pct: 0.0
+  base_conversion_rate: 0.12     # p0 used in expected-net-revenue-delta cost term
+  flow_through_margin: 0.60      # direct-booking gross operating margin on room revenue     # direct public rate must be >= OTA rate

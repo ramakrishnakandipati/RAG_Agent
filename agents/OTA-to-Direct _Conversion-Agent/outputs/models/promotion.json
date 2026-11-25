@@ -1,0 +1,23 @@
+{
+  "promoted": true,
+  "ts": "2026-11-25T04:46:37.171310+00:00",
+  "gate": {
+    "gate": "D3_model_quality",
+    "chosen_uplift": "T-learner",
+    "qini": 0.00498,
+    "cancel_auc": 0.7871,
+    "checks": [
+      {
+        "check": "qini_gt_0",
+        "passed": true,
+        "detail": 0.004976378655827509
+      },
+      {
+        "check": "cancel_auc_ge_0.72",
+        "passed": true,
+        "detail": 0.7870558297307062
+      }
+    ],
+    "passed": true
+  }
+}

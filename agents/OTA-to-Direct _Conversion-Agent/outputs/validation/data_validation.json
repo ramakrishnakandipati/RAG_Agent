@@ -1,0 +1,154 @@
+{
+  "D1": {
+    "gate": "D1_ingestion_schema_integrity",
+    "passed": true,
+    "rows": 20000,
+    "ts": "2026-11-25T04:46:32.913779+00:00",
+    "checks": [
+      {
+        "check": "required_columns",
+        "passed": true,
+        "detail": {
+          "missing": []
+        }
+      },
+      {
+        "check": "dtypes",
+        "passed": true,
+        "detail": {
+          "bad": []
+        }
+      },
+      {
+        "check": "pk_non_null_unique",
+        "passed": true,
+        "detail": {
+          "dupes": 0
+        }
+      },
+      {
+        "check": "no_nulls_critical",
+        "passed": true,
+        "detail": {
+          "ota": 0,
+          "masked_email": 0,
+          "first_name": 0,
+          "last_name": 0,
+          "adr": 0,
+          "los": 0,
+          "ota_commission": 0
+        }
+      },
+      {
+        "check": "ota_values",
+        "passed": true,
+        "detail": {
+          "values": [
+            "Agoda",
+            "Booking.com",
+            "Expedia"
+          ]
+        }
+      },
+      {
+        "check": "commission_range_0.10_0.30",
+        "passed": true,
+        "detail": {
+          "min": 0.1,
+          "max": 0.3
+        }
+      },
+      {
+        "check": "adr_positive",
+        "passed": true,
+        "detail": {
+          "min": 55.0
+        }
+      },
+      {
+        "check": "los_ge_1",
+        "passed": true,
+        "detail": {
+          "min": 1
+        }
+      },
+      {
+        "check": "ghost_holdout_15pct_pm1",
+        "passed": true,
+        "detail": {
+          "holdout_frac": 0.15
+        }
+      },
+      {
+        "check": "holdout_stratified_by_ota",
+        "passed": true,
+        "detail": {
+          "Agoda": 0.15,
+          "Booking.com": 0.15,
+          "Expedia": 0.15
+        }
+      }
+    ]
+  },
+  "all_passed": true,
+  "D2": {
+    "gate": "D2_identity_resolution",
+    "passed": true,
+    "metrics": {
+      "recall": 0.9167,
+      "false_positive_merge_rate": 0.0025,
+      "match_rate": 0.536,
+      "n_linked_truth": 11663,
+      "n_merged": 10719,
+      "n_wrong_merges": 27,
+      "by_method": {
+        "unmatched": 9281,
+        "fuzzy_name+phone4": 8794,
+        "deterministic_email": 1724,
+        "fuzzy_name_only_unique": 201
+      }
+    },
+    "checks": [
+      {
+        "check": "recall_gt_90pct",
+        "passed": true,
+        "detail": 0.9167
+      },
+      {
+        "check": "false_positive_merge_lt_2pct",
+        "passed": true,
+        "detail": 0.0025
+      }
+    ],
+    "telemetry": {
+      "device": "cuda",
+      "faiss_backend": "faiss-cpu",
+      "n_queries": 20000,
+      "n_cdp": 6000,
+      "t_embed_s": 0.292,
+      "t_block_s": 0.223,
+      "t_gpu_cosine_s": 0.1758,
+      "t_rerank_s": 0.412,
+      "t_total_s": 1.111
+    }
+  },
+  "D3": {
+    "gate": "D3_model_quality",
+    "chosen_uplift": "T-learner",
+    "qini": 0.00498,
+    "cancel_auc": 0.7871,
+    "checks": [
+      {
+        "check": "qini_gt_0",
+        "passed": true,
+        "detail": 0.004976378655827509
+      },
+      {
+        "check": "cancel_auc_ge_0.72",
+        "passed": true,
+        "detail": 0.7870558297307062
+      }
+    ],
+    "passed": true
+  }
+}

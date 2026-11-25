@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OTA-to-Direct Agent - Booking Simulator</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<header><h1>OTA-to-Direct Conversion Agent</h1>
+<nav><a class="on" href="/">Booking Simulator</a><a href="/evaluation">Evaluation &amp; Validation</a></nav><span id="health" class="pill">checking...</span></header>
+<main>
+<div class="card"><h2>End-to-end sample flows</h2><div class="btns" id="flows"></div><p id="flowdesc" class="mono" style="margin:10px 0 0"></p></div>
+<div class="cols">
+ <section class="card"><h2>OTA booking webhook</h2>
+  <div class="btns"><button id="btnSample">Random booking</button><button data-p="parity">Parity breach</button><button data-p="fatigue">Fatigued guest</button><button data-p="holdout">Ghost holdout</button><button data-p="onprop">On-property Wi-Fi</button><button data-p="post">Post-stay</button></div>
+  <form id="f" onsubmit="return false">
+   <div class="row2"><div><label>Booking ID</label><input name="booking_id" value="B_DEMO_001"></div><div><label>OTA</label><select name="ota"><option>Expedia</option><option>Booking.com</option><option>Agoda</option></select></div></div>
+   <div class="row2"><div><label>First name</label><input name="first_name" value="Priya"></div><div><label>Last name</label><input name="last_name" value="Sharma"></div></div>
+   <div class="row2"><div><label>Masked email</label><input name="masked_email" value="48213377@m.expedia.com"></div><div><label>Phone last 4</label><input name="phone_last4" value=""></div></div>
+   <div class="row2"><div><label>ADR ($)</label><input name="adr" type="number" step="0.01" value="210"></div><div><label>Length of stay</label><input name="los" type="number" value="3"></div></div>
+   <div class="row2"><div><label>OTA commission</label><input name="ota_commission" type="number" step="0.005" value="0.18"></div><div><label>Lead days</label><input name="lead_days" type="number" value="21"></div></div>
+   <div class="row2"><div><label>OTA public rate</label><input name="ota_public_rate" type="number" step="0.01" value="210"></div><div><label>Direct public rate</label><input name="direct_public_rate" type="number" step="0.01" value="210"></div></div>
+   <div class="row2"><div><label>Window</label><select name="window"><option value="pre_arrival">pre_arrival</option><option value="on_property">on_property</option><option value="post_stay">post_stay</option></select></div><div><label>Trip purpose</label><select name="trip_purpose"><option>leisure</option><option>business</option><option>group</option></select></div></div>
+   <div class="row2"><div><label>Check-in</label><input name="checkin_date" value="2026-03-14"></div><div><label>Country</label><input name="country" value="US"></div></div>
+   <div class="row2"><div><label>Holdout override</label><select name="is_ghost_holdout"><option value="">auto (hash)</option><option value="true">force holdout</option><option value="false">force treated</option></select></div><div><label>Free cancellation</label><select name="free_cancellation"><option value="true">yes</option><option value="false">no</option></select></div></div>
+   <div class="btns"><button class="primary" id="run">Run agent</button></div>
+  </form>
+ </section>
+ <section style="display:grid;gap:16px;align-content:start">
+  <div class="card"><h2>Visual step flow <span id="runmeta" class="mono"></span></h2><div class="flow" id="flow"></div></div>
+  <div class="card"><h2>Decision</h2><div id="decision" class="mono">Run the agent to see the decision.</div></div>
+  <div class="card"><h2>Guardrail inspector</h2><div id="guard">-</div></div>
+ </section>
+</div>
+<div class="card"><h2>Validation gates (this run)</h2><div id="gates">-</div></div>
+</main>
+<script>
+const NODES=["ingest_and_resolve","score_guest","select_strategy","apply_guardrails","compose_and_dispatch","log_and_attribute"];
+const $=s=>document.querySelector(s), f=$("#f");
+function body(){const o={};new FormData(f).forEach((v,k)=>{o[k]=v});
+ ["adr","ota_commission","ota_public_rate","direct_public_rate"].forEach(k=>o[k]=parseFloat(o[k]));["los","lead_days"].forEach(k=>o[k]=parseInt(o[k]));
+ o.free_cancellation=o.free_cancellation==="true";o.is_ghost_holdout=o.is_ghost_holdout===""?null:o.is_ghost_holdout==="true";if(!o.phone_last4)o.phone_last4=null;return o}
+function fill(w){for(const [k,v] of Object.entries(w)){const e=f.elements[k];if(e)e.value=(v===null?"":String(v))}}
+async function health(){try{const h=await (await fetch("/api/health")).json();const p=$("#health");
+ p.textContent=(h.llm.available?"LLM live: "+h.llm.model:"LLM offline (fallback)")+" | "+(h.hardware.cuda?"GPU "+h.hardware.device_name:"CPU");p.className="pill "+(h.llm.available?"ok":"")}catch(e){}}
+$("#btnSample").onclick=async()=>fill(await (await fetch("/api/sample?window="+f.elements.window.value)).json());
+document.querySelectorAll("button[data-p]").forEach(b=>b.onclick=async()=>{const w=await (await fetch("/api/sample")).json();const p=b.dataset.p;
+ if(p==="parity"){w.direct_public_rate=Math.round(w.ota_public_rate*0.9*100)/100}
+ if(p==="fatigue"){w.is_ghost_holdout=false}
+ if(p==="holdout"){w.is_ghost_holdout=true}
+ if(p==="onprop"){w.window="on_property"} if(p==="post"){w.window="post_stay"}
+ fill(w)});
+function renderFlow(r){const byNode={};(r.gates||[]).forEach(g=>{(byNode[g.node]=byNode[g.node]||[]).push(g)});const tr={};(r.trace||[]).forEach(t=>{tr[t.node]=tr[t.node]||t});
+ $("#flow").innerHTML=NODES.map((n,i)=>{const gs=byNode[n]||[];const ran=gs.length>0;const ok=ran&&gs.every(g=>g.passed);const t=(r.trace||[]).filter(x=>x.node===n);const last=t[t.length-1];
+  const loops=t.length>1?` <span class="bad">x${t.length}</span>`:"";
+  return `<div class="node ${ran?(ok?"pass":"fail"):"skip"}"><b>${i+1}. ${n}${loops}</b><small>${last?(last.summary||""):"not executed"}</small><div class="g">${gs.map(g=>g.phase+": "+(g.passed?"PASS":"FAIL")).join(" | ")}${last?" | "+last.ms+"ms":""}</div></div>`}).join("")}
+function renderGuard(r){const g=r.guardrail||{};const rows=(g.rule_results||[]).map(x=>`<tr><td>${x.rule}</td><td class="${x.passed?"ok":"bad"}">${x.passed?"PASS":"BLOCK"}</td><td class="mono">${JSON.stringify(x.detail)}</td></tr>`).join("");
+ $("#guard").innerHTML=`<div>Final offer: <b>${r.final_offer_id||"-"}</b> ${r.downgraded?'<span class="bad">(downgraded)</span>':""}  Rejected by policy: <span class="mono">${JSON.stringify(r.rejected_offers||[])}</span> Retries: ${r.guardrail_retries||0}</div>
+ ${g.downgrade_reason?`<div class="copy">${g.downgrade_reason}</div>`:""}<table><tr><th>Rule</th><th>Result</th><th>Detail</th></tr>${rows||'<tr><td colspan=3>no rules evaluated</td></tr>'}</table>`}
+function renderDecision(r){const s=r.scores||{},d=r.dispatch||{},st=r.strategy||{};
+ $("#decision").innerHTML=`<div class="kpis"><div class="kpi"><span>Uplift tau</span><b>${s.tau!==undefined?s.tau.toFixed(3):"-"}</b></div><div class="kpi"><span>P(cancel)</span><b>${s.p_cancel!==undefined?s.p_cancel.toFixed(3):"-"}</b></div>
+ <div class="kpi"><span>Saved commission</span><b>$${r.saved_commission_usd??"-"}</b></div><div class="kpi"><span>Expected net rev. delta</span><b>$${(r.guardrail&&r.guardrail.enrd!==undefined)?r.guardrail.enrd:"-"}</b></div>
+ <div class="kpi"><span>Dispatch</span><b>${d.status||"-"}</b></div><div class="kpi"><span>Holdout</span><b>${r.is_holdout===undefined?"-":r.is_holdout}</b></div></div>
+ <p>Identity: <b>${(r.resolution||{}).method||"-"}</b> -> ${(r.resolved_profile||{}).profile_id||"-"} | LLM: <b>${r.llm_mode||"-"}</b> | scoring: ${s.device||"-"} ${s.latency_ms||""}ms</p>
+ ${st.rationale?`<p><b>Rationale:</b> ${st.rationale}</p>`:""}${(st.offer_id&&r.final_offer_id&&st.offer_id!==r.final_offer_id)?`<p class="bad">Final offer <b>${r.final_offer_id}</b> differs from the LLM proposal <b>${st.offer_id}</b> (policy downgrade or CRS inventory swap at dispatch); the rationale above describes the original proposal.</p>`:""}${d.copy?`<div class="copy">${d.copy}<br><span class="mono">${d.link||""}</span></div>`:""}${r.error?`<p class="bad">Error: ${r.error}</p>`:""}`}
+function renderGates(r){$("#gates").innerHTML="<table><tr><th>Node</th><th>Phase</th><th>Result</th><th>Checks</th></tr>"+(r.gates||[]).map(g=>`<tr><td>${g.node}</td><td>${g.phase}</td><td class="${g.passed?"ok":"bad"}">${g.passed?"PASS":"FAIL"}</td><td class="mono">${g.checks.map(c=>(c.passed?"+ ":"x ")+c.check).join(", ")}</td></tr>`).join("")+"</table>"}
+$("#run").onclick=async()=>{$("#run").disabled=true;try{const res=await fetch("/api/simulate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body())});const r=await res.json();
+ if(r.error&&!r.gates){$("#decision").innerHTML='<span class="bad">'+r.error+"</span>";return}
+ $("#runmeta").textContent="run "+r.run_id;renderFlow(r);renderDecision(r);renderGuard(r);renderGates(r)}finally{$("#run").disabled=false}};
+let SCEN=[];
+async function loadFlows(){SCEN=await (await fetch("/api/scenarios")).json();
+ $("#flows").innerHTML=SCEN.map((s,i)=>`<button data-i="${i}" class="flowbtn">${s.title}</button>`).join("");
+ document.querySelectorAll(".flowbtn").forEach(b=>b.onclick=()=>{const s=SCEN[b.dataset.i];fill(s.webhook);
+  $("#flowdesc").textContent=s.description+" -> Expected: "+s.expect;$("#run").click()})}
+loadFlows();health();
+</script></body></html>

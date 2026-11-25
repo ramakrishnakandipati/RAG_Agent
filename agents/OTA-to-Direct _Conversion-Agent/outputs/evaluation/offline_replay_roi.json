@@ -1,0 +1,28 @@
+{
+  "n_test": 6000,
+  "n_targeted": 1561,
+  "target_rate": 0.2602,
+  "treated_targeted": 1329,
+  "holdout_targeted": 232,
+  "holdout_share_overall": 0.15,
+  "conv_treated": 0.3905,
+  "conv_holdout": 0.2457,
+  "incremental_lift": 0.1448,
+  "lift_ci95": [
+    0.0941,
+    0.2012
+  ],
+  "incremental_direct_bookings": 192.5,
+  "avg_saved_commission_usd": 90.32,
+  "gross_saved_commission_usd": 17384.14,
+  "cancellation_leakage_usd": 3683.99,
+  "incentive_cost_usd": 6228.0,
+  "net_revenue_delta_usd": 7472.14,
+  "roi_x": 1.2,
+  "blast_all_net_revenue_delta_usd": 18386.45,
+  "offer_mix": {
+    "NO_OFFER": 4439,
+    "CUG_LATE_CHECKOUT": 1561
+  },
+  "decile_rank_corr_pred_vs_measured": 0.37
+}

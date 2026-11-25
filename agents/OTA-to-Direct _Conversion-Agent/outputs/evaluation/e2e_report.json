@@ -1,0 +1,156 @@
+{
+  "ts": "2026-11-25T04:46:29.987115+00:00",
+  "steps": [
+    {
+      "step": "data + gates D1/D2/D3 + training",
+      "ok": true,
+      "seconds": 6.5,
+      "detail": {
+        "D1": true,
+        "D2": true,
+        "D3": true,
+        "promoted": true,
+        "rows": [
+          {
+            "model": "T-learner",
+            "device": "cuda",
+            "qini_coef": 0.00498,
+            "corr_true_tau": 0.3727,
+            "mean_tau": 0.135,
+            "top30_true_tau": 0.1629,
+            "all_true_tau": 0.1436
+          },
+          {
+            "model": "X-learner",
+            "device": "cuda",
+            "qini_coef": 0.00496,
+            "corr_true_tau": 0.5365,
+            "mean_tau": 0.1272,
+            "top30_true_tau": 0.173,
+            "all_true_tau": 0.1436
+          }
+        ],
+        "cancel": {
+          "model": "Cancel-XGB",
+          "device": "cuda",
+          "roc_auc": 0.7871,
+          "brier": 0.1442,
+          "ece_raw": 0.0147,
+          "ece_isotonic": 0.0196,
+          "base_rate": 0.2372
+        },
+        "timings": {
+          "uplift_t_train_cuda_s": 0.702,
+          "uplift_x_train_cuda_s": 1.054,
+          "uplift_x_train_cpu_s": 0.382,
+          "cancel_train_cuda_s": 0.35
+        }
+      }
+    },
+    {
+      "step": "offline replay + charts",
+      "ok": true,
+      "seconds": 0.9,
+      "detail": {
+        "n_test": 6000,
+        "n_targeted": 1561,
+        "target_rate": 0.2602,
+        "treated_targeted": 1329,
+        "holdout_targeted": 232,
+        "holdout_share_overall": 0.15,
+        "conv_treated": 0.3905,
+        "conv_holdout": 0.2457,
+        "incremental_lift": 0.1448,
+        "lift_ci95": [
+          0.0941,
+          0.2012
+        ],
+        "incremental_direct_bookings": 192.5,
+        "avg_saved_commission_usd": 90.32,
+        "gross_saved_commission_usd": 17384.14,
+        "cancellation_leakage_usd": 3683.99,
+        "incentive_cost_usd": 6228.0,
+        "net_revenue_delta_usd": 7472.14,
+        "roi_x": 1.2,
+        "blast_all_net_revenue_delta_usd": 18386.45,
+        "offer_mix": {
+          "NO_OFFER": 4439,
+          "CUG_LATE_CHECKOUT": 1561
+        },
+        "decile_rank_corr_pred_vs_measured": 0.37
+      }
+    },
+    {
+      "step": "diagrams",
+      "ok": true,
+      "seconds": 0.5
+    },
+    {
+      "step": "VLM chart audit",
+      "ok": true,
+      "seconds": 24.1,
+      "detail": {
+        "ts": "2026-11-25T04:47:03.351379+00:00",
+        "model": "qwen3-vl-30b-a3b-instruct",
+        "endpoint": "http://localhost:1234/v1",
+        "vlm_live": true,
+        "n_charts": 6,
+        "mean_score": 9.0
+      }
+    },
+    {
+      "step": "pytest",
+      "ok": true,
+      "seconds": 5.9,
+      "detail": {
+        "summary": "40 passed in 4.47s"
+      }
+    },
+    {
+      "step": "flask up",
+      "ok": true,
+      "seconds": 3.7,
+      "detail": {
+        "healthy": true
+      }
+    },
+    {
+      "step": "streamlit up",
+      "ok": true,
+      "seconds": 0.0,
+      "detail": {
+        "healthy": true
+      }
+    },
+    {
+      "step": "playwright screenshots",
+      "ok": true,
+      "seconds": 174.6,
+      "detail": {
+        "screenshots": [
+          "flask_simulator.png",
+          "flask_parity_breach.png",
+          "flask_evaluation.png",
+          "streamlit_agent_flow.png",
+          "streamlit_guardrails.png",
+          "streamlit_roi.png",
+          "e2e_flows/streamlit_flow_1_happy_path.png",
+          "e2e_flows/streamlit_flow_2_parity_breach.png",
+          "e2e_flows/streamlit_flow_3_ghost_holdout.png",
+          "e2e_flows/streamlit_flow_4_new_guest_wifi.png",
+          "e2e_flows/streamlit_flow_5_post_stay_winback.png",
+          "e2e_flows/streamlit_flows_summary.png",
+          "e2e_flows/flask_flow_1_happy_path.png",
+          "e2e_flows/flask_flow_2_parity_breach.png",
+          "e2e_flows/flask_flow_3_ghost_holdout.png",
+          "e2e_flows/flask_flow_4_new_guest_wifi.png",
+          "e2e_flows/flask_flow_5_post_stay_winback.png",
+          "diagram_system_architecture_diagram.png",
+          "diagram_langgraph_state_machine.png",
+          "diagram_data_pipeline_erd_flow.png"
+        ]
+      }
+    }
+  ],
+  "all_ok": true
+}

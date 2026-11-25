@@ -1,0 +1,194 @@
+{
+ "data_pipeline_erd_flow.png": [
+  1890,
+  1023
+ ],
+ "ghost_holdout_key.png": [
+  1625,
+  755
+ ],
+ "ghost_holdout_stage1.png": [
+  1625,
+  838
+ ],
+ "ghost_holdout_stage2.png": [
+  1625,
+  728
+ ],
+ "ghost_holdout_stage3.png": [
+  1625,
+  792
+ ],
+ "ghost_holdout_stage4.png": [
+  1625,
+  1086
+ ],
+ "ghost_holdout_stage5.png": [
+  1625,
+  1014
+ ],
+ "ghost_holdout_stage6.png": [
+  1625,
+  508
+ ],
+ "ghost_holdout_top.png": [
+  1625,
+  461
+ ],
+ "gov_guardrails.png": [
+  1380,
+  765
+ ],
+ "gov_roi.png": [
+  1380,
+  765
+ ],
+ "happy_path_key.png": [
+  1625,
+  827
+ ],
+ "happy_path_stage1.png": [
+  1625,
+  890
+ ],
+ "happy_path_stage2.png": [
+  1625,
+  726
+ ],
+ "happy_path_stage3.png": [
+  1625,
+  796
+ ],
+ "happy_path_stage4.png": [
+  1625,
+  1086
+ ],
+ "happy_path_stage5.png": [
+  1625,
+  822
+ ],
+ "happy_path_stage6.png": [
+  1625,
+  508
+ ],
+ "happy_path_top.png": [
+  1625,
+  417
+ ],
+ "langgraph_state_machine.png": [
+  1890,
+  977
+ ],
+ "new_guest_wifi_key.png": [
+  1625,
+  579
+ ],
+ "new_guest_wifi_stage1.png": [
+  1625,
+  838
+ ],
+ "new_guest_wifi_stage2.png": [
+  1625,
+  728
+ ],
+ "new_guest_wifi_stage3.png": [
+  1625,
+  846
+ ],
+ "new_guest_wifi_stage4.png": [
+  1625,
+  1086
+ ],
+ "new_guest_wifi_stage5.png": [
+  1625,
+  822
+ ],
+ "new_guest_wifi_stage6.png": [
+  1625,
+  508
+ ],
+ "new_guest_wifi_top.png": [
+  1625,
+  461
+ ],
+ "parity_breach_key.png": [
+  1625,
+  671
+ ],
+ "parity_breach_stage1.png": [
+  1625,
+  890
+ ],
+ "parity_breach_stage2.png": [
+  1625,
+  726
+ ],
+ "parity_breach_stage3.png": [
+  1625,
+  894
+ ],
+ "parity_breach_stage4.png": [
+  1625,
+  930
+ ],
+ "parity_breach_stage5.png": [
+  1625,
+  680
+ ],
+ "parity_breach_stage6.png": [
+  1625,
+  508
+ ],
+ "parity_breach_top.png": [
+  1625,
+  417
+ ],
+ "post_stay_winback_key.png": [
+  1625,
+  589
+ ],
+ "post_stay_winback_stage1.png": [
+  1625,
+  890
+ ],
+ "post_stay_winback_stage2.png": [
+  1625,
+  726
+ ],
+ "post_stay_winback_stage3.png": [
+  1625,
+  848
+ ],
+ "post_stay_winback_stage4.png": [
+  1625,
+  1086
+ ],
+ "post_stay_winback_stage5.png": [
+  1625,
+  822
+ ],
+ "post_stay_winback_stage6.png": [
+  1625,
+  506
+ ],
+ "post_stay_winback_top.png": [
+  1625,
+  417
+ ],
+ "streamlit_guardrails.png": [
+  1500,
+  1100
+ ],
+ "streamlit_roi.png": [
+  1500,
+  1100
+ ],
+ "summary_table.png": [
+  2200,
+  578
+ ],
+ "system_architecture_diagram.png": [
+  1890,
+  1185
+ ]
+}

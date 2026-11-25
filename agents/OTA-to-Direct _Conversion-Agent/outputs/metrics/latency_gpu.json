@@ -1,0 +1,40 @@
+{
+  "cpu": {
+    "single_ms": 2.301,
+    "batch5000_ms": 4.705
+  },
+  "cuda": {
+    "single_ms": 3.361,
+    "batch5000_ms": 5.666
+  },
+  "train_seconds": {
+    "uplift_t_train_cuda_s": 0.702,
+    "uplift_x_train_cuda_s": 1.054,
+    "uplift_x_train_cpu_s": 0.382,
+    "cancel_train_cuda_s": 0.35
+  },
+  "identity_resolution": {
+    "gpu_run": {
+      "device": "cuda",
+      "faiss_backend": "faiss-cpu",
+      "n_queries": 20000,
+      "n_cdp": 6000,
+      "t_embed_s": 0.292,
+      "t_block_s": 0.223,
+      "t_gpu_cosine_s": 0.1758,
+      "t_rerank_s": 0.412,
+      "t_total_s": 1.111
+    },
+    "cpu_run_5000_rows": {
+      "device": "cpu",
+      "faiss_backend": "faiss-cpu",
+      "n_queries": 5000,
+      "n_cdp": 6000,
+      "t_embed_s": 0.093,
+      "t_block_s": 0.062,
+      "t_gpu_cosine_s": 0.0548,
+      "t_rerank_s": 0.134,
+      "t_total_s": 0.351
+    }
+  }
+}

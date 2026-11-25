@@ -1,0 +1,4 @@
+model,device,qini_coef,corr_true_tau,mean_tau,top30_true_tau,all_true_tau,roc_auc,brier,ece_raw,ece_isotonic,base_rate
+T-learner,cuda,0.00498,0.3727,0.135,0.1629,0.1436,,,,,
+X-learner,cuda,0.00496,0.5365,0.1272,0.173,0.1436,,,,,
+Cancel-XGB,cuda,,,,,,0.7871,0.1442,0.0147,0.0196,0.2372

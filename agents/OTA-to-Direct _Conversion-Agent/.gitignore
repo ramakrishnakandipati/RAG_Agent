@@ -1,0 +1,7 @@
+# regenerable (python models/train_and_evaluate.py)
+data/generated/
+outputs/models/cdp_faiss.index
+# runtime server output
+outputs/logs/flask.out
+outputs/logs/streamlit.out
+.pytest_cache/

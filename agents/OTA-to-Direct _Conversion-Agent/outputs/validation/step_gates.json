@@ -1,0 +1,7227 @@
+{
+  "runs": 48,
+  "nodes": {
+    "ingest_and_resolve": {
+      "pass": 96,
+      "fail": 0
+    },
+    "score_guest": {
+      "pass": 96,
+      "fail": 0
+    },
+    "select_strategy": {
+      "pass": 144,
+      "fail": 0
+    },
+    "apply_guardrails": {
+      "pass": 144,
+      "fail": 0
+    },
+    "compose_and_dispatch": {
+      "pass": 96,
+      "fail": 0
+    },
+    "log_and_attribute": {
+      "pass": 96,
+      "fail": 0
+    }
+  },
+  "recent": [
+    {
+      "run_id": "cd023f9b008a",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.11
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P000104"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 133.1
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.01
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.21368354558944702
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.029999999329447746
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 78.518,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.022
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.025
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000042&o=CUG_ROOM_UPGRADE&sig=202ac64ebf67a2cc"
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.005
+        }
+      ]
+    },
+    {
+      "run_id": "c8c41463b170",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.036
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P004497"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 158.77
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.008
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.40027838945388794
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.0982142835855484
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 14.887,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.016
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_BREAKFAST"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.034
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": ""
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.023
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": ""
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 2
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_LATE_CHECKOUT"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.033
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "NO_OFFER"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 2
+            }
+          ],
+          "ms": 0.009
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "no_action"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "no_action"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.005
+        }
+      ]
+    },
+    {
+      "run_id": "415b08937566",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.034
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "deterministic_email"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P003328"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 263.17
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": true
+            }
+          ],
+          "ms": 0.008
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.3502679765224457
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.0982142835855484
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 15.087,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.026
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "suppressed_ghost_holdout"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": true,
+                "status": "suppressed_ghost_holdout"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000452&o=CUG_LATE_CHECKOUT&sig=c64bbed228ef9856"
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.006
+        }
+      ]
+    },
+    {
+      "run_id": "8f253b839af3",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.039
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "unmatched"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 46.64
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.009
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.24008160829544067
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.09405940771102905
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 17.027,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "WIFI_LOYALTY_JOIN"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "on_property"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.025
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "WIFI_LOYALTY_JOIN"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.008
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000000&o=WIFI_LOYALTY_JOIN&sig=bea7077ddb2c5f28"
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.005
+        }
+      ]
+    },
+    {
+      "run_id": "8213ebac6bfc",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.035
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P003854"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 96.55
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.008
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.38849765062332153
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.09405940771102905
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 15.974,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "WINBACK_POINTS"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "post_stay"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.029
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "WINBACK_POINTS"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.008
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000074&o=WINBACK_POINTS&sig=94955451de694935"
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.005
+        }
+      ]
+    },
+    {
+      "run_id": "e184cccd2a06",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.04
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P000104"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 133.1
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.21368354558944702
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.029999999329447746
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 50.764,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.016
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_BREAKFAST"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.015
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "CUG_BREAKFAST"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000042&o=CUG_BREAKFAST&sig=a7b0817e6a1096d2"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "f5d5a89e6780",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.029
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P004497"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 158.77
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.40027838945388794
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.0982142835855484
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 19.45,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.014
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_BREAKFAST"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.018
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": ""
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.016
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": ""
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 2
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_LATE_CHECKOUT"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "NO_OFFER"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 2
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "no_action"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "no_action"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "d9fa082aa1f4",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.032
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "deterministic_email"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P003328"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 263.17
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": true
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.3502679765224457
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.0982142835855484
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 21.802,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.015
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.016
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "suppressed_ghost_holdout"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": true,
+                "status": "suppressed_ghost_holdout"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000452&o=CUG_LATE_CHECKOUT&sig=c64bbed228ef9856"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "cba687183a85",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.032
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "unmatched"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 46.64
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.24008160829544067
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.09405940771102905
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 23.403,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "WIFI_PREMIUM"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "on_property"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "WIFI_PREMIUM"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000000&o=WIFI_PREMIUM&sig=46fbb86c6499a608"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        }
+      ]
+    },
+    {
+      "run_id": "2a269b44904a",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.051
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P003854"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 96.55
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.38849765062332153
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.09405940771102905
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 21.926,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.016
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "WINBACK_POINTS"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "post_stay"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.019
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "WINBACK_POINTS"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000074&o=WINBACK_POINTS&sig=94955451de694935"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "b88c7b56fbde",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.037
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P000104"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 133.1
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.013
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.21368354558944702
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.029999999329447746
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 19.659,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.027
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000042&o=CUG_ROOM_UPGRADE&sig=202ac64ebf67a2cc"
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        }
+      ]
+    },
+    {
+      "run_id": "02fdaf93d588",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.031
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P004497"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 158.77
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.40027838945388794
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.0982142835855484
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 14.257,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.016
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_BREAKFAST"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.022
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": ""
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.013
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": ""
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 2
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_LATE_CHECKOUT"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "NO_OFFER"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 2
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "no_action"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "no_action"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        }
+      ]
+    },
+    {
+      "run_id": "3695fc22d832",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.033
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "deterministic_email"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P003328"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 263.17
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": true
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.3502679765224457
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.0982142835855484
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 14.399,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.013
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.015
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "suppressed_ghost_holdout"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": true,
+                "status": "suppressed_ghost_holdout"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000452&o=CUG_LATE_CHECKOUT&sig=c64bbed228ef9856"
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "76a96005bc57",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.036
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "unmatched"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 46.64
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.24008160829544067
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.09405940771102905
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 12.728,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.011
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "WIFI_PREMIUM"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "on_property"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.018
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "WIFI_PREMIUM"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.008
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000000&o=WIFI_PREMIUM&sig=46fbb86c6499a608"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "23ad6e0d34cf",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.031
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P003854"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 96.55
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.38849765062332153
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.09405940771102905
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 13.605,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.012
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "WINBACK_POINTS"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "post_stay"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "WINBACK_POINTS"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000074&o=WINBACK_POINTS&sig=94955451de694935"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.001
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "e42d38e4c89f",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.047
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P000104"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 133.1
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.21368354558944702
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.029999999329447746
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 50.935,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.018
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_BREAKFAST"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.02
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "CUG_BREAKFAST"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000042&o=CUG_BREAKFAST&sig=a7b0817e6a1096d2"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "a7e64cc9e285",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.036
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P004497"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 158.77
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.40027838945388794
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.0982142835855484
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 23.346,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.018
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_BREAKFAST"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.02
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": ""
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.008
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": ""
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 2
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_LATE_CHECKOUT"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.018
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "NO_OFFER"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 2
+            }
+          ],
+          "ms": 0.008
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "no_action"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "no_action"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        }
+      ]
+    },
+    {
+      "run_id": "eed5c89c4383",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.035
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "deterministic_email"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P003328"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 263.17
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": true
+            }
+          ],
+          "ms": 0.007
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.3502679765224457
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.0982142835855484
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 26.153,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.015
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.016
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "suppressed_ghost_holdout"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": true,
+                "status": "suppressed_ghost_holdout"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000452&o=CUG_LATE_CHECKOUT&sig=c64bbed228ef9856"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "cfd588da23f4",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.036
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "unmatched"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 46.64
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.24008160829544067
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.09405940771102905
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 19.848,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "WIFI_PREMIUM"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "on_property"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.016
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "WIFI_PREMIUM"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000000&o=WIFI_PREMIUM&sig=46fbb86c6499a608"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "ee4c77b8f3e2",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.035
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P003854"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 96.55
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.38849765062332153
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.09405940771102905
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 21.179,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.015
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "WINBACK_POINTS"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "post_stay"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.019
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "WINBACK_POINTS"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000074&o=WINBACK_POINTS&sig=94955451de694935"
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "d2899e0993ed",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.036
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P000104"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 133.1
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.007
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.21368354558944702
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.029999999329447746
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 20.652,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.02
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_BREAKFAST"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.019
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "CUG_BREAKFAST"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000042&o=CUG_BREAKFAST&sig=a7b0817e6a1096d2"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.001
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "6b561b4af9f8",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.029
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P004497"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 158.77
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.40027838945388794
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.0982142835855484
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 12.486,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.015
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_BREAKFAST"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.015
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": ""
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.023
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": ""
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 2
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_LATE_CHECKOUT"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.018
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "NO_OFFER"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 2
+            }
+          ],
+          "ms": 0.007
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "no_action"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "no_action"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        }
+      ]
+    },
+    {
+      "run_id": "575853016f85",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.031
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "deterministic_email"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P003328"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 263.17
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": true
+            }
+          ],
+          "ms": 0.007
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.3502679765224457
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.0982142835855484
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 17.494,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.015
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "pre_arrival"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.016
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "CUG_ROOM_UPGRADE"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "suppressed_ghost_holdout"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": true,
+                "status": "suppressed_ghost_holdout"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000452&o=CUG_LATE_CHECKOUT&sig=c64bbed228ef9856"
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        }
+      ]
+    },
+    {
+      "run_id": "fa61d0de3fc9",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.029
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "unmatched"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 46.64
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.24008160829544067
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.09405940771102905
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 12.159,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.011
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "WIFI_PREMIUM"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "on_property"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.022
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "WIFI_PREMIUM"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.006
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000000&o=WIFI_PREMIUM&sig=46fbb86c6499a608"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    },
+    {
+      "run_id": "e1e7c7eab98c",
+      "all_passed": true,
+      "gates": [
+        {
+          "node": "ingest_and_resolve",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "webhook_schema",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.033
+        },
+        {
+          "node": "ingest_and_resolve",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "resolution_attempted",
+              "passed": true,
+              "detail": "fuzzy_name+phone4"
+            },
+            {
+              "check": "resolved_profile_id_present",
+              "passed": true,
+              "detail": "P003854"
+            },
+            {
+              "check": "saved_commission_usd_gt_0",
+              "passed": true,
+              "detail": 96.55
+            },
+            {
+              "check": "holdout_flag_set",
+              "passed": true,
+              "detail": false
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "feature_vector_complete",
+              "passed": true,
+              "detail": []
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "score_guest",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "zero_nans",
+              "passed": true,
+              "detail": []
+            },
+            {
+              "check": "tau_in_[-1,1]",
+              "passed": true,
+              "detail": 0.38849765062332153
+            },
+            {
+              "check": "p_cancel_in_[0,1]",
+              "passed": true,
+              "detail": 0.09405940771102905
+            },
+            {
+              "check": "inference_latency_lt_1000ms",
+              "passed": true,
+              "detail": {
+                "ms": 12.89,
+                "device": "cuda"
+              }
+            }
+          ],
+          "ms": 0.015
+        },
+        {
+          "node": "select_strategy",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "scores_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "window_valid",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.004
+        },
+        {
+          "node": "select_strategy",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "offer_strategy_schema",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "valid_offer_id_in_catalog",
+              "passed": true,
+              "detail": "WINBACK_POINTS"
+            },
+            {
+              "check": "valid_window",
+              "passed": true,
+              "detail": "post_stay"
+            },
+            {
+              "check": "non_empty_personalized_copy",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "llm_retries_le_2",
+              "passed": true,
+              "detail": 1
+            }
+          ],
+          "ms": 0.017
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "strategy_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "apply_guardrails",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "verdict_present",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "final_offer_policy_approved_or_retrying",
+              "passed": true,
+              "detail": "WINBACK_POINTS"
+            },
+            {
+              "check": "retries_bounded_le_2",
+              "passed": true,
+              "detail": 0
+            }
+          ],
+          "ms": 0.005
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "final_offer_set",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "guardrail_ok",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.002
+        },
+        {
+          "node": "compose_and_dispatch",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "dispatch_recorded",
+              "passed": true,
+              "detail": "sent"
+            },
+            {
+              "check": "ghost_holdout_never_messaged",
+              "passed": true,
+              "detail": {
+                "holdout": false,
+                "status": "sent"
+              }
+            },
+            {
+              "check": "gated_link_signed",
+              "passed": true,
+              "detail": "https://book.example-hotel.com/member?b=B0000074&o=WINBACK_POINTS&sig=94955451de694935"
+            }
+          ],
+          "ms": 0.003
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "pre",
+          "passed": true,
+          "checks": [
+            {
+              "check": "run_id_present",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.001
+        },
+        {
+          "node": "log_and_attribute",
+          "phase": "post",
+          "passed": true,
+          "checks": [
+            {
+              "check": "attribution_written",
+              "passed": true,
+              "detail": null
+            },
+            {
+              "check": "attribution_has_treatment_flag",
+              "passed": true,
+              "detail": null
+            }
+          ],
+          "ms": 0.003
+        }
+      ]
+    }
+  ],
+  "all_passed_last_run": true
+}
