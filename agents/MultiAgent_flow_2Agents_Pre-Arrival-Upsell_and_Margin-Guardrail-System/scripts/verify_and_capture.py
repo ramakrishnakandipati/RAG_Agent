@@ -38,7 +38,7 @@ def wait(url: str, timeout=120) -> bool:
 
 def api_checks():
     r = requests.get(f"{FLASK}/health").json(); check("GET /health", r["status"] == "ok", f"llm={r['llm_mode']} gpu={r['gpu'].get('device')}")
-    sc = requests.get(f"{FLASK}/api/v1/scenarios").json(); check("GET /api/v1/scenarios", len(sc) >= 6, f"{len(sc)} scenarios")
+    sc = requests.get(f"{FLASK}/api/v1/scenarios").json(); check("GET /api/v1/scenarios", len(sc) >= 7, f"{len(sc)} scenarios")
     out = requests.post(f"{FLASK}/api/v1/offers/generate", json={"scenario": "clean_approval"}).json()
     check("POST generate clean_approval -> APPROVED", out["final_status"] == "APPROVED" and out["revisions"] == 0)
     out = requests.post(f"{FLASK}/api/v1/offers/generate", json={"scenario": "below_floor_price"}).json()
@@ -65,9 +65,19 @@ def shots():
             pg.goto(FLASK + url); pg.screenshot(path=str(SHOTS / f"{name}.png")); check(f"screenshot {name}", True)
         pg.goto(STREAMLIT); pg.wait_for_selector("text=Pre-Arrival Upsell", timeout=90000); pg.wait_for_timeout(4000)
         pg.screenshot(path=str(SHOTS / "streamlit_executive.png"), full_page=True); check("screenshot streamlit_executive", True)
-        pg.get_by_role("tab", name="Scenario Simulator").click(); pg.wait_for_timeout(1500)
-        pg.get_by_role("button", name="Run Strategist ⇄ Auditor loop").click(); pg.wait_for_selector("text=Result:", timeout=120000); pg.wait_for_timeout(1500)
-        pg.screenshot(path=str(SHOTS / "streamlit_simulator.png"), full_page=True); check("screenshot streamlit_simulator", True)
+        pg.set_viewport_size({"width": 1500, "height": 3400})   # streamlit scrolls an inner container, so make the viewport tall instead of full_page
+        from agents.flows import FLOWS
+        from agents.tools import SCENARIOS
+        pg.get_by_role("tab", name="End-to-End Flow").click(); pg.wait_for_timeout(1500)
+        for fi, (fkey, fl) in enumerate(FLOWS.items()):
+            for ex in fl["scenarios"]:
+                pg.get_by_role("radio").nth(fi).check(force=True); pg.wait_for_timeout(1200)
+                pg.get_by_test_id("stSelectbox").first.click(); pg.wait_for_timeout(500)
+                pg.get_by_role("option", name=SCENARIOS[ex]["title"], exact=True).click(); pg.wait_for_timeout(800)
+                pg.get_by_role("button", name="Run end-to-end flow").click(); pg.wait_for_selector("text=Result:", timeout=120000); pg.wait_for_timeout(2500)
+                pg.screenshot(path=str(SHOTS / f"streamlit_flow_{ex}.png"), full_page=True); check(f"screenshot streamlit_flow_{ex}", True, f"[{fkey}]")
+        pg.get_by_role("tab", name="Flow Metrics").click(); pg.wait_for_timeout(3000)
+        pg.screenshot(path=str(SHOTS / "streamlit_flow_metrics.png"), full_page=True); check("screenshot streamlit_flow_metrics", True)
         for tab, fn in (("Quant Models", "streamlit_quant"), ("Offline Policy Evaluation", "streamlit_ope"), ("HITL Queue", "streamlit_hitl")):
             pg.get_by_role("tab", name=tab).click(); pg.wait_for_timeout(2500); pg.screenshot(path=str(SHOTS / f"{fn}.png"), full_page=True); check(f"screenshot {fn}", True)
         b.close()

@@ -89,6 +89,8 @@ def strategist_node(state: GraphState) -> dict:
                              revision=rev, asset_url=inj.get("asset_url") if not d.drop_asset else None, llm_mode=llm.mode)
     ms = round((time.perf_counter() - t0) * 1000, 1)
     ev = {"agent": "strategist", "revision": rev, "sku": sku, "price": price, "bundle": bundle, "channel": channel, "llm_mode": draft.llm_mode, "latency_ms": ms,
-          "ranked": [(c["sku"], c["score"]) for c in cands]}
+          "ranked": [(c["sku"], c["score"]) for c in cands],
+          "candidates": [{k: c[k] for k in ("sku", "price", "p_accept", "cate_dragon", "cate_xlearner", "unit_margin", "ucb_bonus", "hurdle", "score", "excluded")} for c in cands],
+          "gpu_latency_ms": pick["gpu_latency_ms"], "directives_in": d.model_dump()}
     trace({"thread_id": state.get("thread_id"), **ev})
     return {"draft": draft.model_dump(), "history": [ev]}

@@ -19,7 +19,7 @@
     {
       "check": "GET /api/v1/scenarios",
       "ok": true,
-      "detail": "6 scenarios"
+      "detail": "7 scenarios"
     },
     {
       "check": "POST generate clean_approval -> APPROVED",
@@ -92,7 +92,42 @@
       "detail": ""
     },
     {
-      "check": "screenshot streamlit_simulator",
+      "check": "screenshot streamlit_flow_clean_approval",
+      "ok": true,
+      "detail": "[STRAIGHT_THROUGH]"
+    },
+    {
+      "check": "screenshot streamlit_flow_corporate_late_checkout",
+      "ok": true,
+      "detail": "[STRAIGHT_THROUGH]"
+    },
+    {
+      "check": "screenshot streamlit_flow_below_floor_price",
+      "ok": true,
+      "detail": "[REJECT_REVISE]"
+    },
+    {
+      "check": "screenshot streamlit_flow_spammy_copy",
+      "ok": true,
+      "detail": "[REJECT_REVISE]"
+    },
+    {
+      "check": "screenshot streamlit_flow_last_room_upgrade",
+      "ok": true,
+      "detail": "[REJECT_REVISE]"
+    },
+    {
+      "check": "screenshot streamlit_flow_vip_duplicate_perk",
+      "ok": true,
+      "detail": "[HITL_ESCALATION]"
+    },
+    {
+      "check": "screenshot streamlit_flow_unresolvable_escalation",
+      "ok": true,
+      "detail": "[HITL_ESCALATION]"
+    },
+    {
+      "check": "screenshot streamlit_flow_metrics",
       "ok": true,
       "detail": ""
     },

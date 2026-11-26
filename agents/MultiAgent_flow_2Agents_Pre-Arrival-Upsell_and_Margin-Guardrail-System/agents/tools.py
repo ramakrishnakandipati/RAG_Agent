@@ -183,6 +183,11 @@ SCENARIOS: dict[str, dict] = {
         "description": "Honeymoon guest in DELUXE_KING; only 1 JUNIOR_OCEAN_VIEW left (< dynamic safety buffer). Room upgrade must be rejected, so the strategist pivots SKU.",
         "guest": _g("RES-90003", "Noah", "Honeymoon", "Direct_Web", "DELUXE_KING", "Silver", adr=270.0, n_prior_stays=2, past_spend=700.0),
         "injections": {"naive_bundle": False, "prefer_sku": "ROOM_UPGRADE"}, "pms_override": {"JUNIOR_OCEAN_VIEW": 1}},
+    "corporate_late_checkout": {
+        "title": "Straight-through - Corporate GDS guest, no loyalty tier",
+        "description": "Business traveller booked via GDS with no tier perks; the strategist offers a low-cost add-on that satisfies every contract on the first draft.",
+        "guest": _g("RES-90007", "Arjun", "Corporate", "GDS", "DELUXE_KING", "None", adr=250.0, los=2, n_prior_stays=1, past_spend=300.0, is_weekend=0),
+        "injections": {"naive_bundle": False, "prefer_sku": "LATE_CHECKOUT"}, "pms_override": {}},
     "below_floor_price": {
         "title": "ADR floor breach - over-discounted draft",
         "description": "Stress test: generator over-discounts the first draft below the RMS floor; the auditor demands a floor-compliant price.",

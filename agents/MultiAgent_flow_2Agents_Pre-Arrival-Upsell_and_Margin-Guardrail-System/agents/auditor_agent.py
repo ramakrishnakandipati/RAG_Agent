@@ -116,7 +116,7 @@ def auditor_node(state: GraphState) -> dict:
     mx = int(state.get("max_revisions", load_config()["agents"]["max_revisions"]))
     v = audit(g, draft, rev, mx, state.get("pms_override"))
     merged = _merge(Directives(**state.get("directives", {})), v.directives)
-    ev = {"agent": "auditor", "revision": rev, "decision": v.decision, "violations": [x.code.value for x in v.violations], "tone_score": v.tone_score,
+    ev = {"agent": "auditor", "revision": rev, "decision": v.decision, "violations": [x.code.value for x in v.violations], "tone_score": v.tone_score, "checks": v.checks, "vip_value": v.vip_value, "hitl_reason": v.hitl_reason,
           "latency_ms": round((time.perf_counter() - t0) * 1000, 1), "llm_mode": v.llm_mode}
     trace({"thread_id": state.get("thread_id"), **ev})
     out = {"verdict": v.model_dump(mode="json"), "directives": merged.model_dump(), "history": [ev]}

@@ -8,7 +8,7 @@ before arrival** while blocking room-margin cannibalisation, ADR-floor breaches,
   **Agent 1 – Revenue & Personalization Strategist**, **Agent 2 – Yield & Brand Compliance Auditor**.
 * **Local LLM**: `qwen3-vl-30b-a3b-instruct` through an OpenAI-compatible endpoint (`http://localhost:8000/v1`), JSON-schema-constrained output, multimodal hook.
 * **Offline policy evaluation**: IPS, SNIPS, Doubly Robust, Qini/AUUC, regret — validated against simulator ground truth.
-* **Interfaces**: Flask REST + PMS webhook + HITL queue + audit UI, Streamlit executive/simulation dashboard, Playwright E2E verification with the screenshots below.
+* **Interfaces**: Flask REST + PMS webhook + HITL queue + audit UI, Streamlit dashboard with an **End-to-End Flow** tab (6 stages, 3 flow types, 7 worked examples) and an overall **Flow Metrics** tab, Playwright E2E verification with the screenshots below.
 * **Math at every level**: [`docs/MATHEMATICAL_FOUNDATIONS.md`](docs/MATHEMATICAL_FOUNDATIONS.md) (L1–L10) — each module docstring repeats its equations.
 
 > **Honest status.** Everything below was run on an RTX 3090. The Qwen3-VL server was **not running** during the recorded runs, so agents used the
@@ -66,7 +66,7 @@ configs/        config.yaml (CUDA, hyper-parameters, RMS floors, LLM)  ·  brand
 data/           synthetic_generator.py
 models/         elasticity_net.py  uplift_models.py  contextual_bandit.py  convex_allocator.py  train_quant_suite.py  utils.py
 evaluation/     offline_replay.py
-agents/         schemas.py  tools.py  llm_client.py  strategist_agent.py  auditor_agent.py  graph.py
+agents/         schemas.py  tools.py  llm_client.py  strategist_agent.py  auditor_agent.py  graph.py  flows.py (stage + overall flow metrics)
 apps/           flask_api.py  streamlit_app.py
 scripts/        verify_and_capture.py
 tests/          28 tests (guardrails, math identities, graph loop, schemas)
@@ -84,6 +84,7 @@ python data/synthetic_generator.py         # 80,000 reservations + PMS/RMS table
 python models/train_quant_suite.py         # trains all GPU models, writes .pt / metrics / 300-DPI plots / GPU telemetry
 python evaluation/offline_replay.py        # IPS / SNIPS / DR / Qini / regret
 python -m pytest -q                        # 28 tests
+python -m agents.flows                     # run all 7 end-to-end flows -> outputs/metrics/flow_metrics.json
 python apps/flask_api.py                   # http://127.0.0.1:5055/audit
 streamlit run apps/streamlit_app.py --server.port 8505
 python scripts/verify_and_capture.py       # boots both apps, checks the API, saves screenshots, exit 1 on failure
@@ -172,37 +173,97 @@ The bandit uses a simulator for rewards, and Qini on observed data has few treat
 
 ---
 
-## 5. Interfaces & verification (Playwright, 22/22 checks)
+## 5. End-to-end flows, interfaces & verification (Playwright, 29/29 checks)
 
-`python scripts/verify_and_capture.py` boots Flask + Streamlit, exercises `/health`, scenario generation, the PMS webhook, the HITL queue (approve → resume), an unresolvable run that escalates at `R_max`, a malformed webhook (HTTP 400), and saves screenshots to `outputs/screenshots/`.
+### 5.1 The six stages and what is measured at each
 
-**Flask operational audit UI** (run an offer, HITL queue, webhook-fed PMS, runs + agent trace)
-![flask](outputs/screenshots/flask_audit_after_run.png)
+```mermaid
+flowchart LR
+  S1["S1 Guest context<br/>CRM · PMS · RMS<br/><i>tier, perks, lead time, contacts</i>"] --> S2["S2 GPU quant inference<br/><i>CATE τ̂, P(accept), margin − hurdle, GPU ms</i>"]
+  S2 --> S3["S3 Strategist draft<br/><i>SKU, price, bundle, channel, ms</i>"]
+  S3 --> S4["S4 Auditor contracts<br/><i>9 checks, violation codes, tone score</i>"]
+  S4 -->|REJECTED, r &lt; R_max| S3
+  S4 -->|APPROVED| S6["S6 Outcome<br/><i>status, price, contribution margin, latency</i>"]
+  S4 -->|ESCALATE| H["HITL gate"] --> S6
+  S4 -.-> S5["S5 Revision loop<br/><i>drafts, revisions, violations repaired</i>"]
+```
 
-**Streamlit — executive KPIs**
+The Streamlit **End-to-End Flow** tab runs any example live and shows one panel per stage (`agents/flows.py::stage_metrics`).
+The **Flow Metrics** tab aggregates all examples (`outputs/metrics/flow_metrics.json`, regenerate with `python -m agents.flows`).
+
+### 5.2 Three flow types, each with at least two worked examples
+
+| Flow | Path | Examples |
+|---|---|---|
+| **Straight-through** | Strategist → Auditor ✔ → Finalize | `clean_approval`, `corporate_late_checkout` |
+| **Reject → revise → approve** | Strategist → Auditor ✘ → Strategist (directives) → Auditor ✔ → Finalize | `below_floor_price`, `spammy_copy`, `last_room_upgrade` |
+| **HITL escalation** | … → Auditor ESCALATE → HITL gate → Finalize | `vip_duplicate_perk`, `unresolvable_escalation` |
+
+Per-example metrics at each stage (recorded run, `llm_mode: fallback`, RTX 3090):
+
+| Example | S1 tier | S2 GPU ms · top-candidate CATE | S3 drafts (SKU @ $) | S4 audit sequence (checks passed /9) | S5 revisions | S6 outcome · price · CM | Total ms |
+|---|---|---|---|---|---|---|---|
+| **clean_approval** | Gold | 95 · +0.238 | ROOM_UPGRADE @ 135 | ✔ (9/9) | 0 | APPROVED · $135 · 63 % | 97 |
+| **corporate_late_checkout** | None | 96 · +0.352 | LATE_CHECKOUT @ 59 | ✔ (9/9) | 0 | APPROVED · $59 · 71 % | 98 |
+| **below_floor_price** | None | 91 · +0.158 | SPA @ 108 → SPA @ 151 | ✘ `BELOW_RMS_FLOOR` (8/9) → ✔ | 1 | APPROVED · $151 · 60 % | 189 |
+| **spammy_copy** | Silver | 98 · +0.257 | LATE_CHECKOUT @ 40.5 ×2 | ✘ `TONE_BANNED_PHRASE`, tone 0.0 (7/9) → ✔ tone 1.0 | 1 | APPROVED · $41 · 58 % | 195 |
+| **last_room_upgrade** | Silver | 119 · +0.115 | ROOM_UPGRADE @ 124 → SPA @ 183 | ✘ `INVENTORY_BUFFER` (8/9) → ✔ | 1 | APPROVED · $183 · 67 % | 220 |
+| **vip_duplicate_perk** | Diamond | 93 · +0.252 | LATE_CHECKOUT @ 70 → ROOM_UPGRADE @ 188 → SPA @ 281 | ✘ `LOYALTY_PERK_DUPLICATION`+`SKU_ENTITLED_FREE` (7/9) → ✘ `SKU_ENTITLED_FREE` → ESCALATE (VIP value $844 ≥ $250) | 2 | HITL_PENDING · $281 · 79 % | 287 |
+| **unresolvable_escalation** | None | 95 · +0.158 | LATE_CHECKOUT @ 38 ×4 | ✘ `TONE_BANNED_PHRASE` ×3 → ESCALATE at R_max | 3 | HITL_PENDING · $38 · 56 % | 383 |
+
+S2's "top candidate" is the highest-scoring SKU whose unit margin clears the shadow-price hurdle; the stress hooks in `reject → revise` examples deliberately steer the *draft* to a different SKU (e.g. `prefer_sku`).
+Click-through screenshots (one per example, all six stages visible):
+
+| Straight-through | | |
+|---|---|---|
+| ![clean](outputs/screenshots/streamlit_flow_clean_approval.png) | ![corp](outputs/screenshots/streamlit_flow_corporate_late_checkout.png) | |
+
+| Reject → revise → approve | | |
+|---|---|---|
+| ![floor](outputs/screenshots/streamlit_flow_below_floor_price.png) | ![spam](outputs/screenshots/streamlit_flow_spammy_copy.png) | ![room](outputs/screenshots/streamlit_flow_last_room_upgrade.png) |
+
+| HITL escalation | |
+|---|---|
+| ![vip](outputs/screenshots/streamlit_flow_vip_duplicate_perk.png) | ![unres](outputs/screenshots/streamlit_flow_unresolvable_escalation.png) |
+
+### 5.3 Overall metrics across all flows (7 runs)
+
+| Metric | Value |
+|---|---|
+| First-draft approval (no revision) | 2 / 7 = **29 %** |
+| Final auto-approval · HITL escalation | **71 %** · **29 %** |
+| First drafts rejected by the Auditor | 5 / 7 = 71 % |
+| Violations caught (10 total) | `TONE_BANNED_PHRASE` 5 · `SKU_ENTITLED_FREE` 2 · `LOYALTY_PERK_DUPLICATION` 1 · `INVENTORY_BUFFER` 1 · `BELOW_RMS_FLOOR` 1 |
+| Mean revisions · max seen (bound R_max = 3) | 1.14 · 3 |
+| Latency p50 / p95 / max (full pipeline) | 195 / 354 / 383 ms |
+| Mean GPU quant inference | 98 ms |
+| Mean latency by flow | straight-through 97 ms · reject→revise 201 ms · HITL 335 ms |
+| Mean contribution margin of final offers (floor 30 %) | 65 % |
+
+**Read these correctly.** Five of the seven scenarios inject a deliberately faulty first draft, so the 29 % first-pass rate and 71 % rejection rate measure whether the Auditor
+*catches planted faults*, not how often a production strategist errs. The meaningful results are: every planted fault was caught with the right code, every repairable one was fixed within one or two
+revisions, nothing unresolvable escaped the `R_max` bound, and no final auto-approved offer violates a contract. Seven runs is a smoke-level sample; for population-level behaviour use §4 (OPE over 16k reservations).
+Latencies are with the template fallback; a live 30B model will dominate them.
+
+![flow metrics](outputs/screenshots/streamlit_flow_metrics.png)
+
+### 5.4 Other dashboard tabs and the Flask UI
+
+**Executive KPIs** (model + policy metrics) · **Quant Models** · **Offline Policy Evaluation** · **HITL Queue**
 ![exec](outputs/screenshots/streamlit_executive.png)
-
-**Streamlit — scenario simulator (Strategist ⇄ Auditor loop)**
-![sim](outputs/screenshots/streamlit_simulator.png)
 
 | Quant models | Offline policy evaluation | HITL queue |
 |---|---|---|
 | ![q](outputs/screenshots/streamlit_quant.png) | ![o](outputs/screenshots/streamlit_ope.png) | ![h](outputs/screenshots/streamlit_hitl.png) |
 
+**Flask operational audit UI** (run an offer, HITL queue, webhook-fed PMS, runs + agent trace)
+![flask](outputs/screenshots/flask_audit_after_run.png)
+
 REST API captures: [`/health`](outputs/screenshots/api_health.png) · [`/api/v1/scenarios`](outputs/screenshots/api_scenarios.png) · [`/api/v1/pms`](outputs/screenshots/api_pms.png)
 
-### Pre-loaded scenarios
-
-| Scenario | What it proves | Observed outcome |
-|---|---|---|
-| `clean_approval` | tier-aware offer passes first time | APPROVED, 0 revisions |
-| `vip_duplicate_perk` | Diamond guest offered an already-free 2 PM late checkout → rejected (`LOYALTY_PERK_DUPLICATION`, `SKU_ENTITLED_FREE`), SKU pivots; final VIP-value sign-off | HITL after 2 revisions |
-| `last_room_upgrade` | only 1 room left < dynamic buffer → `INVENTORY_BUFFER`, strategist pivots SKU | APPROVED after 1 revision |
-| `below_floor_price` | over-discounted draft → `BELOW_RMS_FLOOR`, re-priced ≥ floor | APPROVED after 1 revision |
-| `spammy_copy` | "ACT NOW / 50 % OFF / CHEAP" → `TONE_BANNED_PHRASE`, rewritten | APPROVED after 1 revision |
-| `unresolvable_escalation` | generator never fixes tone → bounded loop stops | HITL after `R_max = 3` |
-
-The last four use explicit **stress-injection hooks** (`injections` in `agents/tools.py::SCENARIOS`) to make the first draft deliberately faulty; they exercise the critic, they are not natural model failures.
+`python scripts/verify_and_capture.py` boots Flask + Streamlit, exercises `/health`, scenario generation, the PMS webhook, the HITL queue (approve → resume), an unresolvable run that escalates at `R_max`,
+a malformed webhook (HTTP 400), then drives the Streamlit tabs through all seven examples and saves every screenshot above (exit code 1 on any failure).
+The reject→revise and HITL scenarios (all but the two straight-through ones) use explicit **stress-injection hooks** (`injections` in `agents/tools.py::SCENARIOS`); they exercise the critic and are not natural model failures.
 
 ### REST API
 

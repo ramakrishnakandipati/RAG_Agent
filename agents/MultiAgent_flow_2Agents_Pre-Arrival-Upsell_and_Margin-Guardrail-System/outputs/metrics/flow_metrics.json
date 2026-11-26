@@ -1,0 +1,715 @@
+{
+  "overall": {
+    "n_runs": 7,
+    "first_pass_approval_rate": 0.2857142857142857,
+    "final_auto_approval_rate": 0.7142857142857143,
+    "hitl_rate": 0.2857142857142857,
+    "mean_revisions": 1.1428571428571428,
+    "max_revisions_seen": 3,
+    "first_draft_decisions": {
+      "APPROVED": 2,
+      "REJECTED": 5
+    },
+    "first_draft_rejection_rate": 0.7142857142857143,
+    "violations_by_code": {
+      "LOYALTY_PERK_DUPLICATION": 1,
+      "SKU_ENTITLED_FREE": 2,
+      "INVENTORY_BUFFER": 1,
+      "BELOW_RMS_FLOOR": 1,
+      "TONE_BANNED_PHRASE": 5
+    },
+    "violations_total": 10,
+    "latency_ms": {
+      "mean": 209.6,
+      "p50": 194.5,
+      "p95": 353.99999999999994,
+      "max": 382.8
+    },
+    "mean_gpu_quant_latency_ms": 98.20971428571428,
+    "mean_final_price": 126.85428571428572,
+    "mean_contribution_margin_pct": 64.82857142857144,
+    "llm_mode": "fallback"
+  },
+  "by_flow": {
+    "STRAIGHT_THROUGH": {
+      "n": 2,
+      "mean_revisions": 0.0,
+      "mean_latency_ms": 97.1,
+      "statuses": {
+        "APPROVED": 2
+      },
+      "examples": [
+        "clean_approval",
+        "corporate_late_checkout"
+      ]
+    },
+    "REJECT_REVISE": {
+      "n": 3,
+      "mean_revisions": 1.0,
+      "mean_latency_ms": 201.13333333333333,
+      "statuses": {
+        "APPROVED": 3
+      },
+      "examples": [
+        "last_room_upgrade",
+        "below_floor_price",
+        "spammy_copy"
+      ]
+    },
+    "HITL_ESCALATION": {
+      "n": 2,
+      "mean_revisions": 2.5,
+      "mean_latency_ms": 334.8,
+      "statuses": {
+        "HITL_PENDING": 2
+      },
+      "examples": [
+        "vip_duplicate_perk",
+        "unresolvable_escalation"
+      ]
+    }
+  },
+  "runs": [
+    {
+      "S1_context": {
+        "reservation": "RES-90001",
+        "segment": "Honeymoon",
+        "tier": "Gold",
+        "channel": "Direct_Web",
+        "room": "DELUXE_KING",
+        "lead_time_d": 4,
+        "tier_perks": 2,
+        "contacts_7d": 0
+      },
+      "S2_quant": {
+        "candidates_ranked": 4,
+        "top_sku": "ROOM_UPGRADE",
+        "top_score": -4.608,
+        "top_cate": 0.2384,
+        "top_p_accept": 0.4051,
+        "top_unit_margin": 85.3,
+        "top_hurdle": 71.53,
+        "gpu_latency_ms": 94.565
+      },
+      "S3_draft": [
+        {
+          "rev": 0,
+          "sku": "ROOM_UPGRADE",
+          "price": 135.3,
+          "bundle": [
+            "CHAMPAGNE_BOTTLE",
+            "TURNDOWN_PETALS"
+          ],
+          "channel": "EMAIL",
+          "ms": 96.5,
+          "llm": "fallback"
+        }
+      ],
+      "S4_audit": [
+        {
+          "rev": 0,
+          "decision": "APPROVED",
+          "violations": [],
+          "tone": 1.0,
+          "ms": 0.2,
+          "checks_pass": 9,
+          "checks_total": 9
+        }
+      ],
+      "S5_loop": {
+        "drafts": 1,
+        "revisions": 0,
+        "rejections": 0,
+        "violations_fixed": 0
+      },
+      "S6_outcome": {
+        "final_status": "APPROVED",
+        "final_sku": "ROOM_UPGRADE",
+        "final_price": 135.3,
+        "hitl_reason": null,
+        "vip_value": 216.48,
+        "unit_margin": 85.3,
+        "contribution_margin_pct": 63.0
+      },
+      "total_latency_ms": 96.7,
+      "key": "clean_approval",
+      "flow": "STRAIGHT_THROUGH",
+      "title": "Clean approval - Gold honeymooner, healthy inventory",
+      "wall_ms": 101.6
+    },
+    {
+      "S1_context": {
+        "reservation": "RES-90002",
+        "segment": "VIP_Loyalty",
+        "tier": "Diamond",
+        "channel": "Direct_Web",
+        "room": "JUNIOR_OCEAN_VIEW",
+        "lead_time_d": 4,
+        "tier_perks": 5,
+        "contacts_7d": 0
+      },
+      "S2_quant": {
+        "candidates_ranked": 4,
+        "top_sku": "LATE_CHECKOUT",
+        "top_score": 10.184,
+        "top_cate": 0.2519,
+        "top_p_accept": 0.6923,
+        "top_unit_margin": 53.31,
+        "top_hurdle": 36.15,
+        "gpu_latency_ms": 93.489
+      },
+      "S3_draft": [
+        {
+          "rev": 0,
+          "sku": "LATE_CHECKOUT",
+          "price": 70.31,
+          "bundle": [
+            "WELCOME_DRINK",
+            "LATE_CHECKOUT_2PM"
+          ],
+          "channel": "EMAIL",
+          "ms": 95.1,
+          "llm": "fallback"
+        },
+        {
+          "rev": 1,
+          "sku": "ROOM_UPGRADE",
+          "price": 187.5,
+          "bundle": [],
+          "channel": "EMAIL",
+          "ms": 95.6,
+          "llm": "fallback"
+        },
+        {
+          "rev": 2,
+          "sku": "SPA_PACKAGE",
+          "price": 281.25,
+          "bundle": [],
+          "channel": "EMAIL",
+          "ms": 95.4,
+          "llm": "fallback"
+        }
+      ],
+      "S4_audit": [
+        {
+          "rev": 0,
+          "decision": "REJECTED",
+          "violations": [
+            "LOYALTY_PERK_DUPLICATION",
+            "SKU_ENTITLED_FREE"
+          ],
+          "tone": 1.0,
+          "ms": 0.3,
+          "checks_pass": 7,
+          "checks_total": 9
+        },
+        {
+          "rev": 1,
+          "decision": "REJECTED",
+          "violations": [
+            "SKU_ENTITLED_FREE"
+          ],
+          "tone": 1.0,
+          "ms": 0.2,
+          "checks_pass": 8,
+          "checks_total": 9
+        },
+        {
+          "rev": 2,
+          "decision": "ESCALATE_HITL",
+          "violations": [],
+          "tone": 1.0,
+          "ms": 0.2,
+          "checks_pass": 9,
+          "checks_total": 9
+        }
+      ],
+      "S5_loop": {
+        "drafts": 3,
+        "revisions": 2,
+        "rejections": 2,
+        "violations_fixed": 3
+      },
+      "S6_outcome": {
+        "final_status": "HITL_PENDING",
+        "final_sku": "SPA_PACKAGE",
+        "final_price": 281.25,
+        "hitl_reason": "high-value VIP threshold: tier weight x price = $844 >= $250",
+        "vip_value": 843.75,
+        "unit_margin": 221.25,
+        "contribution_margin_pct": 78.7
+      },
+      "total_latency_ms": 286.8,
+      "key": "vip_duplicate_perk",
+      "flow": "HITL_ESCALATION",
+      "title": "Diamond VIP - duplicate loyalty perk + HITL sign-off",
+      "wall_ms": 295.1
+    },
+    {
+      "S1_context": {
+        "reservation": "RES-90003",
+        "segment": "Honeymoon",
+        "tier": "Silver",
+        "channel": "Direct_Web",
+        "room": "DELUXE_KING",
+        "lead_time_d": 4,
+        "tier_perks": 1,
+        "contacts_7d": 0
+      },
+      "S2_quant": {
+        "candidates_ranked": 4,
+        "top_sku": "SPA_PACKAGE",
+        "top_score": -82.318,
+        "top_cate": 0.1153,
+        "top_p_accept": 0.3806,
+        "top_unit_margin": 123.15,
+        "top_hurdle": 120.39,
+        "gpu_latency_ms": 118.931
+      },
+      "S3_draft": [
+        {
+          "rev": 0,
+          "sku": "ROOM_UPGRADE",
+          "price": 123.75,
+          "bundle": [
+            "CHAMPAGNE_BOTTLE",
+            "TURNDOWN_PETALS"
+          ],
+          "channel": "EMAIL",
+          "ms": 120.5,
+          "llm": "fallback"
+        },
+        {
+          "rev": 1,
+          "sku": "SPA_PACKAGE",
+          "price": 183.15,
+          "bundle": [
+            "CHAMPAGNE_BOTTLE",
+            "TURNDOWN_PETALS"
+          ],
+          "channel": "EMAIL",
+          "ms": 98.6,
+          "llm": "fallback"
+        }
+      ],
+      "S4_audit": [
+        {
+          "rev": 0,
+          "decision": "REJECTED",
+          "violations": [
+            "INVENTORY_BUFFER"
+          ],
+          "tone": 1.0,
+          "ms": 0.2,
+          "checks_pass": 8,
+          "checks_total": 9
+        },
+        {
+          "rev": 1,
+          "decision": "APPROVED",
+          "violations": [],
+          "tone": 1.0,
+          "ms": 0.2,
+          "checks_pass": 9,
+          "checks_total": 9
+        }
+      ],
+      "S5_loop": {
+        "drafts": 2,
+        "revisions": 1,
+        "rejections": 1,
+        "violations_fixed": 1
+      },
+      "S6_outcome": {
+        "final_status": "APPROVED",
+        "final_sku": "SPA_PACKAGE",
+        "final_price": 183.15,
+        "hitl_reason": null,
+        "vip_value": 219.78,
+        "unit_margin": 123.15,
+        "contribution_margin_pct": 67.2
+      },
+      "total_latency_ms": 219.5,
+      "key": "last_room_upgrade",
+      "flow": "REJECT_REVISE",
+      "title": "Last-room protection - upgrade blocked by PMS buffer",
+      "wall_ms": 225.8
+    },
+    {
+      "S1_context": {
+        "reservation": "RES-90007",
+        "segment": "Corporate",
+        "tier": "None",
+        "channel": "GDS",
+        "room": "DELUXE_KING",
+        "lead_time_d": 4,
+        "tier_perks": 0,
+        "contacts_7d": 0
+      },
+      "S2_quant": {
+        "candidates_ranked": 4,
+        "top_sku": "LATE_CHECKOUT",
+        "top_score": 4.352,
+        "top_cate": 0.3521,
+        "top_p_accept": 0.4008,
+        "top_unit_margin": 41.78,
+        "top_hurdle": 36.15,
+        "gpu_latency_ms": 95.741
+      },
+      "S3_draft": [
+        {
+          "rev": 0,
+          "sku": "LATE_CHECKOUT",
+          "price": 58.78,
+          "bundle": [
+            "LATE_CHECKOUT_2PM"
+          ],
+          "channel": "EMAIL",
+          "ms": 97.3,
+          "llm": "fallback"
+        }
+      ],
+      "S4_audit": [
+        {
+          "rev": 0,
+          "decision": "APPROVED",
+          "violations": [],
+          "tone": 1.0,
+          "ms": 0.2,
+          "checks_pass": 9,
+          "checks_total": 9
+        }
+      ],
+      "S5_loop": {
+        "drafts": 1,
+        "revisions": 0,
+        "rejections": 0,
+        "violations_fixed": 0
+      },
+      "S6_outcome": {
+        "final_status": "APPROVED",
+        "final_sku": "LATE_CHECKOUT",
+        "final_price": 58.78,
+        "hitl_reason": null,
+        "vip_value": 58.78,
+        "unit_margin": 41.78,
+        "contribution_margin_pct": 71.1
+      },
+      "total_latency_ms": 97.5,
+      "key": "corporate_late_checkout",
+      "flow": "STRAIGHT_THROUGH",
+      "title": "Straight-through - Corporate GDS guest, no loyalty tier",
+      "wall_ms": 100.7
+    },
+    {
+      "S1_context": {
+        "reservation": "RES-90004",
+        "segment": "Leisure",
+        "tier": "None",
+        "channel": "OTA_Expedia",
+        "room": "STANDARD_QUEEN",
+        "lead_time_d": 4,
+        "tier_perks": 0,
+        "contacts_7d": 0
+      },
+      "S2_quant": {
+        "candidates_ranked": 4,
+        "top_sku": "LATE_CHECKOUT",
+        "top_score": -29.573,
+        "top_cate": 0.1583,
+        "top_p_accept": 0.4359,
+        "top_unit_margin": 21.25,
+        "top_hurdle": 48.55,
+        "gpu_latency_ms": 91.494
+      },
+      "S3_draft": [
+        {
+          "rev": 0,
+          "sku": "SPA_PACKAGE",
+          "price": 108.0,
+          "bundle": [
+            "WELCOME_DRINK"
+          ],
+          "channel": "EMAIL",
+          "ms": 92.9,
+          "llm": "fallback"
+        },
+        {
+          "rev": 1,
+          "sku": "SPA_PACKAGE",
+          "price": 150.75,
+          "bundle": [
+            "WELCOME_DRINK"
+          ],
+          "channel": "EMAIL",
+          "ms": 96.1,
+          "llm": "fallback"
+        }
+      ],
+      "S4_audit": [
+        {
+          "rev": 0,
+          "decision": "REJECTED",
+          "violations": [
+            "BELOW_RMS_FLOOR"
+          ],
+          "tone": 1.0,
+          "ms": 0.2,
+          "checks_pass": 8,
+          "checks_total": 9
+        },
+        {
+          "rev": 1,
+          "decision": "APPROVED",
+          "violations": [],
+          "tone": 1.0,
+          "ms": 0.2,
+          "checks_pass": 9,
+          "checks_total": 9
+        }
+      ],
+      "S5_loop": {
+        "drafts": 2,
+        "revisions": 1,
+        "rejections": 1,
+        "violations_fixed": 1
+      },
+      "S6_outcome": {
+        "final_status": "APPROVED",
+        "final_sku": "SPA_PACKAGE",
+        "final_price": 150.75,
+        "hitl_reason": null,
+        "vip_value": 150.75,
+        "unit_margin": 90.75,
+        "contribution_margin_pct": 60.2
+      },
+      "total_latency_ms": 189.4,
+      "key": "below_floor_price",
+      "flow": "REJECT_REVISE",
+      "title": "ADR floor breach - over-discounted draft",
+      "wall_ms": 194.4
+    },
+    {
+      "S1_context": {
+        "reservation": "RES-90005",
+        "segment": "Family",
+        "tier": "Silver",
+        "channel": "Direct_Web",
+        "room": "STANDARD_QUEEN",
+        "lead_time_d": 4,
+        "tier_perks": 1,
+        "contacts_7d": 0
+      },
+      "S2_quant": {
+        "candidates_ranked": 4,
+        "top_sku": "LATE_CHECKOUT",
+        "top_score": -18.237,
+        "top_cate": 0.2573,
+        "top_p_accept": 0.5803,
+        "top_unit_margin": 23.5,
+        "top_hurdle": 44.42,
+        "gpu_latency_ms": 98.045
+      },
+      "S3_draft": [
+        {
+          "rev": 0,
+          "sku": "LATE_CHECKOUT",
+          "price": 40.5,
+          "bundle": [
+            "BREAKFAST_FOR_TWO"
+          ],
+          "channel": "EMAIL",
+          "ms": 99.7,
+          "llm": "fallback"
+        },
+        {
+          "rev": 1,
+          "sku": "LATE_CHECKOUT",
+          "price": 40.5,
+          "bundle": [
+            "BREAKFAST_FOR_TWO"
+          ],
+          "channel": "EMAIL",
+          "ms": 94.5,
+          "llm": "fallback"
+        }
+      ],
+      "S4_audit": [
+        {
+          "rev": 0,
+          "decision": "REJECTED",
+          "violations": [
+            "TONE_BANNED_PHRASE"
+          ],
+          "tone": 0.0,
+          "ms": 0.1,
+          "checks_pass": 7,
+          "checks_total": 9
+        },
+        {
+          "rev": 1,
+          "decision": "APPROVED",
+          "violations": [],
+          "tone": 1.0,
+          "ms": 0.2,
+          "checks_pass": 9,
+          "checks_total": 9
+        }
+      ],
+      "S5_loop": {
+        "drafts": 2,
+        "revisions": 1,
+        "rejections": 1,
+        "violations_fixed": 1
+      },
+      "S6_outcome": {
+        "final_status": "APPROVED",
+        "final_sku": "LATE_CHECKOUT",
+        "final_price": 40.5,
+        "hitl_reason": null,
+        "vip_value": 48.6,
+        "unit_margin": 23.5,
+        "contribution_margin_pct": 58.0
+      },
+      "total_latency_ms": 194.5,
+      "key": "spammy_copy",
+      "flow": "REJECT_REVISE",
+      "title": "Brand tone breach - discount-spam copy",
+      "wall_ms": 199.5
+    },
+    {
+      "S1_context": {
+        "reservation": "RES-90006",
+        "segment": "Leisure",
+        "tier": "None",
+        "channel": "OTA_Expedia",
+        "room": "STANDARD_QUEEN",
+        "lead_time_d": 4,
+        "tier_perks": 0,
+        "contacts_7d": 0
+      },
+      "S2_quant": {
+        "candidates_ranked": 4,
+        "top_sku": "LATE_CHECKOUT",
+        "top_score": -29.565,
+        "top_cate": 0.1577,
+        "top_p_accept": 0.4351,
+        "top_unit_margin": 21.25,
+        "top_hurdle": 48.55,
+        "gpu_latency_ms": 95.203
+      },
+      "S3_draft": [
+        {
+          "rev": 0,
+          "sku": "LATE_CHECKOUT",
+          "price": 38.25,
+          "bundle": [
+            "WELCOME_DRINK"
+          ],
+          "channel": "EMAIL",
+          "ms": 96.5,
+          "llm": "fallback"
+        },
+        {
+          "rev": 1,
+          "sku": "LATE_CHECKOUT",
+          "price": 38.25,
+          "bundle": [
+            "WELCOME_DRINK"
+          ],
+          "channel": "EMAIL",
+          "ms": 98.0,
+          "llm": "fallback"
+        },
+        {
+          "rev": 2,
+          "sku": "LATE_CHECKOUT",
+          "price": 38.25,
+          "bundle": [
+            "WELCOME_DRINK"
+          ],
+          "channel": "EMAIL",
+          "ms": 94.7,
+          "llm": "fallback"
+        },
+        {
+          "rev": 3,
+          "sku": "LATE_CHECKOUT",
+          "price": 38.25,
+          "bundle": [
+            "WELCOME_DRINK"
+          ],
+          "channel": "EMAIL",
+          "ms": 93.2,
+          "llm": "fallback"
+        }
+      ],
+      "S4_audit": [
+        {
+          "rev": 0,
+          "decision": "REJECTED",
+          "violations": [
+            "TONE_BANNED_PHRASE"
+          ],
+          "tone": 0.0,
+          "ms": 0.1,
+          "checks_pass": 7,
+          "checks_total": 9
+        },
+        {
+          "rev": 1,
+          "decision": "REJECTED",
+          "violations": [
+            "TONE_BANNED_PHRASE"
+          ],
+          "tone": 0.0,
+          "ms": 0.1,
+          "checks_pass": 7,
+          "checks_total": 9
+        },
+        {
+          "rev": 2,
+          "decision": "REJECTED",
+          "violations": [
+            "TONE_BANNED_PHRASE"
+          ],
+          "tone": 0.0,
+          "ms": 0.1,
+          "checks_pass": 7,
+          "checks_total": 9
+        },
+        {
+          "rev": 3,
+          "decision": "ESCALATE_HITL",
+          "violations": [
+            "TONE_BANNED_PHRASE"
+          ],
+          "tone": 0.0,
+          "ms": 0.1,
+          "checks_pass": 7,
+          "checks_total": 9
+        }
+      ],
+      "S5_loop": {
+        "drafts": 4,
+        "revisions": 3,
+        "rejections": 3,
+        "violations_fixed": 3
+      },
+      "S6_outcome": {
+        "final_status": "HITL_PENDING",
+        "final_sku": "LATE_CHECKOUT",
+        "final_price": 38.25,
+        "hitl_reason": "unresolved after 3 revisions: ['TONE_BANNED_PHRASE']",
+        "vip_value": 38.25,
+        "unit_margin": 21.25,
+        "contribution_margin_pct": 55.6
+      },
+      "total_latency_ms": 382.8,
+      "key": "unresolvable_escalation",
+      "flow": "HITL_ESCALATION",
+      "title": "Unresolved after 3 revisions - automatic HITL",
+      "wall_ms": 391.2
+    }
+  ]
+}
