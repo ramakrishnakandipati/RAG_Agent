@@ -1,0 +1,457 @@
+{
+ "clean_approval": {
+  "top": {
+   "sku": "ROOM_UPGRADE",
+   "price": 135.3,
+   "p_accept": 0.4051,
+   "cate_dragon": 0.2384,
+   "cate_xlearner": 0.1887,
+   "unit_margin": 85.3,
+   "ucb_bonus": 46.59,
+   "hurdle": 71.53,
+   "score": -4.608,
+   "excluded": false
+  },
+  "all": [
+   {
+    "sku": "LATE_CHECKOUT",
+    "price": 52.59,
+    "p_accept": 0.3736,
+    "cate_dragon": 0.1902,
+    "cate_xlearner": 0.2065,
+    "unit_margin": 35.59,
+    "ucb_bonus": 35.32,
+    "hurdle": 36.15,
+    "score": 5.946,
+    "excluded": false
+   },
+   {
+    "sku": "ROOM_UPGRADE",
+    "price": 135.3,
+    "p_accept": 0.4051,
+    "cate_dragon": 0.2384,
+    "cate_xlearner": 0.1887,
+    "unit_margin": 85.3,
+    "ucb_bonus": 46.59,
+    "hurdle": 71.53,
+    "score": -4.608,
+    "excluded": false
+   },
+   {
+    "sku": "DINING_EXPERIENCE",
+    "price": 152.08,
+    "p_accept": 0.3904,
+    "cate_dragon": 0.1505,
+    "cate_xlearner": 0.2341,
+    "unit_margin": 99.08,
+    "ucb_bonus": 19.86,
+    "hurdle": 91.63,
+    "score": -56.86,
+    "excluded": false
+   },
+   {
+    "sku": "SPA_PACKAGE",
+    "price": 193.05,
+    "p_accept": 0.3892,
+    "cate_dragon": 0.1515,
+    "cate_xlearner": 0.1387,
+    "unit_margin": 133.05,
+    "ucb_bonus": 21.01,
+    "hurdle": 102.2,
+    "score": -61.029,
+    "excluded": false
+   }
+  ],
+  "draft_sku": "ROOM_UPGRADE"
+ },
+ "vip_duplicate_perk": {
+  "top": {
+   "sku": "LATE_CHECKOUT",
+   "price": 70.31,
+   "p_accept": 0.6923,
+   "cate_dragon": 0.2519,
+   "cate_xlearner": 0.2677,
+   "unit_margin": 53.31,
+   "ucb_bonus": 32.9,
+   "hurdle": 36.15,
+   "score": 10.184,
+   "excluded": false
+  },
+  "all": [
+   {
+    "sku": "LATE_CHECKOUT",
+    "price": 70.31,
+    "p_accept": 0.6923,
+    "cate_dragon": 0.2519,
+    "cate_xlearner": 0.2677,
+    "unit_margin": 53.31,
+    "ucb_bonus": 32.9,
+    "hurdle": 36.15,
+    "score": 10.184,
+    "excluded": false
+   },
+   {
+    "sku": "ROOM_UPGRADE",
+    "price": 187.5,
+    "p_accept": 0.5978,
+    "cate_dragon": 0.1808,
+    "cate_xlearner": 0.2537,
+    "unit_margin": 137.5,
+    "ucb_bonus": 52.44,
+    "hurdle": 71.53,
+    "score": 5.775,
+    "excluded": false
+   },
+   {
+    "sku": "SPA_PACKAGE",
+    "price": 281.25,
+    "p_accept": 0.4575,
+    "cate_dragon": 0.1859,
+    "cate_xlearner": 0.3651,
+    "unit_margin": 221.25,
+    "ucb_bonus": 28.38,
+    "hurdle": 93.1,
+    "score": -23.592,
+    "excluded": false
+   },
+   {
+    "sku": "DINING_EXPERIENCE",
+    "price": 218.75,
+    "p_accept": 0.6015,
+    "cate_dragon": 0.156,
+    "cate_xlearner": 0.401,
+    "unit_margin": 165.75,
+    "ucb_bonus": 26.22,
+    "hurdle": 88.09,
+    "score": -36.014,
+    "excluded": false
+   }
+  ],
+  "draft_sku": "SPA_PACKAGE"
+ },
+ "last_room_upgrade": {
+  "top": {
+   "sku": "SPA_PACKAGE",
+   "price": 183.15,
+   "p_accept": 0.3806,
+   "cate_dragon": 0.1153,
+   "cate_xlearner": 0.0843,
+   "unit_margin": 123.15,
+   "ucb_bonus": 23.88,
+   "hurdle": 120.39,
+   "score": -82.318,
+   "excluded": false
+  },
+  "all": [
+   {
+    "sku": "LATE_CHECKOUT",
+    "price": 45.17,
+    "p_accept": 0.3379,
+    "cate_dragon": 0.1849,
+    "cate_xlearner": 0.2636,
+    "unit_margin": 28.17,
+    "ucb_bonus": 26.1,
+    "hurdle": 44.11,
+    "score": -12.798,
+    "excluded": false
+   },
+   {
+    "sku": "ROOM_UPGRADE",
+    "price": 123.75,
+    "p_accept": 0.3881,
+    "cate_dragon": 0.1631,
+    "cate_xlearner": 0.1326,
+    "unit_margin": 73.75,
+    "ucb_bonus": 25.92,
+    "hurdle": 86.69,
+    "score": -48.738,
+    "excluded": false
+   },
+   {
+    "sku": "DINING_EXPERIENCE",
+    "price": 140.53,
+    "p_accept": 0.3533,
+    "cate_dragon": 0.1463,
+    "cate_xlearner": 0.2271,
+    "unit_margin": 87.53,
+    "ucb_bonus": 18.97,
+    "hurdle": 112.86,
+    "score": -81.086,
+    "excluded": false
+   },
+   {
+    "sku": "SPA_PACKAGE",
+    "price": 183.15,
+    "p_accept": 0.3806,
+    "cate_dragon": 0.1153,
+    "cate_xlearner": 0.0843,
+    "unit_margin": 123.15,
+    "ucb_bonus": 23.88,
+    "hurdle": 120.39,
+    "score": -82.318,
+    "excluded": false
+   }
+  ],
+  "draft_sku": "SPA_PACKAGE"
+ },
+ "corporate_late_checkout": {
+  "top": {
+   "sku": "LATE_CHECKOUT",
+   "price": 58.78,
+   "p_accept": 0.4008,
+   "cate_dragon": 0.3521,
+   "cate_xlearner": 0.3003,
+   "unit_margin": 41.78,
+   "ucb_bonus": 25.79,
+   "hurdle": 36.15,
+   "score": 4.352,
+   "excluded": false
+  },
+  "all": [
+   {
+    "sku": "LATE_CHECKOUT",
+    "price": 58.78,
+    "p_accept": 0.4008,
+    "cate_dragon": 0.3521,
+    "cate_xlearner": 0.3003,
+    "unit_margin": 41.78,
+    "ucb_bonus": 25.79,
+    "hurdle": 36.15,
+    "score": 4.352,
+    "excluded": false
+   },
+   {
+    "sku": "ROOM_UPGRADE",
+    "price": 117.15,
+    "p_accept": 0.1285,
+    "cate_dragon": 0.0396,
+    "cate_xlearner": -0.0252,
+    "unit_margin": 67.15,
+    "ucb_bonus": 20.75,
+    "hurdle": 98.82,
+    "score": -75.409,
+    "excluded": false
+   },
+   {
+    "sku": "DINING_EXPERIENCE",
+    "price": 142.45,
+    "p_accept": 0.148,
+    "cate_dragon": 0.0586,
+    "cate_xlearner": 0.0817,
+    "unit_margin": 89.45,
+    "ucb_bonus": 21.52,
+    "hurdle": 109.32,
+    "score": -82.563,
+    "excluded": false
+   },
+   {
+    "sku": "SPA_PACKAGE",
+    "price": 150.98,
+    "p_accept": 0.0709,
+    "cate_dragon": 0.0397,
+    "cate_xlearner": 0.0158,
+    "unit_margin": 90.98,
+    "ucb_bonus": 13.77,
+    "hurdle": 179.53,
+    "score": -162.157,
+    "excluded": false
+   }
+  ],
+  "draft_sku": "LATE_CHECKOUT"
+ },
+ "below_floor_price": {
+  "top": {
+   "sku": "LATE_CHECKOUT",
+   "price": 38.25,
+   "p_accept": 0.4359,
+   "cate_dragon": 0.1583,
+   "cate_xlearner": 0.1303,
+   "unit_margin": 21.25,
+   "ucb_bonus": 15.62,
+   "hurdle": 48.55,
+   "score": -29.573,
+   "excluded": false
+  },
+  "all": [
+   {
+    "sku": "LATE_CHECKOUT",
+    "price": 38.25,
+    "p_accept": 0.4359,
+    "cate_dragon": 0.1583,
+    "cate_xlearner": 0.1303,
+    "unit_margin": 21.25,
+    "ucb_bonus": 15.62,
+    "hurdle": 48.55,
+    "score": -29.573,
+    "excluded": false
+   },
+   {
+    "sku": "ROOM_UPGRADE",
+    "price": 100.5,
+    "p_accept": 0.3079,
+    "cate_dragon": 0.0717,
+    "cate_xlearner": 0.0401,
+    "unit_margin": 50.5,
+    "ucb_bonus": 16.84,
+    "hurdle": 107.37,
+    "score": -86.904,
+    "excluded": false
+   },
+   {
+    "sku": "DINING_EXPERIENCE",
+    "price": 115.5,
+    "p_accept": 0.2238,
+    "cate_dragon": 0.0785,
+    "cate_xlearner": 0.1164,
+    "unit_margin": 62.5,
+    "ucb_bonus": 17.53,
+    "hurdle": 133.13,
+    "score": -110.683,
+    "excluded": false
+   },
+   {
+    "sku": "SPA_PACKAGE",
+    "price": 150.75,
+    "p_accept": 0.1878,
+    "cate_dragon": 0.0635,
+    "cate_xlearner": 0.0579,
+    "unit_margin": 90.75,
+    "ucb_bonus": 18.31,
+    "hurdle": 146.86,
+    "score": -122.783,
+    "excluded": false
+   }
+  ],
+  "draft_sku": "SPA_PACKAGE"
+ },
+ "spammy_copy": {
+  "top": {
+   "sku": "LATE_CHECKOUT",
+   "price": 40.5,
+   "p_accept": 0.5803,
+   "cate_dragon": 0.2573,
+   "cate_xlearner": 0.2626,
+   "unit_margin": 23.5,
+   "ucb_bonus": 20.14,
+   "hurdle": 44.42,
+   "score": -18.237,
+   "excluded": false
+  },
+  "all": [
+   {
+    "sku": "LATE_CHECKOUT",
+    "price": 40.5,
+    "p_accept": 0.5803,
+    "cate_dragon": 0.2573,
+    "cate_xlearner": 0.2626,
+    "unit_margin": 23.5,
+    "ucb_bonus": 20.14,
+    "hurdle": 44.42,
+    "score": -18.237,
+    "excluded": false
+   },
+   {
+    "sku": "ROOM_UPGRADE",
+    "price": 100.5,
+    "p_accept": 0.4308,
+    "cate_dragon": 0.1458,
+    "cate_xlearner": 0.1564,
+    "unit_margin": 50.5,
+    "ucb_bonus": 20.24,
+    "hurdle": 107.37,
+    "score": -79.764,
+    "excluded": false
+   },
+   {
+    "sku": "DINING_EXPERIENCE",
+    "price": 115.5,
+    "p_accept": 0.3231,
+    "cate_dragon": 0.1001,
+    "cate_xlearner": 0.0522,
+    "unit_margin": 62.5,
+    "ucb_bonus": 18.13,
+    "hurdle": 133.13,
+    "score": -108.736,
+    "excluded": false
+   },
+   {
+    "sku": "SPA_PACKAGE",
+    "price": 150.75,
+    "p_accept": 0.2783,
+    "cate_dragon": 0.1013,
+    "cate_xlearner": 0.0322,
+    "unit_margin": 90.75,
+    "ucb_bonus": 18.8,
+    "hurdle": 146.86,
+    "score": -118.865,
+    "excluded": false
+   }
+  ],
+  "draft_sku": "LATE_CHECKOUT"
+ },
+ "unresolvable_escalation": {
+  "top": {
+   "sku": "LATE_CHECKOUT",
+   "price": 38.25,
+   "p_accept": 0.4351,
+   "cate_dragon": 0.1577,
+   "cate_xlearner": 0.1302,
+   "unit_margin": 21.25,
+   "ucb_bonus": 15.64,
+   "hurdle": 48.55,
+   "score": -29.565,
+   "excluded": false
+  },
+  "all": [
+   {
+    "sku": "LATE_CHECKOUT",
+    "price": 38.25,
+    "p_accept": 0.4351,
+    "cate_dragon": 0.1577,
+    "cate_xlearner": 0.1302,
+    "unit_margin": 21.25,
+    "ucb_bonus": 15.64,
+    "hurdle": 48.55,
+    "score": -29.565,
+    "excluded": false
+   },
+   {
+    "sku": "ROOM_UPGRADE",
+    "price": 100.5,
+    "p_accept": 0.3062,
+    "cate_dragon": 0.0712,
+    "cate_xlearner": 0.0395,
+    "unit_margin": 50.5,
+    "ucb_bonus": 16.88,
+    "hurdle": 107.37,
+    "score": -86.891,
+    "excluded": false
+   },
+   {
+    "sku": "DINING_EXPERIENCE",
+    "price": 115.5,
+    "p_accept": 0.2219,
+    "cate_dragon": 0.0782,
+    "cate_xlearner": 0.1159,
+    "unit_margin": 62.5,
+    "ucb_bonus": 17.54,
+    "hurdle": 133.13,
+    "score": -110.695,
+    "excluded": false
+   },
+   {
+    "sku": "SPA_PACKAGE",
+    "price": 150.75,
+    "p_accept": 0.1864,
+    "cate_dragon": 0.0633,
+    "cate_xlearner": 0.0577,
+    "unit_margin": 90.75,
+    "ucb_bonus": 18.36,
+    "hurdle": 146.86,
+    "score": -122.755,
+    "excluded": false
+   }
+  ],
+  "draft_sku": "LATE_CHECKOUT"
+ }
+}
