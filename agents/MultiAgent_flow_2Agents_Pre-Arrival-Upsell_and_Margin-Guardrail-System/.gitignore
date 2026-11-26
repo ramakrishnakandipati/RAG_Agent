@@ -1,0 +1,6 @@
+# runtime state / regenerable data
+data/generated/
+outputs/checkpoints/graph.sqlite*
+outputs/logs/
+__pycache__/
+.pytest_cache/

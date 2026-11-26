@@ -1,0 +1,69 @@
+# Central configuration. Symbols in comments map to docs/MATHEMATICAL_FOUNDATIONS.md
+seed: 42
+paths:
+  data: data/generated
+  checkpoints: outputs/checkpoints
+  metrics: outputs/metrics
+  plots: outputs/plots
+  logs: outputs/logs
+cuda:
+  require: false            # true => abort if CUDA missing
+  device: cuda
+  amp: false
+data:
+  n_reservations: 80000
+  categories: [ROOM_UPGRADE, SPA_PACKAGE, DINING_EXPERIENCE, LATE_CHECKOUT]
+  segments: [Leisure, Corporate, VIP_Loyalty, Honeymoon, Family]
+  channels: [Direct_Web, OTA_Expedia, GDS]
+  room_types: [STANDARD_QUEEN, DELUXE_KING, JUNIOR_OCEAN_VIEW, OCEANFRONT_SUITE]
+  tiers: [None, Silver, Gold, Platinum, Diamond]
+catalog:                     # base price p0, marginal cost c, promo-discount depth d (fraction of price)
+  ROOM_UPGRADE:      {base_price: 120.0, cost: 38.0, housekeeping: 12.0, max_discount: 0.20}
+  SPA_PACKAGE:       {base_price: 180.0, cost: 54.0, housekeeping: 6.0,  max_discount: 0.25}
+  DINING_EXPERIENCE: {base_price: 140.0, cost: 49.0, housekeeping: 4.0,  max_discount: 0.20}
+  LATE_CHECKOUT:     {base_price: 45.0,  cost: 9.0,  housekeeping: 8.0,  max_discount: 0.30}
+rms:
+  min_upsell_floor: {ROOM_UPGRADE: 100.0, SPA_PACKAGE: 150.0, DINING_EXPERIENCE: 115.0, LATE_CHECKOUT: 38.0}
+  min_margin_ratio: 0.30     # theta_m
+  adr_floor: {STANDARD_QUEEN: 180, DELUXE_KING: 230, JUNIOR_OCEAN_VIEW: 310, OCEANFRONT_SUITE: 520}
+pms:
+  safety_z: 1.28             # z in dynamic buffer
+  min_buffer_rooms: 2        # B_min
+  lead_time_days: 3          # L
+elasticity:
+  hidden: 128
+  embed_dim: 16
+  n_price_basis: 8
+  epochs: 25
+  batch_size: 2048
+  lr: 2.0e-3
+uplift:
+  hidden: 128
+  epochs: 25
+  batch_size: 2048
+  lr: 1.5e-3
+  dragon_alpha: 1.0
+  dragon_beta: 0.5
+bandit:
+  linucb_alpha: 0.6
+  ts_nu: 0.4
+  n_rounds: 4000
+  batch: 64
+allocator:
+  iters: 2000
+  lr: 0.1
+  inventory_per_category: {ROOM_UPGRADE: 120, SPA_PACKAGE: 200, DINING_EXPERIENCE: 160, LATE_CHECKOUT: 400}
+  promo_budget: 4500.0
+llm:
+  base_url: http://localhost:8000/v1
+  api_key: EMPTY
+  model: qwen3-vl-30b-a3b-instruct
+  temperature: 0.15
+  max_retries: 3
+  timeout_s: 60
+  mode: auto                 # auto = use server if healthy else deterministic fallback; mock = never call
+agents:
+  max_revisions: 3           # R_max
+  tone_threshold: 0.7        # theta_tone
+flask: {host: 127.0.0.1, port: 5055}
+streamlit: {port: 8505}

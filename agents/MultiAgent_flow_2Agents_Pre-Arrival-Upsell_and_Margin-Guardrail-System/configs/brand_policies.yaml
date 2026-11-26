@@ -1,0 +1,25 @@
+loyalty_perks:               # complimentary perks per tier (perk -> estimated value USD)
+  None:     []
+  Silver:   [WELCOME_DRINK]
+  Gold:     [WELCOME_DRINK, BREAKFAST_FOR_TWO]
+  Platinum: [WELCOME_DRINK, BREAKFAST_FOR_TWO, LATE_CHECKOUT_2PM, ROOM_UPGRADE_SUBJECT_TO_AVAIL]
+  Diamond:  [WELCOME_DRINK, BREAKFAST_FOR_TWO, LATE_CHECKOUT_2PM, ROOM_UPGRADE_SUBJECT_TO_AVAIL, SPA_CREDIT_50]
+perk_values: {WELCOME_DRINK: 18, BREAKFAST_FOR_TWO: 60, LATE_CHECKOUT_2PM: 45, ROOM_UPGRADE_SUBJECT_TO_AVAIL: 120, SPA_CREDIT_50: 50}
+bundle_amenities: [WELCOME_DRINK, LATE_CHECKOUT_2PM, BREAKFAST_FOR_TWO, SPA_CREDIT_50, TURNDOWN_PETALS, CHAMPAGNE_BOTTLE]
+tone:
+  banned_regex:
+    - '(?i)\bcheap(est)?\b'
+    - '(?i)\b\d{2}\s?%\s*off\b'
+    - '(?i)\bact\s+now\b'
+    - '(?i)\blast\s+chance\b'
+    - '(?i)\bhurry\b'
+    - '(?i)!{2,}'
+    - '(?i)\bdon.?t\s+miss\b'
+  required_register: refined, warm, understated luxury; no urgency pressure; no exclamation stacking
+  max_copy_chars: {EMAIL: 700, SMS: 240}
+fatigue:
+  max_contacts_7d: 2         # n_max
+hitl:
+  vip_offer_value_usd: 250   # V_VIP threshold on CLV-weighted offer value
+  clv_weight_tiers: {None: 1.0, Silver: 1.2, Gold: 1.6, Platinum: 2.2, Diamond: 3.0}
+  escalate_on_unresolved: true

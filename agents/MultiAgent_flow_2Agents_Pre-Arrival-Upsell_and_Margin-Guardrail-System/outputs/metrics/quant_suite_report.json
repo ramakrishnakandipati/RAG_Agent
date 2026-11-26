@@ -1,0 +1,176 @@
+{
+  "device": {
+    "device": "NVIDIA GeForce RTX 3090",
+    "vram_alloc_mib": 0.0,
+    "vram_peak_mib": 0.0,
+    "vram_total_mib": 24576.0
+  },
+  "n_rows": 80000,
+  "elasticity": {
+    "val_bce": 0.5181624889373779,
+    "rmse_vs_true_prob": 0.03882514304626698,
+    "ece": 0.014611353151998926,
+    "monotonicity_violations": 0,
+    "train_seconds": 3.3,
+    "inference_latency_ms": 1.951,
+    "vram_peak_mib": 37.0,
+    "n_val": 8471
+  },
+  "uplift": {
+    "ROOM_UPGRADE": {
+      "sqrt_pehe": {
+        "x_learner": 0.05340989462969108,
+        "t_learner": 0.07755990325068889,
+        "dragonnet": 0.0325313521713231,
+        "constant_ate": 0.058615935015667496
+      },
+      "corr_with_true_tau": {
+        "x_learner": 0.768492651619699,
+        "dragonnet": 0.8592824555845956
+      },
+      "qini_coefficient": {
+        "dragonnet": 0.0044904236739967025,
+        "x_learner": 0.003120947374118263,
+        "random": 0.0006852273101685576
+      },
+      "auuc": {
+        "dragonnet": 0.023882012540707362,
+        "x_learner": 0.022512536240828922,
+        "random": 0.020076816176879217
+      },
+      "n_train": 8522,
+      "n_treated_train": 1751,
+      "train_latency_ms": 1519.617
+    },
+    "SPA_PACKAGE": {
+      "sqrt_pehe": {
+        "x_learner": 0.06087346582520532,
+        "t_learner": 0.07783356346672643,
+        "dragonnet": 0.03642602559687846,
+        "constant_ate": 0.05829816356091744
+      },
+      "corr_with_true_tau": {
+        "x_learner": 0.6954029166700896,
+        "dragonnet": 0.7873495369934698
+      },
+      "qini_coefficient": {
+        "dragonnet": 0.001653857428500485,
+        "x_learner": 0.0011264630494042648,
+        "random": -0.001074016313941684
+      },
+      "auuc": {
+        "dragonnet": 0.008167642533699107,
+        "x_learner": 0.007640248154602887,
+        "random": 0.005439768791256938
+      },
+      "n_train": 9385,
+      "n_treated_train": 1611,
+      "train_latency_ms": 1491.906
+    },
+    "DINING_EXPERIENCE": {
+      "sqrt_pehe": {
+        "x_learner": 0.06584552207983607,
+        "t_learner": 0.058674417684317505,
+        "dragonnet": 0.04028813139081121,
+        "constant_ate": 0.058591768638117075
+      },
+      "corr_with_true_tau": {
+        "x_learner": 0.6916495244479476,
+        "dragonnet": 0.8098235779902524
+      },
+      "qini_coefficient": {
+        "dragonnet": 0.002135737206444904,
+        "x_learner": 0.0022819188868015783,
+        "random": -0.00138598947909486
+      },
+      "auuc": {
+        "dragonnet": 0.009258520662442609,
+        "x_learner": 0.009404702342799283,
+        "random": 0.005736793976902845
+      },
+      "n_train": 8891,
+      "n_treated_train": 1215,
+      "train_latency_ms": 1390.892
+    },
+    "LATE_CHECKOUT": {
+      "sqrt_pehe": {
+        "x_learner": 0.07198206209486235,
+        "t_learner": 0.07868112077227872,
+        "dragonnet": 0.06584930037257512,
+        "constant_ate": 0.05131782349931448
+      },
+      "corr_with_true_tau": {
+        "x_learner": 0.5667350628911122,
+        "dragonnet": 0.769100972577817
+      },
+      "qini_coefficient": {
+        "dragonnet": -0.0013682766104466323,
+        "x_learner": 0.0004525678892969148,
+        "random": -0.0007312777839251772
+      },
+      "auuc": {
+        "dragonnet": 0.02022084796481067,
+        "x_learner": 0.022041692464554216,
+        "random": 0.020857846791332124
+      },
+      "n_train": 9566,
+      "n_treated_train": 2071,
+      "train_latency_ms": 1498.349
+    }
+  },
+  "bandit": {
+    "random": {
+      "final_cumulative_regret": 81267.6123046875,
+      "mean_reward_last": 18.53423652648926,
+      "rounds": 3968,
+      "latency_ms": 177.331
+    },
+    "linucb": {
+      "final_cumulative_regret": 50220.71569824219,
+      "mean_reward_last": 29.684067726135254,
+      "rounds": 3968,
+      "latency_ms": 182.056
+    },
+    "neural_ts": {
+      "final_cumulative_regret": 49714.38528442383,
+      "mean_reward_last": 25.009325981140137,
+      "rounds": 3968,
+      "latency_ms": 936.465
+    }
+  },
+  "allocator": {
+    "lam_inv": {
+      "ROOM_UPGRADE": 71.52674102783203,
+      "SPA_PACKAGE": 93.09931182861328,
+      "DINING_EXPERIENCE": 88.09456634521484,
+      "LATE_CHECKOUT": 36.14665603637695
+    },
+    "lam_budget": 1.8380147218704224,
+    "usage_inv": {
+      "ROOM_UPGRADE": 120.00056457519531,
+      "SPA_PACKAGE": 200.0009765625,
+      "DINING_EXPERIENCE": 160.0007781982422,
+      "LATE_CHECKOUT": 400.0009765625
+    },
+    "inventory_caps": {
+      "ROOM_UPGRADE": 120,
+      "SPA_PACKAGE": 200,
+      "DINING_EXPERIENCE": 160,
+      "LATE_CHECKOUT": 400
+    },
+    "usage_budget": 4500.0,
+    "budget": 4500.0,
+    "objective": 76217.7109375,
+    "unconstrained_objective": 161185.65625,
+    "primal_violation_max": 4.882812390860636e-06,
+    "comp_slackness_max": 0.00045458649401552975,
+    "latency_ms": 1049.882,
+    "n_guests": 5000
+  },
+  "gpu_final": {
+    "device": "NVIDIA GeForce RTX 3090",
+    "vram_alloc_mib": 20.5,
+    "vram_peak_mib": 44.9,
+    "vram_total_mib": 24576.0
+  }
+}

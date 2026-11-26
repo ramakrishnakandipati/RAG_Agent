@@ -1,0 +1,115 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "flask boots",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "streamlit boots",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "GET /health",
+      "ok": true,
+      "detail": "llm=fallback gpu=NVIDIA GeForce RTX 3090"
+    },
+    {
+      "check": "GET /api/v1/scenarios",
+      "ok": true,
+      "detail": "6 scenarios"
+    },
+    {
+      "check": "POST generate clean_approval -> APPROVED",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "below_floor_price rejected then approved",
+      "ok": true,
+      "detail": "revisions=1"
+    },
+    {
+      "check": "POST /webhooks/pms",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "webhook-driven inventory protection",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "VIP -> HITL_PENDING",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "HITL queue lists pending item",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "HITL approve resumes graph",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "unresolvable -> HITL after R_max",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "webhook rejects bad payload",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "screenshot flask_audit_ui",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "screenshot api_health",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "screenshot api_scenarios",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "screenshot api_pms",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "screenshot streamlit_executive",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "screenshot streamlit_simulator",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "screenshot streamlit_quant",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "screenshot streamlit_ope",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "screenshot streamlit_hitl",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

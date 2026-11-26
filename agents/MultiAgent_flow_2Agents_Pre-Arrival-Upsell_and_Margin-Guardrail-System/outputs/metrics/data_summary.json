@@ -1,0 +1,13 @@
+{
+  "n_rows": 80000,
+  "offer_rate": 0.525375,
+  "accept_rate_given_offer": 0.30758981679752556,
+  "mean_reward": 9.5745796875,
+  "n_actions": 21,
+  "mean_true_tau": {
+    "ROOM_UPGRADE": 0.11835159283508269,
+    "SPA_PACKAGE": 0.09432007511895223,
+    "DINING_EXPERIENCE": 0.11799763940655222,
+    "LATE_CHECKOUT": 0.21469408205792911
+  }
+}

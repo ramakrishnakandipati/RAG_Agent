@@ -1,0 +1,165 @@
+{
+  "n_eval": 16000,
+  "policies": [
+    {
+      "policy": "logged_behaviour",
+      "true_value": 9.340255299247607,
+      "ips": 9.030494140625,
+      "snips": 9.030494140625,
+      "dr": 9.030494140625,
+      "dr_ci95": [
+        8.54537275390625,
+        9.554016162109376
+      ],
+      "ess": 16000.0,
+      "regret": 27.116968038964988,
+      "cannibalisation_rate": 0.0941875,
+      "guardrail_violation_rate": 0.149375
+    },
+    {
+      "policy": "no_offer",
+      "true_value": 5.969048640923433,
+      "ips": 5.92544455574407,
+      "snips": 5.983713555773193,
+      "dr": 5.959342037437924,
+      "dr_ci95": [
+        5.363059181079571,
+        6.639454363957956
+      ],
+      "ess": 6233.497259769624,
+      "regret": 30.488174697289164,
+      "cannibalisation_rate": 0.0,
+      "guardrail_violation_rate": 0.0
+    },
+    {
+      "policy": "random_eligible",
+      "true_value": 15.629700703510068,
+      "ips": 12.367847986237098,
+      "snips": 16.488133147999797,
+      "dr": 17.914926398275732,
+      "dr_ci95": [
+        15.134941288310879,
+        21.197847358134496
+      ],
+      "ess": 348.90962100149824,
+      "regret": 20.827522634702532,
+      "cannibalisation_rate": 0.106875,
+      "guardrail_violation_rate": 0.206125
+    },
+    {
+      "policy": "ml_only(elasticity greedy)",
+      "true_value": 34.57656471779493,
+      "ips": 28.045408893672025,
+      "snips": 36.330064641500286,
+      "dr": 37.03326801892316,
+      "dr_ci95": [
+        32.84433394328343,
+        40.30469712805231
+      ],
+      "ess": 327.4775206373955,
+      "regret": 1.8806586204176687,
+      "cannibalisation_rate": 0.0120625,
+      "guardrail_violation_rate": 0.3014375
+    },
+    {
+      "policy": "ml+agent_guardrails",
+      "true_value": 32.547612137276,
+      "ips": 28.869178967032262,
+      "snips": 35.30461262690025,
+      "dr": 36.411177663974975,
+      "dr_ci95": [
+        32.2730138577818,
+        40.17184455756154
+      ],
+      "ess": 342.4195120073244,
+      "regret": 3.909611200936598,
+      "cannibalisation_rate": 0.0,
+      "guardrail_violation_rate": 0.0
+    },
+    {
+      "policy": "oracle",
+      "true_value": 36.4572233382126,
+      "ips": 30.11772424964171,
+      "snips": 39.241827756608735,
+      "dr": 39.032037559295425,
+      "dr_ci95": [
+        34.709900629513946,
+        42.99070299285848
+      ],
+      "ess": 328.2309891745476,
+      "regret": 0.0,
+      "cannibalisation_rate": 0.0,
+      "guardrail_violation_rate": 0.41325
+    }
+  ],
+  "uplift_qini": {
+    "ROOM_UPGRADE": {
+      "dragonnet": {
+        "auuc": 0.023882012653538412,
+        "qini_coefficient": 0.004490424008124244
+      },
+      "x_learner": {
+        "auuc": 0.022512536287886877,
+        "qini_coefficient": 0.0031209476424727094
+      },
+      "random": {
+        "auuc": 0.020479078044687987,
+        "qini_coefficient": 0.0010874893992738194
+      },
+      "n": 2113
+    },
+    "SPA_PACKAGE": {
+      "dragonnet": {
+        "auuc": 0.008167642524473233,
+        "qini_coefficient": 0.0016538570764738436
+      },
+      "x_learner": {
+        "auuc": 0.007640248225374488,
+        "qini_coefficient": 0.0011264627773750983
+      },
+      "random": {
+        "auuc": 0.0049122620392345155,
+        "qini_coefficient": -0.001601523408764874
+      },
+      "n": 2333
+    },
+    "DINING_EXPERIENCE": {
+      "dragonnet": {
+        "auuc": 0.009258520617360618,
+        "qini_coefficient": 0.002135736949460007
+      },
+      "x_learner": {
+        "auuc": 0.009404702304587117,
+        "qini_coefficient": 0.0022819186366865056
+      },
+      "random": {
+        "auuc": 0.005791214151313692,
+        "qini_coefficient": -0.0013315695165869194
+      },
+      "n": 2168
+    },
+    "LATE_CHECKOUT": {
+      "dragonnet": {
+        "auuc": 0.02022084801567091,
+        "qini_coefficient": -0.001368276792898547
+      },
+      "x_learner": {
+        "auuc": 0.022041692477018045,
+        "qini_coefficient": 0.0004525676684485891
+      },
+      "random": {
+        "auuc": 0.018784576435953857,
+        "qini_coefficient": -0.0028045483726155986
+      },
+      "n": 2372
+    }
+  },
+  "improvement_vs_logged_pct": {
+    "logged_behaviour": 0.0,
+    "no_offer": -36.09330313054437,
+    "random_eligible": 67.33697530483025,
+    "ml_only(elasticity greedy)": 270.1886469910539,
+    "ml+agent_guardrails": 248.46597972432116,
+    "oracle": 290.3236278900146
+  }
+}
